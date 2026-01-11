@@ -44,7 +44,7 @@ export function CoursesSection() {
   }, {} as Record<string, Course[]>)
 
   return (
-    <section id="courses" className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section id="courses" className="py-20 bg-white dark:bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
@@ -68,7 +68,7 @@ export function CoursesSection() {
                   {gradeCourses.map((course) => (
                     <div
                       key={course._id}
-                      className="bg-white dark:bg-black rounded-lg p-6 border border-zinc-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                      className="bg-white dark:bg-white rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
                     >
                       <div className="flex items-center gap-3 mb-4">
                         <div className="bg-blue-100 dark:bg-blue-900 rounded-lg p-2">

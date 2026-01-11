@@ -31,7 +31,7 @@ export function SuccessStoriesSection() {
   }, [])
 
   return (
-    <section id="success-stories" className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section id="success-stories" className="py-20 bg-white dark:bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
@@ -89,7 +89,7 @@ export function SuccessStoriesSection() {
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-800">
+                <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
                   <div className="flex items-start gap-2">
                     <Star className="h-4 w-4 text-yellow-500 mt-1 flex-shrink-0" />
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">

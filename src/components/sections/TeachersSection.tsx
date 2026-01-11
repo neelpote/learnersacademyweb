@@ -44,7 +44,7 @@ export function TeachersSection() {
   ]
 
   return (
-    <section id="teachers" className="py-20 bg-white dark:bg-black">
+    <section id="teachers" className="py-20 bg-white dark:bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
@@ -61,7 +61,7 @@ export function TeachersSection() {
             {teachers.map((teacher) => (
               <div
                 key={teacher._id}
-                className="bg-zinc-50 dark:bg-zinc-900 rounded-lg p-6 border border-zinc-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
               >
                 <div className="relative w-32 h-32 mx-auto mb-6">
                   {teacher.photo ? (
@@ -91,7 +91,7 @@ export function TeachersSection() {
                     {teacher.qualification}
                   </p>
                   
-                  <div className="bg-white dark:bg-black rounded-lg p-4 border border-zinc-200 dark:border-zinc-800">
+                  <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
                       "{teacher.teachingPhilosophy}"
                     </p>
@@ -116,7 +116,7 @@ export function TeachersSection() {
                   {sampleTeachers.map((teacher, index) => (
                     <div
                       key={index}
-                      className="bg-zinc-50 dark:bg-zinc-900 rounded-lg p-6 border border-zinc-200 dark:border-zinc-800"
+                      className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200"
                     >
                       <div className="relative w-32 h-32 mx-auto mb-6">
                         <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
@@ -138,7 +138,7 @@ export function TeachersSection() {
                           {teacher.qualification}
                         </p>
                         
-                        <div className="bg-white dark:bg-black rounded-lg p-4 border border-zinc-200 dark:border-zinc-800">
+                        <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
                           <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
                             "{teacher.philosophy}"
                           </p>

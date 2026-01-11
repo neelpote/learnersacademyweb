@@ -3,7 +3,7 @@ import { GraduationCap, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from
 
 export function Footer() {
   return (
-    <footer className="bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+    <footer className="bg-white dark:bg-white border-t border-zinc-200 dark:border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
@@ -63,7 +63,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-200 dark:border-zinc-800 mt-12 pt-8 text-center">
+        <div className="border-t border-zinc-200 dark:border-zinc-200 mt-12 pt-8 text-center">
           <p className="text-zinc-600 dark:text-zinc-400">
             © {new Date().getFullYear()} The Learners' Academy. All rights reserved.
           </p>

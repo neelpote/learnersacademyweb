@@ -55,7 +55,7 @@ export function ResourcesSection() {
   }
 
   return (
-    <section id="resources" className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section id="resources" className="py-20 bg-white dark:bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
@@ -71,12 +71,12 @@ export function ResourcesSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource) => {
               const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
-              const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600'
+              const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-100 text-zinc-600'
               
               return (
                 <div
                   key={resource._id}
-                  className="bg-white dark:bg-black rounded-lg p-6 border border-zinc-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                  className="bg-white dark:bg-white rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-start gap-3 mb-4">
                     <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
@@ -135,12 +135,12 @@ export function ResourcesSection() {
                 { title: 'Board Exam Success Tips', description: 'Expert tips and strategies to excel in board examinations and achieve top scores.', category: 'exam-tips' },
               ].map((resource, index) => {
                 const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
-                const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-900 text-zinc-600'
+                const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-100 text-zinc-600'
                 
                 return (
                   <div
                     key={index}
-                    className="bg-white dark:bg-black rounded-lg p-6 border border-zinc-200 dark:border-zinc-800"
+                    className="bg-white dark:bg-white rounded-lg p-6 border border-zinc-200 dark:border-zinc-200"
                   >
                     <div className="flex items-start gap-3 mb-4">
                       <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
