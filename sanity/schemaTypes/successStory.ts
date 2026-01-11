@@ -9,7 +9,6 @@ export const successStory = defineType({
       name: 'studentName',
       title: 'Student Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'photo',
@@ -18,13 +17,11 @@ export const successStory = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'marks',
       title: 'Marks/Percentage',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'rank',
@@ -36,13 +33,11 @@ export const successStory = defineType({
       title: 'Testimonial Quote',
       type: 'text',
       rows: 3,
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'year',
       title: 'Year',
       type: 'number',
-      validation: (Rule) => Rule.required().min(2020).max(new Date().getFullYear()),
     }),
   ],
   preview: {

@@ -38,7 +38,7 @@ export function SuccessStoriesSection() {
             Success Stories
           </h2>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-            Celebrating the achievements of our students who have excelled in their academic journey 
+            Celebrating the achievements of our students who have excelled in their academic journey
             and achieved remarkable results in board examinations.
           </p>
         </div>
@@ -103,54 +103,10 @@ export function SuccessStoriesSection() {
         ) : (
           <div className="text-center py-16">
             <Trophy className="h-16 w-16 text-zinc-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">Sample Success Stories</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              {[
-                { name: 'Rahul Sharma', marks: '95.2%', rank: '3', year: 2024, quote: 'The teachers here made complex topics so easy to understand. Their support was incredible!' },
-                { name: 'Priya Patel', marks: '97.8%', rank: '1', year: 2024, quote: 'Best decision I made was joining this academy. The personalized attention helped me excel.' },
-                { name: 'Arjun Singh', marks: '94.6%', rank: '5', year: 2023, quote: 'Amazing faculty and excellent study material. Highly recommend to all students!' },
-              ].map((story, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-lg p-6 border border-blue-200 dark:border-blue-800"
-                >
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center border-4 border-white dark:border-zinc-800">
-                      <Award className="h-12 w-12 text-zinc-400" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Trophy className="h-5 w-5 text-yellow-600" />
-                    <span className="text-lg font-bold text-blue-600">
-                      {story.marks}
-                    </span>
-                    <span className="text-zinc-400">•</span>
-                    <span className="text-sm font-medium text-blue-600">
-                      Rank {story.rank}
-                    </span>
-                  </div>
-
-                  <div className="text-center mb-4">
-                    <h3 className="text-xl font-sans font-semibold text-foreground mb-1">
-                      {story.name}
-                    </h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      Class of {story.year}
-                    </p>
-                  </div>
-
-                  <div className="bg-white dark:bg-zinc-900 rounded-lg p-4 border border-zinc-200 dark:border-zinc-800">
-                    <div className="flex items-start gap-2">
-                      <Star className="h-4 w-4 text-yellow-500 mt-1 flex-shrink-0" />
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
-                        "{story.quote}"
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <h3 className="text-xl font-semibold text-foreground mb-2">No Success Stories Yet</h3>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
+              Success stories will appear here once they are added through the Sanity dashboard.
+            </p>
           </div>
         )}
       </div>

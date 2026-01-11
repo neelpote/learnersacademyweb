@@ -23,6 +23,7 @@ export function Header({ onBookDemo }: HeaderProps) {
 
   const navigation = [
     { name: 'Home', href: '#home' },
+    { name: 'About Us', href: '#about' },
     { name: 'Courses', href: '#courses' },
     { name: 'Teachers', href: '#teachers' },
     { name: 'Success Stories', href: '#success-stories' },
@@ -39,20 +40,16 @@ export function Header({ onBookDemo }: HeaderProps) {
   }
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
-    }`}>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="nav-bar relative w-full z-40 transition-all duration-300">
+      <nav className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <button 
+          <button
             onClick={() => scrollToSection('#home')}
-            className="flex items-center gap-3 group animate-fade-in-left"
+            className="flex items-center gap-3 group"
           >
-            <div className="relative w-14 h-14 group-hover:scale-110 transition-transform duration-300">
-              <div className="absolute inset-0 bg-gradient-brand rounded-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+            <div className="relative w-14 h-14 group-hover:opacity-80 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-academic-maroon rounded-full opacity-20"></div>
               <Image
                 src="/logo.png"
                 alt="The Learners' Academy Logo"
@@ -62,46 +59,44 @@ export function Header({ onBookDemo }: HeaderProps) {
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="font-sans font-bold text-xl text-brand-red group-hover:text-red-600 transition-colors">
+              <span className="font-heading font-bold text-xl nav-link">
                 The Learners'
               </span>
-              <span className="font-sans font-bold text-xl text-brand-blue -mt-1 group-hover:text-blue-600 transition-colors">
+              <span className="font-heading font-bold text-xl nav-link -mt-1">
                 Academy
               </span>
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 animate-fade-in-up">
+          <div className="hidden md:flex items-center gap-8">
             {navigation.map((item, index) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="relative text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-all duration-300 font-medium group"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="nav-link relative font-body font-medium group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-brand group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-matte-silver group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
-            <Button 
-              size="sm" 
-              onClick={onBookDemo} 
-              className="bg-gradient-brand hover:shadow-lg hover:scale-105 transition-all duration-300 animate-pulse-slow"
+            <button
+              onClick={onBookDemo}
+              className="btn-primary"
             >
               Book a Demo
-            </Button>
+            </button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              className="p-2 rounded-lg nav-link hover:opacity-80 transition-opacity duration-300"
             >
-              {isMenuOpen ? 
-                <X className="h-6 w-6 text-brand-red" /> : 
-                <Menu className="h-6 w-6 text-foreground" />
+              {isMenuOpen ?
+                <X className="h-6 w-6" /> :
+                <Menu className="h-6 w-6" />
               }
             </button>
           </div>
@@ -109,25 +104,23 @@ export function Header({ onBookDemo }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 glass rounded-2xl m-4 animate-scale-in">
+          <div className="md:hidden py-6 bg-matte-silver border-2 border-academic-teal rounded-lg m-4">
             <div className="flex flex-col gap-4 px-6">
               {navigation.map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left py-2 text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-colors font-medium animate-fade-in-left"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="text-left py-2 text-academic-teal hover:text-academic-maroon transition-colors font-body font-medium"
                 >
                   {item.name}
                 </button>
               ))}
-              <Button 
-                size="sm" 
-                className="w-fit bg-gradient-brand mt-2 animate-fade-in-up" 
+              <button
+                className="btn-primary w-fit mt-2"
                 onClick={onBookDemo}
               >
                 Book a Demo
-              </Button>
+              </button>
             </div>
           </div>
         )}

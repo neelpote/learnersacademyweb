@@ -9,14 +9,12 @@ export const resource = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 3,
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'pdfFile',
@@ -25,7 +23,6 @@ export const resource = defineType({
       options: {
         accept: '.pdf',
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -35,7 +32,6 @@ export const resource = defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'category',
@@ -49,7 +45,6 @@ export const resource = defineType({
           { title: 'Syllabus Guide', value: 'syllabus-guide' },
         ],
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

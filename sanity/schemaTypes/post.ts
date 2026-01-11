@@ -9,7 +9,6 @@ export const post = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -19,7 +18,6 @@ export const post = defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'mainImage',
@@ -28,14 +26,12 @@ export const post = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
       rows: 3,
-      validation: (Rule) => Rule.required().max(200),
     }),
     defineField({
       name: 'body',
@@ -50,13 +46,11 @@ export const post = defineType({
           options: { hotspot: true },
         },
       ],
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'publishedAt',
       title: 'Published Date',
       type: 'datetime',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'author',

@@ -9,7 +9,6 @@ export const teacher = defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'photo',
@@ -18,26 +17,22 @@ export const teacher = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'qualification',
       title: 'Qualification',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subject',
       title: 'Subject',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'teachingPhilosophy',
       title: 'Teaching Philosophy',
       type: 'text',
       rows: 4,
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

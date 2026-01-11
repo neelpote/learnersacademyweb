@@ -9,7 +9,6 @@ export const course = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'gradeLevel',
@@ -26,20 +25,17 @@ export const course = defineType({
           { title: 'Class 12', value: 'class-12' },
         ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subject',
       title: 'Subject',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'syllabus',
       title: 'Syllabus',
       type: 'array',
       of: [{ type: 'string' }],
-      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: 'slug',
@@ -49,7 +45,6 @@ export const course = defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

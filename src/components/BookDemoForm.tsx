@@ -18,31 +18,106 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [lastSubmitTime, setLastSubmitTime] = useState(0)
+  const [submitCount, setSubmitCount] = useState(0)
+  const [cooldownEnd, setCooldownEnd] = useState(0)
+
+  // Rate limiting constants
+  const SUBMIT_COOLDOWN = 30000 // 30 seconds between submissions
+  const MAX_SUBMISSIONS_PER_HOUR = 10 // Maximum 10 submissions per hour
+  const HOUR_IN_MS = 60 * 60 * 1000
+
+  // Check rate limits
+  const checkRateLimit = () => {
+    const now = Date.now()
+    
+    // Check cooldown period
+    if (now < cooldownEnd) {
+      const remainingSeconds = Math.ceil((cooldownEnd - now) / 1000)
+      alert(`Please wait ${remainingSeconds} seconds before submitting again.`)
+      return false
+    }
+
+    // Check hourly limit
+    const submissionsKey = 'demo_submissions'
+    const storedSubmissions = localStorage.getItem(submissionsKey)
+    let submissions = []
+    
+    if (storedSubmissions) {
+      submissions = JSON.parse(storedSubmissions).filter(
+        (timestamp: number) => now - timestamp < HOUR_IN_MS
+      )
+    }
+
+    if (submissions.length >= MAX_SUBMISSIONS_PER_HOUR) {
+      alert('You have reached the maximum number of demo requests per hour. Please try again later.')
+      return false
+    }
+
+    return true
+  }
+
+  // Update rate limit tracking
+  const updateRateLimit = () => {
+    const now = Date.now()
+    
+    // Set cooldown
+    setCooldownEnd(now + SUBMIT_COOLDOWN)
+    
+    // Update hourly tracking
+    const submissionsKey = 'demo_submissions'
+    const storedSubmissions = localStorage.getItem(submissionsKey)
+    let submissions = []
+    
+    if (storedSubmissions) {
+      submissions = JSON.parse(storedSubmissions).filter(
+        (timestamp: number) => now - timestamp < HOUR_IN_MS
+      )
+    }
+    
+    submissions.push(now)
+    localStorage.setItem(submissionsKey, JSON.stringify(submissions))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Check rate limits
+    if (!checkRateLimit()) {
+      return
+    }
+    
     setIsSubmitting(true)
 
     try {
+      // Add honeypot field for spam protection
+      const submissionData = {
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+        from_name: 'The Learners Academy Website',
+        ...formData,
+        subject: formData.subject || 'New Demo Booking Request', // Use form subject or default
+        _honeypot: '', // Honeypot field for spam protection
+        _captcha: false, // Disable captcha for now
+      }
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-          subject: 'New Demo Booking Request',
-          from_name: 'The Learners Academy Website',
-          ...formData,
-        }),
+        body: JSON.stringify(submissionData),
       })
 
       if (response.ok) {
         setIsSubmitted(true)
         setFormData({ studentName: '', phone: '', class: '', subject: '' })
+        updateRateLimit()
+      } else {
+        throw new Error('Submission failed')
       }
     } catch (error) {
       console.error('Form submission error:', error)
+      alert('There was an error submitting your request. Please try again.')
     } finally {
       setIsSubmitting(false)
     }

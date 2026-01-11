@@ -1,5 +1,6 @@
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
+import { sanityRateLimiter } from './rateLimit'
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -13,6 +14,25 @@ const builder = imageUrlBuilder(client)
 
 export function urlFor(source: any) {
   return builder.image(source)
+}
+
+// Rate-limited fetch function
+export async function rateLimitedFetch(query: string, params?: any) {
+  const clientId = 'sanity_client'
+  
+  if (!sanityRateLimiter.isAllowed(clientId)) {
+    const resetTime = sanityRateLimiter.getResetTime(clientId)
+    const waitTime = Math.ceil((resetTime - Date.now()) / 1000)
+    console.warn(`Sanity API rate limit exceeded. Try again in ${waitTime} seconds.`)
+    throw new Error(`Rate limit exceeded. Please wait ${waitTime} seconds.`)
+  }
+
+  try {
+    return await client.fetch(query, params)
+  } catch (error) {
+    console.error('Sanity fetch error:', error)
+    throw error
+  }
 }
 
 // GROQ queries
