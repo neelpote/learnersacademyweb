@@ -49,7 +49,7 @@ export function Header({ onBookDemo }: HeaderProps) {
             className="flex items-center gap-3 group"
           >
             <div className="relative w-14 h-14 group-hover:opacity-80 transition-opacity duration-300">
-              <div className="absolute inset-0 bg-academic-maroon rounded-full opacity-20"></div>
+              <div className="absolute inset-0 bg-brand-maroon rounded-full opacity-20"></div>
               <Image
                 src="/logo.png"
                 alt="The Learners' Academy Logo"
@@ -77,7 +77,7 @@ export function Header({ onBookDemo }: HeaderProps) {
                 className="nav-link relative font-body font-medium group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-matte-silver group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
             <button
@@ -104,13 +104,13 @@ export function Header({ onBookDemo }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 bg-matte-silver border-2 border-academic-teal rounded-lg m-4">
+          <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-blue rounded-lg m-4">
             <div className="flex flex-col gap-4 px-6">
               {navigation.map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left py-2 text-academic-teal hover:text-academic-maroon transition-colors font-body font-medium"
+                  className="text-left py-2 text-brand-blue hover:text-brand-maroon transition-colors font-body font-medium"
                 >
                   {item.name}
                 </button>

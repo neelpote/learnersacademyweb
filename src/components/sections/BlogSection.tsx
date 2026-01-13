@@ -110,13 +110,13 @@ export function BlogSection() {
   ]
 
   return (
-    <section id="blog" className="py-20 bg-white dark:bg-white">
+    <section id="blog" className="py-20 bg-brand-silver">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
             Educational Blog
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
             Discover valuable insights, study tips, and exam preparation strategies 
             from our experienced educators to help you excel in your academic journey.
           </p>
@@ -129,9 +129,9 @@ export function BlogSection() {
               return (
                 <article
                   key={post._id}
-                  className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
+                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
                 >
-                  <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                  <div className="flex items-center gap-4 text-sm text-muted mb-4">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{formatDate(post.publishedAt)}</span>
@@ -144,25 +144,25 @@ export function BlogSection() {
                     )}
                   </div>
 
-                  <h3 className="text-xl font-sans font-semibold text-foreground mb-3">
+                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                     {post.title}
                   </h3>
 
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4 break-words overflow-wrap-anywhere">
+                  <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
                     {post.excerpt}
                   </p>
 
                   <button
                     onClick={() => toggleExpanded(post._id)}
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
                   >
                     {isExpanded ? 'Show Less' : 'Read More'}
                     {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
                   </button>
 
                   {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-                      <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed break-words overflow-wrap-anywhere">
+                    <div className="mt-4 pt-4 border-t border-brand-blue">
+                      <p className="text-brand-blue leading-relaxed break-words overflow-wrap-anywhere">
                         This is where the full blog content would appear. In a real implementation, 
                         you would fetch the full content from Sanity and display it here. 
                         For now, this shows that the expand/collapse functionality is working perfectly!
@@ -177,12 +177,12 @@ export function BlogSection() {
           <div className="text-center">
             {loading ? (
               <div className="py-16">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"></div>
-                <p className="mt-4 text-zinc-600 dark:text-zinc-400">Loading blog posts...</p>
+                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-brand-maroon mx-auto"></div>
+                <p className="mt-4 text-brand-blue">Loading blog posts...</p>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-brand-maroon mb-2">
                   {error ? 'Sample Blog Posts' : 'No blog posts available'}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
@@ -191,9 +191,9 @@ export function BlogSection() {
                     return (
                       <article
                         key={post.id}
-                        className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200"
+                        className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
                       >
-                        <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                        <div className="flex items-center gap-4 text-sm text-muted mb-4">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
                             <span>{formatDate(post.date)}</span>
@@ -204,17 +204,17 @@ export function BlogSection() {
                           </div>
                         </div>
 
-                        <h3 className="text-xl font-sans font-semibold text-foreground mb-3">
+                        <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                           {post.title}
                         </h3>
 
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4 break-words overflow-wrap-anywhere">
+                  <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
                     {isExpanded ? post.fullContent : post.excerpt}
                   </p>
 
                         <button
                           onClick={() => toggleExpanded(post.id)}
-                          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                          className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
                         >
                           {isExpanded ? 'Show Less' : 'Read More'}
                           {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}

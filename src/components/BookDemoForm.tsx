@@ -134,23 +134,23 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-black rounded-lg max-w-md w-full p-6 relative">
+      <div className="bg-brand-silver rounded-lg max-w-md w-full p-6 relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-600 dark:text-zinc-400 hover:text-foreground transition-colors"
+          className="absolute top-4 right-4 text-brand-blue hover:text-brand-maroon transition-colors"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <h2 className="text-2xl font-sans font-semibold text-foreground mb-6">
+        <h2 className="text-2xl font-sans font-semibold text-brand-maroon mb-6">
           Book a Free Demo
         </h2>
 
         {isSubmitted ? (
           <div className="text-center py-8">
-            <div className="text-green-600 text-5xl mb-4">✓</div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Thank You!</h3>
-            <p className="text-zinc-600 dark:text-zinc-400 mb-6">
+            <div className="text-brand-maroon text-5xl mb-4">✓</div>
+            <h3 className="text-xl font-semibold text-brand-maroon mb-2">Thank You!</h3>
+            <p className="text-brand-blue mb-6">
               We'll contact you soon to schedule your free demo class.
             </p>
             <Button onClick={onClose}>Close</Button>
@@ -158,7 +158,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="studentName" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="studentName" className="block text-sm font-medium text-brand-maroon mb-2">
                 Student Name *
               </label>
               <input
@@ -168,12 +168,12 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 value={formData.studentName}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-black text-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
+                className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               />
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-brand-maroon mb-2">
                 Phone Number *
               </label>
               <input
@@ -183,12 +183,12 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-black text-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
+                className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               />
             </div>
 
             <div>
-              <label htmlFor="class" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="class" className="block text-sm font-medium text-brand-maroon mb-2">
                 Class *
               </label>
               <select
@@ -197,7 +197,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 value={formData.class}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-black text-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
+                className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               >
                 <option value="">Select Class</option>
                 <option value="6">Class 6</option>
@@ -211,7 +211,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="subject" className="block text-sm font-medium text-brand-maroon mb-2">
                 Subject of Interest
               </label>
               <input
@@ -221,7 +221,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="e.g., Mathematics, Physics, Chemistry"
-                className="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-black text-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
+                className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               />
             </div>
 

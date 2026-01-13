@@ -1,31 +1,30 @@
 @import "tailwindcss";
 
-/* STRICT DESIGN STYLE GUIDE - MATTE ACADEMIC THEME */
+/* BRAND COLOR SCHEME - LEARNERS ACADEMY */
 :root {
-  /* PRIMARY COLOR PALETTE - STRICT HEX ADHERENCE */
-  --background: #D9D9D9;
-  /* Faint Silver - MATTE finish */
-  --foreground: #153328;
-  /* Very Dark Teal/Blue - Main body text */
-  --heading-color: #420303;
-  /* Dark Maroon - All headings */
-  --surface: #D9D9D9;
-  /* Same as background for seamless matte flow */
-  --border: #153328;
-  /* Dark Teal for subtle borders */
-  --button-primary-bg: #420303;
+  /* EXACT BRAND COLOR PALETTE FROM POSTER */
+  --background: #EAEAEA;
+  /* Faint Silver - Main background */
+  --foreground: #070A73;
+  /* Dark Blue - Main lettering/body text */
+  --heading-color: #800000;
+  /* Dark Maroon - Title lines/headings */
+  --surface: #EAEAEA;
+  /* Same as background for seamless flow */
+  --border: #070A73;
+  /* Dark Blue for borders */
+  --button-primary-bg: #800000;
   /* Maroon for primary buttons */
-  --button-primary-text: #D9D9D9;
+  --button-primary-text: #EAEAEA;
   /* Silver text on maroon */
-  --button-secondary-border: #153328;
-  /* Dark teal border for secondary buttons */
+  --button-secondary-border: #070A73;
+  /* Dark blue border for secondary buttons */
+  --muted-text: #4A4A4A;
+  /* Muted gray for secondary text */
 
-  /* TYPOGRAPHY - ACADEMIC SERIF/SANS HIERARCHY */
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  /* Serif for academic headings */
-  --font-body: var(--font-inter), 'Helvetica Neue', sans-serif;
-  /* Clean sans-serif for body */
-  --font-display: var(--font-outfit), system-ui, sans-serif;
+  /* TYPOGRAPHY */
+  --font-heading: var(--font-geist-sans), system-ui, sans-serif;
+  --font-body: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 @theme inline {
@@ -34,39 +33,30 @@
   --color-heading: var(--heading-color);
   --color-surface: var(--surface);
   --color-border: var(--border);
+  --color-muted: var(--muted-text);
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
-  --font-display: var(--font-display);
 }
 
-/* GLOBAL RESETS & MATTE FOUNDATION */
+/* GLOBAL FOUNDATION */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--background);
-  /* Faint Silver MATTE */
   color: var(--foreground);
-  /* Dark Teal body text */
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* TYPOGRAPHY HIERARCHY - STRICT ACADEMIC STYLING */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* TYPOGRAPHY HIERARCHY */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  /* Serif for academic feel */
-  color: var(--heading-color);
-  /* Dark Maroon */
-  font-weight: 700;
+  color: var(--foreground); /* Dark Blue for headlines */
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -96,29 +86,22 @@ h6 {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
 }
 
-p,
-li,
-span,
-a {
+p, li, span, a {
   color: var(--foreground);
-  /* Dark Teal body text */
   font-family: var(--font-body);
 }
 
-/* MATTE COMPONENT STYLING - NO GLOSSY EFFECTS */
+/* COMPONENT STYLING */
 
-/* Navigation Bar - Academic Maroon */
+/* Navigation */
 .nav-bar {
   background-color: var(--button-primary-bg) !important;
-  /* Maroon - force override */
   border: none;
   box-shadow: none;
-  /* NO shadows for matte finish */
 }
 
 .nav-link {
   color: var(--button-primary-text) !important;
-  /* Silver text on maroon - force override */
   font-family: var(--font-body);
   font-weight: 500;
   transition: opacity 0.2s ease;
@@ -129,16 +112,14 @@ a {
   color: var(--button-primary-text) !important;
 }
 
-/* Section Containers - Seamless Matte Flow */
+/* Sections */
 .section-container {
   background-color: var(--background);
-  /* Continuous matte silver */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* Section container inside nav-bar should be transparent */
 .nav-bar .section-container {
   background-color: transparent !important;
 }
@@ -146,72 +127,47 @@ a {
 .section-padding {
   padding: 80px 0;
   background-color: var(--background);
-  /* No alternating backgrounds */
 }
 
-/* Cards - Matte with Subtle Borders (NO SHADOWS) */
-.card,
-.card-elevated,
-.feature-card {
+/* Cards */
+.card, .card-elevated, .feature-card {
   background-color: var(--background);
-  /* Same as page background */
   border: 2px solid var(--border);
-  /* Subtle dark teal border */
   border-radius: 8px;
-  /* Minimal rounding for academic look */
   padding: 24px;
   box-shadow: none;
-  /* CRITICAL: No shadows for matte finish */
   transition: border-color 0.2s ease;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
-.card:hover,
-.card-elevated:hover,
-.feature-card:hover {
+.card:hover, .card-elevated:hover, .feature-card:hover {
   border-color: var(--heading-color);
-  /* Maroon border on hover */
   transform: none;
-  /* No lifting effects */
   box-shadow: none;
-  /* Maintain matte finish */
 }
 
-/* Buttons - Flat Academic Styling */
-.btn-primary,
-.button-primary {
+/* Buttons */
+.btn-primary, .button-primary {
   background-color: var(--button-primary-bg);
-  /* Maroon */
   color: var(--button-primary-text);
-  /* Silver text */
   border: none;
   border-radius: 4px;
-  /* Minimal rounding */
   padding: 12px 24px;
   font-family: var(--font-body);
   font-weight: 600;
   box-shadow: none;
-  /* Flat finish */
   transition: opacity 0.2s ease;
 }
 
-.btn-primary:hover,
-.button-primary:hover {
+.btn-primary:hover, .button-primary:hover {
   opacity: 0.9;
   transform: none;
-  /* No lifting */
   box-shadow: none;
-  /* Maintain flat finish */
 }
 
-.btn-secondary,
-.button-secondary {
+.btn-secondary, .button-secondary {
   background-color: transparent;
   color: var(--foreground);
-  /* Dark teal */
   border: 2px solid var(--button-secondary-border);
-  /* Dark teal border */
   border-radius: 4px;
   padding: 10px 22px;
   font-family: var(--font-body);
@@ -220,159 +176,29 @@ a {
   transition: background-color 0.2s ease;
 }
 
-.btn-secondary:hover,
-.button-secondary:hover {
+.btn-secondary:hover, .button-secondary:hover {
   background-color: var(--foreground);
-  /* Dark teal background */
   color: var(--background);
-  /* Silver text */
   transform: none;
   box-shadow: none;
 }
 
-/* Typography Classes - Academic Hierarchy */
-.text-hero {
-  font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
-  line-height: 0.9;
-  color: var(--heading-color);
-}
-
-.text-display {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--heading-color);
-}
-
-.text-headline {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--heading-color);
-}
-
-.text-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--heading-color);
-}
-
-.text-subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--foreground);
-}
-
-.text-body {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--foreground);
-}
-
-.text-lead {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--foreground);
-}
-
-/* Icon Containers - Matte Academic Style */
-.icon-container {
-  width: 64px;
-  height: 64px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  background-color: var(--background);
-  border: 2px solid var(--border);
-  color: var(--heading-color);
-}
-
-/* Stats Cards - Flat Academic Design */
-.stats-card {
-  text-align: center;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: var(--background);
-  border: 2px solid var(--border);
-  transition: border-color 0.2s ease;
-}
-
-.stats-card:hover {
-  border-color: var(--heading-color);
-  transform: none;
-  box-shadow: none;
-}
-
-/* Stats on maroon background - light text */
-.bg-academic-maroon .stats-card,
-.stats-card.bg-academic-maroon {
-  background-color: transparent;
-  border-color: var(--button-primary-text);
-}
-
-.bg-academic-maroon .stats-card *,
-.stats-card.bg-academic-maroon * {
-  color: var(--button-primary-text) !important;
-}
-
-/* Essential Animation - Only Marquee */
-@keyframes marquee {
-  0% {
-    transform: translate3d(100%, 0, 0);
-  }
-
-  100% {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* Results Ticker - Academic Maroon */
+/* Results Ticker */
 .results-ticker {
   background-color: var(--button-primary-bg);
-  /* Maroon */
   color: var(--button-primary-text);
-  /* Silver text */
   border: none;
   box-shadow: none;
 }
 
-/* Hero Section - Matte Background */
-.hero-bg {
-  background-color: var(--background);
-  /* Flat matte silver */
+/* Animations */
+@keyframes marquee {
+  0% { transform: translate3d(100%, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* Remove ALL gradients and glossy effects */
-.bg-gradient-brand,
-.bg-gradient-light,
-.bg-gradient-surface,
-.bg-gradient-retro,
-.text-gradient-brand,
-.text-gradient-blue,
-.text-gradient-sunset {
-  background: var(--background) !important;
-  color: var(--heading-color) !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: unset !important;
-  background-clip: unset !important;
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }
 
 /* Utility Classes */
@@ -383,46 +209,48 @@ a {
   overflow: hidden;
 }
 
-.overflow-wrap-anywhere {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens: auto;
-}
-
-/* Strict Color Classes */
-.bg-matte-silver {
+/* Brand Color Classes */
+.bg-brand-silver {
   background-color: var(--background);
 }
 
-.bg-academic-maroon {
+.bg-brand-maroon {
   background-color: var(--heading-color);
 }
 
-.text-academic-maroon {
+.bg-brand-blue {
+  background-color: var(--foreground);
+}
+
+.text-brand-maroon {
   color: var(--heading-color);
 }
 
-.text-academic-teal {
+.text-brand-heading {
+  color: var(--foreground); /* Dark Blue for headlines */
+}
+
+.text-brand-blue {
   color: var(--foreground);
 }
 
-.text-matte-silver {
+.text-brand-silver {
   color: var(--button-primary-text);
 }
 
-.border-academic-teal {
+.text-muted {
+  color: var(--muted-text);
+}
+
+.border-brand-blue {
   border-color: var(--border);
 }
 
-.border-academic-maroon {
+.border-brand-maroon {
   border-color: var(--heading-color);
 }
 
-.border-matte-silver {
-  border-color: var(--button-primary-text);
-}
-
-/* Custom Scrollbar - Academic Theme */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -440,9 +268,8 @@ a {
   background: var(--foreground);
 }
 
-/* Focus States - Academic Accessibility */
-button:focus-visible,
-a:focus-visible {
+/* Focus States */
+button:focus-visible, a:focus-visible {
   outline: 2px solid var(--heading-color);
   outline-offset: 2px;
 }
@@ -452,28 +279,12 @@ a:focus-visible {
   .section-padding {
     padding: 60px 0;
   }
-
+  
   .section-container {
     padding: 0 16px;
   }
-
-  .card,
-  .card-elevated,
-  .feature-card {
+  
+  .card, .card-elevated, .feature-card {
     padding: 20px;
-  }
-}
-
-/* Dark Mode Override - Force Matte Theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #D9D9D9;
-    --foreground: #153328;
-    --heading-color: #420303;
-  }
-
-  body {
-    background-color: var(--background) !important;
-    color: var(--foreground) !important;
   }
 }

@@ -26,10 +26,10 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  'study-material': 'bg-blue-100 dark:bg-blue-900 text-blue-600',
-  'practice-papers': 'bg-green-100 dark:bg-green-900 text-green-600',
-  'exam-tips': 'bg-purple-100 dark:bg-purple-900 text-purple-600',
-  'syllabus-guide': 'bg-orange-100 dark:bg-orange-900 text-orange-600',
+  'study-material': 'bg-brand-blue text-brand-silver',
+  'practice-papers': 'bg-brand-maroon text-brand-silver',
+  'exam-tips': 'bg-brand-blue text-brand-silver',
+  'syllabus-guide': 'bg-brand-maroon text-brand-silver',
 }
 
 export function ResourcesSection() {
@@ -55,13 +55,13 @@ export function ResourcesSection() {
   }
 
   return (
-    <section id="resources" className="py-20 bg-white dark:bg-white">
+    <section id="resources" className="py-20 bg-brand-silver">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
             Free Resources
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
             Download our comprehensive collection of study materials, practice papers, 
             and exam guides to enhance your learning experience and boost your performance.
           </p>
@@ -76,7 +76,7 @@ export function ResourcesSection() {
               return (
                 <div
                   key={resource._id}
-                  className="bg-white dark:bg-white rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
+                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
                 >
                   <div className="flex items-start gap-3 mb-4">
                     <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>

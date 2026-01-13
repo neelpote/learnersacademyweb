@@ -44,13 +44,13 @@ export function TeachersSection() {
   ]
 
   return (
-    <section id="teachers" className="py-20 bg-white dark:bg-white">
+    <section id="teachers" className="py-20 bg-brand-silver">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
             Meet Our Expert Teachers
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
             Our highly qualified and experienced faculty members are dedicated to nurturing 
             academic excellence and helping every student reach their full potential.
           </p>
@@ -61,7 +61,7 @@ export function TeachersSection() {
             {teachers.map((teacher) => (
               <div
                 key={teacher._id}
-                className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200 hover:border-blue-300 dark:hover:border-blue-300 transition-colors"
+                className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
               >
                 <div className="relative w-32 h-32 mx-auto mb-6">
                   {teacher.photo ? (
@@ -71,28 +71,28 @@ export function TeachersSection() {
                       className="w-full h-full rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
-                      <GraduationCap className="h-16 w-16 text-zinc-400" />
+                    <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
+                      <GraduationCap className="h-16 w-16 text-muted" />
                     </div>
                   )}
                 </div>
 
                 <div className="text-center">
-                  <h3 className="text-xl font-sans font-semibold text-foreground mb-2">
+                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
                     {teacher.name}
                   </h3>
                   
                   <div className="flex items-center justify-center gap-2 mb-3">
-                    <BookOpen className="h-4 w-4 text-blue-600" />
-                    <span className="text-blue-600 font-medium">{teacher.subject}</span>
+                    <BookOpen className="h-4 w-4 text-brand-blue" />
+                    <span className="text-brand-blue font-medium">{teacher.subject}</span>
                   </div>
                   
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                  <p className="text-sm text-muted mb-4">
                     {teacher.qualification}
                   </p>
                   
-                  <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
+                  <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
+                    <p className="text-sm text-brand-blue italic">
                       "{teacher.teachingPhilosophy}"
                     </p>
                   </div>
@@ -104,42 +104,42 @@ export function TeachersSection() {
           <div className="text-center">
             {loading ? (
               <div className="py-16">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"></div>
-                <p className="mt-4 text-zinc-600 dark:text-zinc-400">Loading teachers...</p>
+                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-brand-maroon mx-auto"></div>
+                <p className="mt-4 text-brand-blue">Loading teachers...</p>
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-brand-maroon mb-2">
                   {error ? 'Sample Teachers' : 'No teachers available'}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                   {sampleTeachers.map((teacher, index) => (
                     <div
                       key={index}
-                      className="bg-zinc-50 dark:bg-zinc-50 rounded-lg p-6 border border-zinc-200 dark:border-zinc-200"
+                      className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
                     >
                       <div className="relative w-32 h-32 mx-auto mb-6">
-                        <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center">
-                          <GraduationCap className="h-16 w-16 text-zinc-400" />
+                        <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
+                          <GraduationCap className="h-16 w-16 text-muted" />
                         </div>
                       </div>
 
                       <div className="text-center">
-                        <h3 className="text-xl font-sans font-semibold text-foreground mb-2">
+                        <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
                           {teacher.name}
                         </h3>
                         
                         <div className="flex items-center justify-center gap-2 mb-3">
-                          <BookOpen className="h-4 w-4 text-blue-600" />
-                          <span className="text-blue-600 font-medium">{teacher.subject}</span>
+                          <BookOpen className="h-4 w-4 text-brand-blue" />
+                          <span className="text-brand-blue font-medium">{teacher.subject}</span>
                         </div>
                         
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                        <p className="text-sm text-muted mb-4">
                           {teacher.qualification}
                         </p>
                         
-                        <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
-                          <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
+                        <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
+                          <p className="text-sm text-brand-blue italic">
                             "{teacher.philosophy}"
                           </p>
                         </div>

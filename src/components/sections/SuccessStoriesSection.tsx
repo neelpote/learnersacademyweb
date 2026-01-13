@@ -31,13 +31,13 @@ export function SuccessStoriesSection() {
   }, [])
 
   return (
-    <section id="success-stories" className="py-20 bg-white dark:bg-white">
+    <section id="success-stories" className="py-20 bg-brand-silver">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
             Success Stories
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
             Celebrating the achievements of our students who have excelled in their academic journey
             and achieved remarkable results in board examinations.
           </p>
@@ -48,7 +48,7 @@ export function SuccessStoriesSection() {
             {successStories.map((story) => (
               <div
                 key={story._id}
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 rounded-lg p-6 border border-blue-200 dark:border-blue-800"
+                className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
               >
                 <div className="relative w-24 h-24 mx-auto mb-4">
                   {story.photo ? (
@@ -56,24 +56,24 @@ export function SuccessStoriesSection() {
                       src={urlFor(story.photo).width(150).height(150).url()}
                       alt={story.studentName}
                       fill
-                      className="rounded-full object-cover border-4 border-white dark:border-zinc-800"
+                      className="rounded-full object-cover border-4 border-brand-silver"
                     />
                   ) : (
-                    <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center border-4 border-white dark:border-zinc-800">
-                      <Award className="h-12 w-12 text-zinc-400" />
+                    <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center border-4 border-brand-silver">
+                      <Award className="h-12 w-12 text-muted" />
                     </div>
                   )}
                 </div>
 
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <Trophy className="h-5 w-5 text-yellow-600" />
-                  <span className="text-lg font-bold text-blue-600">
+                  <Trophy className="h-5 w-5 text-brand-maroon" />
+                  <span className="text-lg font-bold text-brand-blue">
                     {story.marks}
                   </span>
                   {story.rank && (
                     <>
-                      <span className="text-zinc-400">•</span>
-                      <span className="text-sm font-medium text-blue-600">
+                      <span className="text-muted">•</span>
+                      <span className="text-sm font-medium text-brand-maroon">
                         Rank {story.rank}
                       </span>
                     </>
@@ -81,18 +81,18 @@ export function SuccessStoriesSection() {
                 </div>
 
                 <div className="text-center mb-4">
-                  <h3 className="text-xl font-sans font-semibold text-foreground mb-1">
+                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-1">
                     {story.studentName}
                   </h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-muted">
                     Class of {story.year}
                   </p>
                 </div>
 
-                <div className="bg-white dark:bg-white rounded-lg p-4 border border-zinc-200 dark:border-zinc-200">
+                <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
                   <div className="flex items-start gap-2">
-                    <Star className="h-4 w-4 text-yellow-500 mt-1 flex-shrink-0" />
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 italic">
+                    <Star className="h-4 w-4 text-brand-maroon mt-1 flex-shrink-0" />
+                    <p className="text-sm text-brand-blue italic">
                       "{story.testimonialQuote}"
                     </p>
                   </div>
@@ -102,9 +102,9 @@ export function SuccessStoriesSection() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <Trophy className="h-16 w-16 text-zinc-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">No Success Stories Yet</h3>
-            <p className="text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
+            <Trophy className="h-16 w-16 text-muted mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-brand-maroon mb-2">No Success Stories Yet</h3>
+            <p className="text-brand-blue max-w-md mx-auto">
               Success stories will appear here once they are added through the Sanity dashboard.
             </p>
           </div>

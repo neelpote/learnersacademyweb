@@ -31,25 +31,25 @@ export default function Home() {
       icon: Users,
       title: "Expert Teachers",
       description: "Highly qualified educators with years of experience",
-      color: "text-blue-600"
+      color: "text-brand-blue"
     },
     {
       icon: BookOpen,
       title: "Comprehensive Curriculum",
       description: "Complete syllabus coverage for all major boards",
-      color: "text-green-600"
+      color: "text-brand-blue"
     },
     {
       icon: Trophy,
       title: "Proven Results",
       description: "Consistent top rankings and excellent board results",
-      color: "text-yellow-600"
+      color: "text-brand-blue"
     },
     {
       icon: Star,
       title: "Personalized Attention",
       description: "Small batch sizes ensuring individual focus",
-      color: "text-purple-600"
+      color: "text-brand-blue"
     }
   ]
 
@@ -61,26 +61,26 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black overflow-x-hidden">
+    <div className="min-h-screen bg-brand-silver overflow-x-hidden">
       <ResultsTicker />
       <Header onBookDemo={() => setIsDemoFormOpen(true)} />
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center hero-bg pt-32">
+        <section id="home" className="relative min-h-screen flex items-center justify-center bg-brand-silver pt-32">
           <div className="section-container text-center">
-            <div className="inline-flex items-center gap-2 bg-matte-silver border-2 border-academic-teal rounded-lg px-6 py-3 mb-8">
-              <Sparkles className="h-5 w-5 text-academic-maroon" />
-              <span className="text-sm font-medium text-academic-teal font-body">Transform Your Future Today</span>
+            <div className="inline-flex items-center gap-2 bg-brand-silver border-2 border-brand-blue rounded-lg px-6 py-3 mb-8">
+              <Sparkles className="h-5 w-5 text-brand-maroon" />
+              <span className="text-sm font-medium text-brand-blue font-body">Transform Your Future Today</span>
             </div>
 
             <h1 className="text-hero mb-8">
-              <span className="font-heading">Unlock Your</span>
+              <span className="font-heading text-brand-maroon">Unlock Your</span>
               <br />
-              <span className="text-academic-maroon font-heading">Academic Potential</span>
+              <span className="text-brand-maroon font-heading">Academic Potential</span>
             </h1>
 
-            <p className="text-lead mb-12 max-w-4xl mx-auto font-body">
+            <p className="text-lead mb-12 max-w-4xl mx-auto font-body text-brand-blue">
               Join The Learners' Academy and experience personalized learning with expert teachers,
               proven methodologies, and outstanding results for classes 6-12.
             </p>
@@ -113,11 +113,11 @@ export default function Home() {
         <section className="section-padding">
           <div className="section-container">
             <div className="text-center mb-20">
-              <h2 className="text-display mb-6">
+              <h2 className="text-display mb-6 text-brand-maroon">
                 Why Choose
-                <span className="text-academic-maroon"> The Learners' Academy?</span>
+                <span className="text-brand-maroon"> The Learners' Academy?</span>
               </h2>
-              <p className="text-subtitle max-w-3xl mx-auto">
+              <p className="text-subtitle max-w-3xl mx-auto text-brand-blue">
                 We provide everything you need to excel in your academic journey with modern teaching methods and personalized attention.
               </p>
             </div>
@@ -137,18 +137,18 @@ export default function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="section-padding bg-academic-maroon">
+        <section className="section-padding bg-brand-maroon">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <div key={index} className="stats-card bg-academic-maroon border-matte-silver">
+                <div key={index} className="stats-card bg-brand-maroon border-brand-silver">
                   <div className="mb-4">
-                    <stat.icon className="h-12 w-12 text-matte-silver mx-auto" />
+                    <stat.icon className="h-12 w-12 text-brand-silver mx-auto" />
                   </div>
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-matte-silver mb-2">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-silver mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-matte-silver font-medium text-lg">
+                  <div className="text-brand-silver font-medium text-lg">
                     {stat.label}
                   </div>
                 </div>
@@ -170,11 +170,11 @@ export default function Home() {
         {/* Final CTA Section */}
         <section className="section-padding">
           <div className="section-container text-center">
-            <h2 className="text-display mb-6">
+            <h2 className="text-display mb-6 text-brand-maroon">
               Ready to Start Your
-              <span className="text-academic-maroon"> Success Story?</span>
+              <span className="text-brand-maroon"> Success Story?</span>
             </h2>
-            <p className="text-subtitle mb-10 max-w-3xl mx-auto">
+            <p className="text-subtitle mb-10 max-w-3xl mx-auto text-brand-blue">
               Join hundreds of students who have achieved their academic goals with our proven teaching methods and personalized approach.
             </p>
             <button

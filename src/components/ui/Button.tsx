@@ -13,9 +13,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'inline-flex items-center justify-center rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
           {
-            'bg-brand-red text-white hover:bg-red-700': variant === 'primary',
-            'bg-white text-brand-red border border-brand-red hover:bg-brand-red hover:text-white dark:bg-black dark:text-brand-red dark:border-brand-red': variant === 'secondary',
-            'border border-brand-red bg-transparent text-brand-red hover:bg-brand-red hover:text-white': variant === 'outline',
+            'bg-brand-maroon text-brand-silver hover:opacity-90': variant === 'primary',
+            'bg-brand-silver text-brand-maroon border border-brand-maroon hover:bg-brand-maroon hover:text-brand-silver': variant === 'secondary',
+            'border border-brand-maroon bg-transparent text-brand-maroon hover:bg-brand-maroon hover:text-brand-silver': variant === 'outline',
           },
           {
             'h-9 px-3 text-sm': size === 'sm',
