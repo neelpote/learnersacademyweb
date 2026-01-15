@@ -57,48 +57,50 @@ export function TeachersSection() {
         </div>
 
         {!loading && teachers.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teachers.map((teacher) => (
-              <div
-                key={teacher._id}
-                className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
-              >
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  {teacher.photo ? (
-                    <img
-                      src={urlFor(teacher.photo).width(200).height(200).url()}
-                      alt={teacher.name}
-                      className="w-full h-full rounded-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
-                      <GraduationCap className="h-16 w-16 text-muted" />
-                    </div>
-                  )}
-                </div>
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-8 min-w-max">
+              {teachers.map((teacher) => (
+                <div
+                  key={teacher._id}
+                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    {teacher.photo ? (
+                      <img
+                        src={urlFor(teacher.photo).width(200).height(200).url()}
+                        alt={teacher.name}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
+                        <GraduationCap className="h-16 w-16 text-muted" />
+                      </div>
+                    )}
+                  </div>
 
-                <div className="text-center">
-                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
-                    {teacher.name}
-                  </h3>
-                  
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <BookOpen className="h-4 w-4 text-brand-blue" />
-                    <span className="text-brand-blue font-medium">{teacher.subject}</span>
-                  </div>
-                  
-                  <p className="text-sm text-muted mb-4">
-                    {teacher.qualification}
-                  </p>
-                  
-                  <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
-                    <p className="text-sm text-brand-blue italic">
-                      "{teacher.teachingPhilosophy}"
+                  <div className="text-center">
+                    <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
+                      {teacher.name}
+                    </h3>
+                    
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <BookOpen className="h-4 w-4 text-brand-blue" />
+                      <span className="text-brand-blue font-medium">{teacher.subject}</span>
+                    </div>
+                    
+                    <p className="text-sm text-muted mb-4">
+                      {teacher.qualification}
                     </p>
+                    
+                    <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
+                      <p className="text-sm text-brand-blue italic">
+                        "{teacher.teachingPhilosophy}"
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ) : (
           <div className="text-center">

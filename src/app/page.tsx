@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { BookDemoForm } from "@/components/BookDemoForm"
+import { WelcomePopup } from "@/components/WelcomePopup"
 import { ResultsTicker } from "@/components/ResultsTicker"
 import { AboutSection } from "@/components/sections/AboutSection"
 import { CoursesSection } from "@/components/sections/CoursesSection"
@@ -20,11 +21,18 @@ import {
   ArrowRight,
   Sparkles,
   Target,
-  Award
+  Award,
+  Download
 } from "lucide-react"
 
 export default function Home() {
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false)
+  const [isWelcomePopupOpen, setIsWelcomePopupOpen] = useState(false)
+
+  useEffect(() => {
+    // Show welcome popup immediately when page loads
+    setIsWelcomePopupOpen(true)
+  }, [])
 
   const features = [
     {
@@ -68,7 +76,7 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <section id="home" className="relative min-h-screen flex items-center justify-center bg-brand-silver pt-32">
-          <div className="section-container text-center">
+          <div className="max-w-7xl mx-auto px-6 text-center">
             <div className="inline-flex items-center gap-2 bg-brand-silver border-2 border-brand-blue rounded-lg px-6 py-3 mb-8">
               <Sparkles className="h-5 w-5 text-brand-maroon" />
               <span className="text-sm font-medium text-brand-blue font-body">Transform Your Future Today</span>
@@ -104,6 +112,18 @@ export default function Home() {
               >
                 Explore Courses
                 <ArrowRight className="h-5 w-5" />
+              </button>
+              <button
+                className="btn-secondary text-lg px-10 py-4 flex items-center gap-2"
+                onClick={() => {
+                  const element = document.querySelector('#resources')
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+              >
+                <Download className="h-5 w-5" />
+                Free Resources
               </button>
             </div>
           </div>
@@ -189,6 +209,11 @@ export default function Home() {
       </main>
 
       <Footer />
+      <WelcomePopup
+        isOpen={isWelcomePopupOpen}
+        onClose={() => setIsWelcomePopupOpen(false)}
+        onBookDemo={() => setIsDemoFormOpen(true)}
+      />
       <BookDemoForm
         isOpen={isDemoFormOpen}
         onClose={() => setIsDemoFormOpen(false)}

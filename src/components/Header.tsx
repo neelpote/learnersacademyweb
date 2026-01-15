@@ -48,13 +48,12 @@ export function Header({ onBookDemo }: HeaderProps) {
             onClick={() => scrollToSection('#home')}
             className="flex items-center gap-3 group"
           >
-            <div className="relative w-14 h-14 group-hover:opacity-80 transition-opacity duration-300">
-              <div className="absolute inset-0 bg-brand-maroon rounded-full opacity-20"></div>
+            <div className="relative w-16 h-16 group-hover:opacity-80 transition-opacity duration-300">
               <Image
-                src="/logo.png"
+                src="/academy Logo - Background Removed.png"
                 alt="The Learners' Academy Logo"
                 fill
-                className="object-contain p-1"
+                className="object-contain"
                 priority
               />
             </div>

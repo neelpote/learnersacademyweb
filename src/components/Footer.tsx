@@ -35,11 +35,46 @@ export function Footer() {
           <div>
             <h3 className="font-sans font-semibold text-brand-maroon mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="/courses" className="text-brand-blue hover:text-brand-maroon transition-colors">Courses</Link></li>
-              <li><Link href="/teachers" className="text-brand-blue hover:text-brand-maroon transition-colors">Teachers</Link></li>
-              <li><Link href="/success-stories" className="text-brand-blue hover:text-brand-maroon transition-colors">Success Stories</Link></li>
-              <li><Link href="/blog" className="text-brand-blue hover:text-brand-maroon transition-colors">Blog</Link></li>
-              <li><Link href="/resources" className="text-brand-blue hover:text-brand-maroon transition-colors">Resources</Link></li>
+              <li>
+                <button 
+                  onClick={() => document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-brand-blue hover:text-brand-maroon transition-colors"
+                >
+                  Courses
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-brand-blue hover:text-brand-maroon transition-colors"
+                >
+                  Teachers
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-brand-blue hover:text-brand-maroon transition-colors"
+                >
+                  Success Stories
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-brand-blue hover:text-brand-maroon transition-colors"
+                >
+                  Blog
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-brand-blue hover:text-brand-maroon transition-colors"
+                >
+                  Resources
+                </button>
+              </li>
             </ul>
           </div>
 

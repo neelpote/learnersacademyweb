@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { client, queries } from '@/lib/sanity'
-import { Calendar, User, ArrowRight, ArrowDown, ArrowUp } from 'lucide-react'
+import { Calendar, User, ArrowDown, ArrowUp } from 'lucide-react'
 
 interface BlogPost {
   _id: string
@@ -123,55 +123,57 @@ export function BlogSection() {
         </div>
 
         {!loading && posts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => {
-              const isExpanded = expandedPosts.has(post._id)
-              return (
-                <article
-                  key={post._id}
-                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
-                >
-                  <div className="flex items-center gap-4 text-sm text-muted mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{formatDate(post.publishedAt)}</span>
-                    </div>
-                    {post.author && (
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-8 min-w-max">
+              {posts.map((post) => {
+                const isExpanded = expandedPosts.has(post._id)
+                return (
+                  <article
+                    key={post._id}
+                    className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-96 flex-shrink-0"
+                  >
+                    <div className="flex items-center gap-4 text-sm text-muted mb-4">
                       <div className="flex items-center gap-1">
-                        <User className="h-4 w-4" />
-                        <span>{post.author.name}</span>
+                        <Calendar className="h-4 w-4" />
+                        <span>{formatDate(post.publishedAt)}</span>
+                      </div>
+                      {post.author && (
+                        <div className="flex items-center gap-1">
+                          <User className="h-4 w-4" />
+                          <span>{post.author.name}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
+                      {post.excerpt}
+                    </p>
+
+                    <button
+                      onClick={() => toggleExpanded(post._id)}
+                      className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
+                    >
+                      {isExpanded ? 'Show Less' : 'Read More'}
+                      {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
+                    </button>
+
+                    {isExpanded && (
+                      <div className="mt-4 pt-4 border-t border-brand-blue">
+                        <p className="text-brand-blue leading-relaxed break-words overflow-wrap-anywhere">
+                          This is where the full blog content would appear. In a real implementation, 
+                          you would fetch the full content from Sanity and display it here. 
+                          For now, this shows that the expand/collapse functionality is working perfectly!
+                        </p>
                       </div>
                     )}
-                  </div>
-
-                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
-                    {post.excerpt}
-                  </p>
-
-                  <button
-                    onClick={() => toggleExpanded(post._id)}
-                    className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
-                  >
-                    {isExpanded ? 'Show Less' : 'Read More'}
-                    {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
-                  </button>
-
-                  {isExpanded && (
-                    <div className="mt-4 pt-4 border-t border-brand-blue">
-                      <p className="text-brand-blue leading-relaxed break-words overflow-wrap-anywhere">
-                        This is where the full blog content would appear. In a real implementation, 
-                        you would fetch the full content from Sanity and display it here. 
-                        For now, this shows that the expand/collapse functionality is working perfectly!
-                      </p>
-                    </div>
-                  )}
-                </article>
-              )
-            })}
+                  </article>
+                )
+              })}
+            </div>
           </div>
         ) : (
           <div className="text-center">
@@ -185,43 +187,45 @@ export function BlogSection() {
                 <h3 className="text-xl font-semibold text-brand-maroon mb-2">
                   {error ? 'Sample Blog Posts' : 'No blog posts available'}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                  {samplePosts.map((post) => {
-                    const isExpanded = expandedPosts.has(post.id)
-                    return (
-                      <article
-                        key={post.id}
-                        className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
-                      >
-                        <div className="flex items-center gap-4 text-sm text-muted mb-4">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>{formatDate(post.date)}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <User className="h-4 w-4" />
-                            <span>{post.author}</span>
-                          </div>
-                        </div>
-
-                        <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
-                          {post.title}
-                        </h3>
-
-                  <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
-                    {isExpanded ? post.fullContent : post.excerpt}
-                  </p>
-
-                        <button
-                          onClick={() => toggleExpanded(post.id)}
-                          className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
+                <div className="overflow-x-auto pb-4">
+                  <div className="flex gap-8 min-w-max mt-8">
+                    {samplePosts.map((post) => {
+                      const isExpanded = expandedPosts.has(post.id)
+                      return (
+                        <article
+                          key={post.id}
+                          className="bg-brand-silver rounded-lg p-6 border border-brand-blue w-96 flex-shrink-0"
                         >
-                          {isExpanded ? 'Show Less' : 'Read More'}
-                          {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
-                        </button>
-                      </article>
-                    )
-                  })}
+                          <div className="flex items-center gap-4 text-sm text-muted mb-4">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="h-4 w-4" />
+                              <span>{formatDate(post.date)}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <User className="h-4 w-4" />
+                              <span>{post.author}</span>
+                            </div>
+                          </div>
+
+                          <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
+                            {post.title}
+                          </h3>
+
+                          <p className="text-brand-blue mb-4 break-words overflow-wrap-anywhere">
+                            {isExpanded ? post.fullContent : post.excerpt}
+                          </p>
+
+                          <button
+                            onClick={() => toggleExpanded(post.id)}
+                            className="inline-flex items-center gap-2 text-brand-maroon hover:text-brand-blue font-medium transition-colors"
+                          >
+                            {isExpanded ? 'Show Less' : 'Read More'}
+                            {isExpanded ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />}
+                          </button>
+                        </article>
+                      )
+                    })}
+                  </div>
                 </div>
               </>
             )}

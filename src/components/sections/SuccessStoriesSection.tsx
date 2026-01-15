@@ -44,61 +44,63 @@ export function SuccessStoriesSection() {
         </div>
 
         {successStories.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {successStories.map((story) => (
-              <div
-                key={story._id}
-                className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
-              >
-                <div className="relative w-24 h-24 mx-auto mb-4">
-                  {story.photo ? (
-                    <Image
-                      src={urlFor(story.photo).width(150).height(150).url()}
-                      alt={story.studentName}
-                      fill
-                      className="rounded-full object-cover border-4 border-brand-silver"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center border-4 border-brand-silver">
-                      <Award className="h-12 w-12 text-muted" />
-                    </div>
-                  )}
-                </div>
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-8 min-w-max">
+              {successStories.map((story) => (
+                <div
+                  key={story._id}
+                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue w-80 flex-shrink-0"
+                >
+                  <div className="relative w-24 h-24 mx-auto mb-4">
+                    {story.photo ? (
+                      <Image
+                        src={urlFor(story.photo).width(150).height(150).url()}
+                        alt={story.studentName}
+                        fill
+                        className="rounded-full object-cover border-4 border-brand-silver"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center border-4 border-brand-silver">
+                        <Award className="h-12 w-12 text-muted" />
+                      </div>
+                    )}
+                  </div>
 
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <Trophy className="h-5 w-5 text-brand-maroon" />
-                  <span className="text-lg font-bold text-brand-blue">
-                    {story.marks}
-                  </span>
-                  {story.rank && (
-                    <>
-                      <span className="text-muted">•</span>
-                      <span className="text-sm font-medium text-brand-maroon">
-                        Rank {story.rank}
-                      </span>
-                    </>
-                  )}
-                </div>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Trophy className="h-5 w-5 text-brand-maroon" />
+                    <span className="text-lg font-bold text-brand-blue">
+                      {story.marks}
+                    </span>
+                    {story.rank && (
+                      <>
+                        <span className="text-muted">•</span>
+                        <span className="text-sm font-medium text-brand-maroon">
+                          Rank {story.rank}
+                        </span>
+                      </>
+                    )}
+                  </div>
 
-                <div className="text-center mb-4">
-                  <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-1">
-                    {story.studentName}
-                  </h3>
-                  <p className="text-sm text-muted">
-                    Class of {story.year}
-                  </p>
-                </div>
-
-                <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
-                  <div className="flex items-start gap-2">
-                    <Star className="h-4 w-4 text-brand-maroon mt-1 flex-shrink-0" />
-                    <p className="text-sm text-brand-blue italic">
-                      "{story.testimonialQuote}"
+                  <div className="text-center mb-4">
+                    <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-1">
+                      {story.studentName}
+                    </h3>
+                    <p className="text-sm text-muted">
+                      Class of {story.year}
                     </p>
                   </div>
+
+                  <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
+                    <div className="flex items-start gap-2">
+                      <Star className="h-4 w-4 text-brand-maroon mt-1 flex-shrink-0" />
+                      <p className="text-sm text-brand-blue italic">
+                        "{story.testimonialQuote}"
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ) : (
           <div className="text-center py-16">

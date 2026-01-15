@@ -68,96 +68,33 @@ export function ResourcesSection() {
         </div>
 
         {resources.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {resources.map((resource) => {
-              const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
-              const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-100 text-zinc-600'
-              
-              return (
-                <div
-                  key={resource._id}
-                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors"
-                >
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
-                      <IconComponent className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-sans font-semibold text-foreground mb-2">
-                        {resource.title}
-                      </h3>
-                      <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4">
-                        {resource.description}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      <FileText className="h-4 w-4" />
-                      <span>PDF Format</span>
-                    </div>
-                    
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        if (resource.pdfFile?.asset?.url) {
-                          // Create a proper download link
-                          const link = document.createElement('a')
-                          link.href = resource.pdfFile.asset.url
-                          link.download = `${resource.title}.pdf`
-                          link.target = '_blank'
-                          document.body.appendChild(link)
-                          link.click()
-                          document.body.removeChild(link)
-                        } else {
-                          alert('PDF file not available. Please contact us for this resource.')
-                        }
-                      }}
-                      className="flex items-center gap-2"
-                    >
-                      <Download className="h-4 w-4" />
-                      Download
-                    </Button>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        ) : (
-          <div className="text-center py-16">
-            <FileText className="h-16 w-16 text-zinc-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">Sample Resources</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {[
-                { title: 'Class 10 Math Formula Sheet', description: 'Complete collection of important formulas for Class 10 Mathematics board exam preparation.', category: 'study-material' },
-                { title: 'Physics Practice Papers', description: 'Set of 5 practice papers for Class 12 Physics with detailed solutions and marking scheme.', category: 'practice-papers' },
-                { title: 'Board Exam Success Tips', description: 'Expert tips and strategies to excel in board examinations and achieve top scores.', category: 'exam-tips' },
-              ].map((resource, index) => {
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-6 min-w-max">
+              {resources.map((resource) => {
                 const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
-                const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-zinc-100 dark:bg-zinc-100 text-zinc-600'
+                const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-brand-blue text-brand-silver'
                 
                 return (
                   <div
-                    key={index}
-                    className="bg-white dark:bg-white rounded-lg p-6 border border-zinc-200 dark:border-zinc-200"
+                    key={resource._id}
+                    className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
                   >
                     <div className="flex items-start gap-3 mb-4">
                       <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
                         <IconComponent className="h-5 w-5" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-sans font-semibold text-foreground mb-2">
+                        <h3 className="text-lg font-sans font-semibold text-brand-maroon mb-2">
                           {resource.title}
                         </h3>
-                        <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4">
+                        <p className="text-brand-blue text-sm mb-4">
                           {resource.description}
                         </p>
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                      <div className="flex items-center gap-2 text-sm text-brand-blue">
                         <FileText className="h-4 w-4" />
                         <span>PDF Format</span>
                       </div>
@@ -165,8 +102,17 @@ export function ResourcesSection() {
                       <Button
                         size="sm"
                         onClick={() => {
-                          // For demo purposes, show an alert
-                          alert('This is a sample resource. Add real PDF files through Sanity Studio to enable downloads!')
+                          if (resource.pdfFile?.asset?.url) {
+                            const link = document.createElement('a')
+                            link.href = resource.pdfFile.asset.url
+                            link.download = `${resource.title}.pdf`
+                            link.target = '_blank'
+                            document.body.appendChild(link)
+                            link.click()
+                            document.body.removeChild(link)
+                          } else {
+                            alert('PDF file not available. Please contact us for this resource.')
+                          }
                         }}
                         className="flex items-center gap-2"
                       >
@@ -178,6 +124,14 @@ export function ResourcesSection() {
                 )
               })}
             </div>
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <FileText className="h-16 w-16 text-muted mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-brand-maroon mb-2">No Resources Yet</h3>
+            <p className="text-brand-blue max-w-md mx-auto">
+              Resources will appear here once they are added through the Sanity dashboard.
+            </p>
           </div>
         )}
       </div>
