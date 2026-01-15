@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -97,6 +98,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
+        <BackgroundAnimation />
         {children}
       </body>
     </html>

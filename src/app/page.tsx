@@ -70,30 +70,32 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-brand-silver overflow-x-hidden">
-      <ResultsTicker />
-      <Header onBookDemo={() => setIsDemoFormOpen(true)} />
+      <div className="relative z-10 bg-transparent">
+        <ResultsTicker />
+        <Header onBookDemo={() => setIsDemoFormOpen(true)} />
+      </div>
 
-      <main>
+      <main className="relative z-10 bg-transparent">
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center bg-brand-silver pt-32">
+        <section id="home" className="relative min-h-screen flex items-center justify-center pt-32">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div className="inline-flex items-center gap-2 bg-brand-silver border-2 border-brand-blue rounded-lg px-6 py-3 mb-8">
+            <div className="inline-flex items-center gap-2 bg-brand-silver border-2 border-brand-blue rounded-lg px-6 py-3 mb-8 animate-fade-in">
               <Sparkles className="h-5 w-5 text-brand-maroon" />
               <span className="text-sm font-medium text-brand-blue font-body">Transform Your Future Today</span>
             </div>
 
-            <h1 className="text-hero mb-8">
+            <h1 className="text-hero mb-8 animate-fade-in-up animate-delay-100">
               <span className="font-heading text-brand-maroon">Unlock Your</span>
               <br />
               <span className="text-brand-maroon font-heading">Academic Potential</span>
             </h1>
 
-            <p className="text-lead mb-12 max-w-4xl mx-auto font-body text-brand-blue">
+            <p className="text-lead mb-12 max-w-4xl mx-auto font-body text-brand-blue animate-fade-in-up animate-delay-200">
               Join The Learners' Academy and experience personalized learning with expert teachers,
               proven methodologies, and outstanding results for classes 6-12.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up animate-delay-300">
               <button
                 onClick={() => setIsDemoFormOpen(true)}
                 className="btn-primary text-lg px-10 py-4 flex items-center gap-2"
@@ -208,7 +210,9 @@ export default function Home() {
         </section>
       </main>
 
-      <Footer />
+      <div className="relative z-10 bg-transparent">
+        <Footer />
+      </div>
       <WelcomePopup
         isOpen={isWelcomePopupOpen}
         onClose={() => setIsWelcomePopupOpen(false)}

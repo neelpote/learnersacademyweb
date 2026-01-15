@@ -116,7 +116,10 @@ export function Header({ onBookDemo }: HeaderProps) {
               ))}
               <button
                 className="btn-primary w-fit mt-2"
-                onClick={onBookDemo}
+                onClick={() => {
+                  onBookDemo()
+                  setIsMenuOpen(false)
+                }}
               >
                 Book a Demo
               </button>

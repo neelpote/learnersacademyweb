@@ -215,7 +215,7 @@ export function AboutSection() {
             <h3 className="text-3xl font-sans font-bold text-center mb-8 text-brand-maroon">Our Goals & Objectives</h3>
             <div className="space-y-6 max-w-4xl mx-auto">
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Business Plan</h4>
+                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Our Vision</h4>
                 <p className="text-brand-blue">To be a leading professional institution that exemplifies career success through enabling knowledge excellence and developing holistic global citizen.</p>
               </div>
               <div>
