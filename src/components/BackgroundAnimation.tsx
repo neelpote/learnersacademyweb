@@ -13,7 +13,7 @@ interface Particle {
 export default function BackgroundAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -64,11 +64,11 @@ export default function BackgroundAnimation() {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Draw particle with brand maroon color - lighter on mobile
+        // Draw particle with brand maroon color - more visible
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         const isMobile = canvas.width < 768;
-        ctx.fillStyle = isMobile ? 'rgba(128, 0, 0, 0.4)' : 'rgba(128, 0, 0, 0.7)';
+        ctx.fillStyle = isMobile ? 'rgba(128, 0, 0, 0.9)' : 'rgba(128, 0, 0, 1.0)';
         ctx.fill();
       });
 
@@ -85,9 +85,9 @@ export default function BackgroundAnimation() {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const isMobile = canvas.width < 768;
-            const opacity = isMobile ? 0.2 : 0.4;
+            const opacity = isMobile ? 0.5 : 0.7;
             ctx.strokeStyle = `rgba(128, 0, 0, ${opacity * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = isMobile ? 0.8 : 1.2;
+            ctx.lineWidth = isMobile ? 1.0 : 1.5;
             ctx.stroke();
           }
         }
@@ -111,7 +111,7 @@ export default function BackgroundAnimation() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
+      className="fixed inset-0 pointer-events-none z-10"
       style={{ background: 'transparent' }}
       aria-hidden="true"
     />

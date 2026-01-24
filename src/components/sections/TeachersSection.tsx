@@ -62,7 +62,7 @@ export function TeachersSection() {
               {teachers.map((teacher) => (
                 <div
                   key={teacher._id}
-                  className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
+                  className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
                 >
                   <div className="relative w-32 h-32 mx-auto mb-6">
                     {teacher.photo ? (

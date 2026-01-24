@@ -6,23 +6,23 @@ import { Footer } from "@/components/Footer"
 import { BookDemoForm } from "@/components/BookDemoForm"
 import { WelcomePopup } from "@/components/WelcomePopup"
 import { ResultsTicker } from "@/components/ResultsTicker"
-import { AboutSection } from "@/components/sections/AboutSection"
-import { CoursesSection } from "@/components/sections/CoursesSection"
+import { PricingSection } from "@/components/sections/PricingSection"
 import { TeachersSection } from "@/components/sections/TeachersSection"
 import { SuccessStoriesSection } from "@/components/sections/SuccessStoriesSection"
 import { BlogSection } from "@/components/sections/BlogSection"
 import { ResourcesSection } from "@/components/sections/ResourcesSection"
-import { Button } from "@/components/ui/Button"
+import { AboutSection } from "@/components/sections/AboutSection"
+
 import {
   Users,
   Trophy,
-  BookOpen,
-  Star,
   ArrowRight,
   Sparkles,
   Target,
   Award,
-  Download
+  Download,
+  Heart,
+  Lightbulb
 } from "lucide-react"
 
 export default function Home() {
@@ -34,68 +34,41 @@ export default function Home() {
     setIsWelcomePopupOpen(true)
   }, [])
 
-  const features = [
-    {
-      icon: Users,
-      title: "Expert Teachers",
-      description: "Highly qualified educators with years of experience",
-      color: "text-brand-blue"
-    },
-    {
-      icon: BookOpen,
-      title: "Comprehensive Curriculum",
-      description: "Complete syllabus coverage for all major boards",
-      color: "text-brand-blue"
-    },
-    {
-      icon: Trophy,
-      title: "Proven Results",
-      description: "Consistent top rankings and excellent board results",
-      color: "text-brand-blue"
-    },
-    {
-      icon: Star,
-      title: "Personalized Attention",
-      description: "Small batch sizes ensuring individual focus",
-      color: "text-brand-blue"
-    }
-  ]
-
   const stats = [
-    { number: "500+", label: "Students Taught", icon: Users },
-    { number: "95%", label: "Success Rate", icon: Target },
-    { number: "50+", label: "Top Rankers", icon: Award },
-    { number: "8+", label: "Years Experience", icon: Sparkles }
+    { number: "1000+", label: "Students Taught", icon: Users },
+    { number: "100%", label: "Board Passing Rate", icon: Target },
+    { number: "100+", label: "Top Rankers", icon: Award },
+    { number: "15+", label: "Years Experience", icon: Sparkles }
   ]
 
   return (
-    <div className="min-h-screen bg-brand-silver overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
       <div className="relative z-10 bg-transparent">
         <ResultsTicker />
         <Header onBookDemo={() => setIsDemoFormOpen(true)} />
       </div>
 
-      <main className="relative z-10 bg-transparent">
+      <main className="relative z-20 bg-transparent">
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center pt-32">
+        <section id="home" className="relative min-h-[50vh] flex items-center justify-center pt-12 pb-4">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div className="inline-flex items-center gap-2 bg-brand-silver border-2 border-brand-blue rounded-lg px-6 py-3 mb-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-brand-silver rounded-lg px-6 py-3 mb-4 animate-fade-in">
               <Sparkles className="h-5 w-5 text-brand-maroon" />
-              <span className="text-sm font-medium text-brand-blue font-body">Transform Your Future Today</span>
+              <span className="text-base font-medium text-brand-blue font-body">Transform Your Future Today</span>
             </div>
 
-            <h1 className="text-hero mb-8 animate-fade-in-up animate-delay-100">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up animate-delay-100">
               <span className="font-heading text-brand-maroon">Unlock Your</span>
               <br />
               <span className="text-brand-maroon font-heading">Academic Potential</span>
             </h1>
 
-            <p className="text-lead mb-12 max-w-4xl mx-auto font-body text-brand-blue animate-fade-in-up animate-delay-200">
+            <p className="text-lg md:text-xl mb-6 max-w-4xl mx-auto font-body text-brand-blue animate-fade-in-up animate-delay-200">
               Join The Learners' Academy and experience personalized learning with expert teachers,
               proven methodologies, and outstanding results for classes 6-12.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up animate-delay-300">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-300">
               <button
                 onClick={() => setIsDemoFormOpen(true)}
                 className="btn-primary text-lg px-10 py-4 flex items-center gap-2"
@@ -131,35 +104,77 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="section-padding">
-          <div className="section-container">
-            <div className="text-center mb-20">
-              <h2 className="text-display mb-6 text-brand-maroon">
-                Why Choose
-                <span className="text-brand-maroon"> The Learners' Academy?</span>
+        {/* Why Choose Us Section - Transparent with Animation Visible */}
+        <section className="py-20 bg-transparent relative z-20">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
+                Why Choose The Learners' Academy?
               </h2>
-              <p className="text-subtitle max-w-3xl mx-auto text-brand-blue">
-                We provide everything you need to excel in your academic journey with modern teaching methods and personalized attention.
+              <p className="text-xl text-brand-blue max-w-3xl mx-auto">
+                Discover what makes us unique in education with our proven teaching methods and personalized approach.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="feature-card">
-                  <div className="icon-container">
-                    <feature.icon className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-title mb-3">{feature.title}</h3>
-                  <p className="text-body">{feature.description}</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-transparent rounded-lg p-8 hover:bg-white hover:bg-opacity-10 transition-all duration-300">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
+                  <Heart className="h-8 w-8 text-white" />
                 </div>
-              ))}
+                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                  Positive Learning Process
+                </h3>
+                <p className="text-brand-blue text-center">
+                  Facilitating and nurturing the positive learning process for each child with innovative teaching methods.
+                </p>
+              </div>
+
+              <div className="bg-transparent rounded-lg p-8 hover:bg-white hover:bg-opacity-10 transition-all duration-300">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                  Optimal Batch Size
+                </h3>
+                <p className="text-brand-blue text-center">
+                  Small classes ensuring individual attention for every student with personalized guidance.
+                </p>
+              </div>
+
+              <div className="bg-transparent rounded-lg p-8 hover:bg-white hover:bg-opacity-10 transition-all duration-300">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
+                  <Lightbulb className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                  Innovative Teaching
+                </h3>
+                <p className="text-brand-blue text-center">
+                  Tried and tested teaching techniques with innovative aids and modern learning approaches.
+                </p>
+              </div>
+
+              <div className="bg-transparent rounded-lg p-8 hover:bg-white hover:bg-opacity-10 transition-all duration-300">
+                <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
+                  <Trophy className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                  Proven Results
+                </h3>
+                <p className="text-brand-blue text-center">
+                  Consistent top rankings and excellent board results with 95% success rate across all programs.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-lg text-brand-blue font-medium mb-2">Our Specialties:</p>
+              <p className="text-brand-blue">Mathematics, Physics, Chemistry, Biology and English</p>
             </div>
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="section-padding bg-brand-maroon">
+        <section className="section-padding bg-brand-maroon bg-opacity-95 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -181,7 +196,7 @@ export default function Home() {
 
         {/* All Sections with improved spacing */}
         <div className="space-y-0">
-          <CoursesSection />
+          <PricingSection onBookDemo={() => setIsDemoFormOpen(true)} />
           <TeachersSection />
           <SuccessStoriesSection />
           <BlogSection />

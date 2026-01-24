@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Button } from './ui/Button'
 
 interface HeaderProps {
   onBookDemo: () => void
@@ -23,12 +22,12 @@ export function Header({ onBookDemo }: HeaderProps) {
 
   const navigation = [
     { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
     { name: 'Courses', href: '#courses' },
     { name: 'Teachers', href: '#teachers' },
     { name: 'Success Stories', href: '#success-stories' },
     { name: 'Blog', href: '#blog' },
     { name: 'Resources', href: '#resources' },
+    { name: 'About', href: '#about' },
   ]
 
   const scrollToSection = (href: string) => {
@@ -40,92 +39,103 @@ export function Header({ onBookDemo }: HeaderProps) {
   }
 
   return (
-    <header className="nav-bar relative w-full z-40 transition-all duration-300">
-      <nav className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <button
-            onClick={() => scrollToSection('#home')}
-            className="flex items-center gap-3 group"
-          >
-            <div className="relative w-16 h-16 group-hover:opacity-80 transition-opacity duration-300">
-              <Image
-                src="/academy Logo - Background Removed.png"
-                alt="The Learners' Academy Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="flex flex-col items-start">
-              <span className="font-heading font-bold text-xl nav-link">
-                The Learners'
-              </span>
-              <span className="font-heading font-bold text-xl nav-link -mt-1">
-                Academy
-              </span>
-            </div>
-          </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navigation.map((item, index) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="nav-link relative font-body font-medium group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
-              </button>
-            ))}
+    <header className="relative w-full z-40">
+      {/* Top Branding Bar */}
+      <div className="bg-transparent border-b-2 border-brand-blue">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-center items-center py-4">
             <button
-              onClick={onBookDemo}
-              className="btn-primary"
+              onClick={() => scrollToSection('#home')}
+              className="flex items-center gap-4 group"
             >
-              Book a Demo
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg nav-link hover:opacity-80 transition-opacity duration-300"
-            >
-              {isMenuOpen ?
-                <X className="h-6 w-6" /> :
-                <Menu className="h-6 w-6" />
-              }
+              <div className="relative w-20 h-20 group-hover:opacity-80 transition-opacity duration-300">
+                <Image
+                  src="/academy Logo - Background Removed.png"
+                  alt="The Learners' Academy Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex items-center">
+                <span className="font-heading font-bold text-2xl text-brand-maroon">
+                  The Learners' Academy
+                </span>
+              </div>
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-blue rounded-lg m-4">
-            <div className="flex flex-col gap-4 px-6">
+      {/* Bottom Navigation Bar */}
+      <nav className="bg-brand-maroon">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center h-16">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-12 flex-1 justify-center">
               {navigation.map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left py-2 text-brand-blue hover:text-brand-maroon transition-colors font-body font-medium"
+                  className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
+            </div>
+
+            {/* Book Demo Button - Desktop */}
+            <div className="hidden md:block flex-shrink-0">
               <button
-                className="btn-primary w-fit mt-2"
-                onClick={() => {
-                  onBookDemo()
-                  setIsMenuOpen(false)
-                }}
+                onClick={onBookDemo}
+                className="bg-white text-brand-maroon px-4 py-2 rounded font-medium hover:bg-brand-silver transition-colors text-sm"
               >
-                Book a Demo
+                Book Demo
+              </button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden w-full flex justify-between items-center">
+              <span className="text-white font-medium">Menu</span>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg text-white hover:text-brand-silver transition-colors"
+              >
+                {isMenuOpen ?
+                  <X className="h-6 w-6" /> :
+                  <Menu className="h-6 w-6" />
+                }
               </button>
             </div>
           </div>
-        )}
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden py-6 bg-white border-2 border-brand-blue rounded-lg m-4">
+              <div className="flex flex-col gap-4 px-6">
+                {navigation.map((item, index) => (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-left py-2 text-brand-blue hover:text-brand-maroon transition-colors font-body font-medium"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+                <button
+                  className="bg-brand-maroon text-white px-6 py-2 rounded font-medium hover:bg-opacity-90 transition-colors w-fit mt-2"
+                  onClick={() => {
+                    onBookDemo()
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  Book a Demo
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   )

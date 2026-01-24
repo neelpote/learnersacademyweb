@@ -77,7 +77,7 @@ export function ResourcesSection() {
                 return (
                   <div
                     key={resource._id}
-                    className="bg-brand-silver rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
+                    className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
                   >
                     <div className="flex items-start gap-3 mb-4">
                       <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
