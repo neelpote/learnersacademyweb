@@ -33,21 +33,11 @@ export function ResultsTicker() {
         if (stories && stories.length > 0) {
           setSuccessStories(stories.slice(0, 10)) // Show top 10 results from Sanity
         } else {
-          // Only use sample data if no Sanity data exists
-          setSuccessStories([
-            { _id: '1', studentName: 'Rahul Sharma', marks: '95.2%', rank: '3', year: 2024 },
-            { _id: '2', studentName: 'Priya Patel', marks: '97.8%', rank: '1', year: 2024 },
-            { _id: '3', studentName: 'Arjun Singh', marks: '94.6%', rank: '5', year: 2023 },
-          ])
+          setSuccessStories([]) // No sample data, just empty array
         }
       } catch (error) {
         console.error('Error fetching success stories:', error)
-        // Only use sample data if there's an error
-        setSuccessStories([
-          { _id: '1', studentName: 'Rahul Sharma', marks: '95.2%', rank: '3', year: 2024 },
-          { _id: '2', studentName: 'Priya Patel', marks: '97.8%', rank: '1', year: 2024 },
-          { _id: '3', studentName: 'Arjun Singh', marks: '94.6%', rank: '5', year: 2023 },
-        ])
+        setSuccessStories([]) // No sample data on error
       } finally {
         setIsLoading(false)
       }

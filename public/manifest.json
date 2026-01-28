@@ -1,0 +1,26 @@
+{
+  "name": "The Learners' Academy - Premier Tuition Center",
+  "short_name": "Learners Academy",
+  "description": "Transform your academic journey with expert teachers, proven results, and personalized learning for classes 7-12.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#800000",
+  "theme_color": "#800000",
+  "orientation": "portrait-primary",
+  "categories": ["education", "learning", "tuition"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

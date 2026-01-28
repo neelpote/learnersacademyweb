@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://learners-kohl.vercel.app/sitemap.xml
+
+# Block access to admin areas
+Disallow: /studio/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /courses
+Allow: /teachers
+Allow: /success-stories
+Allow: /blog
+Allow: /resources
+Allow: /about
+
+# Crawl delay (optional)
+Crawl-delay: 1

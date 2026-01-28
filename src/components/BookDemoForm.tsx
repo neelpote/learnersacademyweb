@@ -14,7 +14,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
     studentName: '',
     phone: '',
     class: '',
-    subject: ''
+    subjects: [] as string[]
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -95,7 +95,8 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
         access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
         from_name: 'The Learners Academy Website',
         ...formData,
-        subject: formData.subject || 'New Demo Booking Request', // Use form subject or default
+        subjects: formData.subjects.join(', '), // Convert array to comma-separated string
+        subject: `New Demo Booking Request - ${formData.subjects.join(', ') || 'General'}`, // Use selected subjects in email subject
         _honeypot: '', // Honeypot field for spam protection
         _captcha: false, // Disable captcha for now
       }
@@ -110,7 +111,7 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
 
       if (response.ok) {
         setIsSubmitted(true)
-        setFormData({ studentName: '', phone: '', class: '', subject: '' })
+        setFormData({ studentName: '', phone: '', class: '', subjects: [] })
         updateRateLimit()
       } else {
         throw new Error('Submission failed')
@@ -129,6 +130,34 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
       [e.target.name]: e.target.value
     }))
   }
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only allow digits
+    const value = e.target.value.replace(/\D/g, '')
+    setFormData(prev => ({
+      ...prev,
+      phone: value
+    }))
+  }
+
+  const handleSubjectChange = (subject: string) => {
+    setFormData(prev => ({
+      ...prev,
+      subjects: prev.subjects.includes(subject)
+        ? prev.subjects.filter(s => s !== subject)
+        : [...prev.subjects, subject]
+    }))
+  }
+
+  const subjects = [
+    'Mathematics',
+    'Physics', 
+    'Chemistry',
+    'Biology',
+    'Science',
+    'SST',
+    'English'
+  ]
 
   if (!isOpen) return null
 
@@ -181,8 +210,10 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 id="phone"
                 name="phone"
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={handlePhoneChange}
                 required
+                placeholder="Enter 10-digit mobile number"
+                maxLength={10}
                 className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               />
             </div>
@@ -200,7 +231,6 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
                 className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
               >
                 <option value="">Select Class</option>
-                <option value="6">Class 6</option>
                 <option value="7">Class 7</option>
                 <option value="8">Class 8</option>
                 <option value="9">Class 9</option>
@@ -211,25 +241,32 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-brand-maroon mb-2">
-                Subject of Interest
+              <label className="block text-sm font-medium text-brand-maroon mb-2">
+                Subjects of Interest *
               </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="e.g., Mathematics, Physics, Chemistry"
-                className="w-full px-3 py-2 border border-brand-blue rounded-lg bg-brand-silver text-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-maroon"
-              />
+              <div className="grid grid-cols-2 gap-2 p-3 border border-brand-blue rounded-lg bg-brand-silver">
+                {subjects.map((subject) => (
+                  <label key={subject} className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.subjects.includes(subject)}
+                      onChange={() => handleSubjectChange(subject)}
+                      className="w-4 h-4 text-brand-maroon bg-brand-silver border-brand-blue rounded focus:ring-brand-maroon focus:ring-2"
+                    />
+                    <span className="text-sm text-brand-blue">{subject}</span>
+                  </label>
+                ))}
+              </div>
+              {formData.subjects.length === 0 && (
+                <p className="text-xs text-red-600 mt-1">Please select at least one subject</p>
+              )}
             </div>
 
             <div className="flex gap-3 pt-4">
               <Button type="submit" disabled={isSubmitting} className="flex-1">
                 {isSubmitting ? 'Submitting...' : 'Book Demo'}
               </Button>
-              <Button type="button" variant="outline" onClick={onClose}>
+              <Button type="button" variant="outline" onClick={onClose} className="flex-1">
                 Cancel
               </Button>
             </div>

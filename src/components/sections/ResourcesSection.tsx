@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Button } from '../ui/Button'
+import { ResourceDownloadForm } from '../ResourceDownloadForm'
 import { client, queries } from '@/lib/sanity'
 import { Download, FileText, BookOpen, Target, GraduationCap } from 'lucide-react'
 
@@ -34,11 +35,26 @@ const categoryColors = {
 
 export function ResourcesSection() {
   const [resources, setResources] = useState<Resource[]>([])
+  const [downloadForm, setDownloadForm] = useState({
+    isOpen: false,
+    resourceTitle: '',
+    resourceUrl: ''
+  })
 
   useEffect(() => {
     const fetchResources = async () => {
       try {
         const data = await client.fetch(queries.resources)
+        console.log('Raw resources data:', data)
+        console.log('First resource structure:', data[0])
+        
+        // Filter to only show resources with PDF files
+        const resourcesWithPDFs = data.filter((resource: Resource) => {
+          console.log('Checking resource:', resource.title, 'PDF:', resource.pdfFile)
+          return resource.pdfFile?.asset?.url
+        })
+        console.log('Resources with PDFs:', resourcesWithPDFs)
+        // Temporarily show all resources to debug
         setResources(data.slice(0, 6)) // Show first 6 resources
       } catch (error) {
         console.error('Error fetching resources:', error)
@@ -46,6 +62,26 @@ export function ResourcesSection() {
     }
     fetchResources()
   }, [])
+
+  const handleDownloadClick = (resource: Resource) => {
+    if (resource.pdfFile?.asset?.url) {
+      setDownloadForm({
+        isOpen: true,
+        resourceTitle: resource.title,
+        resourceUrl: resource.pdfFile.asset.url
+      })
+    } else {
+      alert('PDF file not available for this resource. Please contact us or check back later.')
+    }
+  }
+
+  const closeDownloadForm = () => {
+    setDownloadForm({
+      isOpen: false,
+      resourceTitle: '',
+      resourceUrl: ''
+    })
+  }
 
   const categoryTitles = {
     'study-material': 'Study Materials',
@@ -101,19 +137,7 @@ export function ResourcesSection() {
                       
                       <Button
                         size="sm"
-                        onClick={() => {
-                          if (resource.pdfFile?.asset?.url) {
-                            const link = document.createElement('a')
-                            link.href = resource.pdfFile.asset.url
-                            link.download = `${resource.title}.pdf`
-                            link.target = '_blank'
-                            document.body.appendChild(link)
-                            link.click()
-                            document.body.removeChild(link)
-                          } else {
-                            alert('PDF file not available. Please contact us for this resource.')
-                          }
-                        }}
+                        onClick={() => handleDownloadClick(resource)}
                         className="flex items-center gap-2"
                       >
                         <Download className="h-4 w-4" />
@@ -134,6 +158,13 @@ export function ResourcesSection() {
             </p>
           </div>
         )}
+
+        <ResourceDownloadForm
+          isOpen={downloadForm.isOpen}
+          onClose={closeDownloadForm}
+          resourceTitle={downloadForm.resourceTitle}
+          resourceUrl={downloadForm.resourceUrl}
+        />
       </div>
     </section>
   )

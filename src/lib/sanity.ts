@@ -99,7 +99,12 @@ export const queries = {
     _id,
     title,
     description,
-    pdfFile,
+    pdfFile{
+      asset->{
+        _id,
+        url
+      }
+    },
     slug,
     category
   }`,

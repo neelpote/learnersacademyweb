@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { client, queries, urlFor } from '@/lib/sanity'
-import { GraduationCap, BookOpen } from 'lucide-react'
+import { GraduationCap, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface Teacher {
   _id: string
@@ -18,16 +18,20 @@ export function TeachersSection() {
   const [teachers, setTeachers] = useState<Teacher[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [currentPage, setCurrentPage] = useState(0)
+
+  const teachersPerPage = 3
+  const totalPages = Math.ceil(teachers.length / teachersPerPage)
 
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
         const data = await client.fetch(queries.teachers)
         console.log('Teachers data:', data) // Debug log
-        setTeachers(data.slice(0, 6)) // Show first 6 teachers
+        setTeachers(data) // Show all teachers but paginate
         setError(false)
       } catch (error) {
-        console.log('Using sample data - Sanity error:', error)
+        console.log('Error fetching teachers:', error)
         setError(true)
       } finally {
         setLoading(false)
@@ -36,12 +40,20 @@ export function TeachersSection() {
     fetchTeachers()
   }, [])
 
-  // Sample data when Sanity is not available
-  const sampleTeachers = [
-    { name: 'Dr. Sarah Johnson', subject: 'Mathematics', qualification: 'Ph.D. in Mathematics, 15+ years experience', philosophy: 'Making complex concepts simple and engaging for every student.' },
-    { name: 'Prof. Michael Chen', subject: 'Physics', qualification: 'M.Sc. Physics, IIT Graduate', philosophy: 'Connecting theoretical knowledge with real-world applications.' },
-    { name: 'Ms. Priya Sharma', subject: 'Chemistry', qualification: 'M.Sc. Chemistry, Gold Medalist', philosophy: 'Building strong fundamentals through practical understanding.' },
-  ]
+  const currentTeachers = teachers.slice(
+    currentPage * teachersPerPage,
+    (currentPage + 1) * teachersPerPage
+  )
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % Math.ceil(teachers.length / teachersPerPage))
+  }
+
+  const prevPage = () => {
+    setCurrentPage((prev) => 
+      prev === 0 ? Math.ceil(teachers.length / teachersPerPage) - 1 : prev - 1
+    )
+  }
 
   return (
     <section id="teachers" className="py-20">
@@ -57,99 +69,116 @@ export function TeachersSection() {
         </div>
 
         {!loading && teachers.length > 0 ? (
-          <div className="overflow-x-auto pb-4">
-            <div className="flex gap-8 min-w-max">
-              {teachers.map((teacher) => (
-                <div
-                  key={teacher._id}
-                  className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
-                >
-                  <div className="relative w-32 h-32 mx-auto mb-6">
-                    {teacher.photo ? (
-                      <img
-                        src={urlFor(teacher.photo).width(200).height(200).url()}
-                        alt={teacher.name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
-                        <GraduationCap className="h-16 w-16 text-muted" />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="text-center">
-                    <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
-                      {teacher.name}
-                    </h3>
-                    
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <BookOpen className="h-4 w-4 text-brand-blue" />
-                      <span className="text-brand-blue font-medium">{teacher.subject}</span>
+          <div className="relative">
+            {/* Teachers Grid - Always centered regardless of number */}
+            <div className="flex justify-center">
+              <div className={`grid gap-8 ${
+                currentTeachers.length === 1 ? 'grid-cols-1 max-w-sm' :
+                currentTeachers.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-2xl' :
+                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl'
+              }`}>
+                {currentTeachers.map((teacher, index) => (
+                  <div
+                    key={teacher._id}
+                    className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-xl p-8 border border-brand-blue hover:border-brand-maroon transition-all duration-300 hover:shadow-lg"
+                  >
+                    <div className="relative w-40 h-40 mx-auto mb-6">
+                      {teacher.photo ? (
+                        <Image
+                          src={urlFor(teacher.photo).width(250).height(250).url()}
+                          alt={`${teacher.name} - ${teacher.subject} Teacher at The Learners' Academy`}
+                          fill
+                          className="rounded-full object-cover border-4 border-brand-blue"
+                          sizes="(max-width: 768px) 160px, 160px"
+                          priority={index < 3}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-brand-blue bg-opacity-20 rounded-full flex items-center justify-center border-4 border-brand-blue">
+                          <GraduationCap className="h-20 w-20 text-brand-blue" />
+                        </div>
+                      )}
                     </div>
-                    
-                    <p className="text-sm text-muted mb-4">
-                      {teacher.qualification}
-                    </p>
-                    
-                    <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
-                      <p className="text-sm text-brand-blue italic">
-                        "{teacher.teachingPhilosophy}"
+
+                    <div className="text-center">
+                      <h3 className="text-2xl font-sans font-bold text-brand-maroon mb-3">
+                        {teacher.name}
+                      </h3>
+                      
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        <BookOpen className="h-5 w-5 text-brand-blue" />
+                        <span className="text-brand-blue font-semibold text-lg">{teacher.subject}</span>
+                      </div>
+                      
+                      <p className="text-base text-brand-blue mb-6 leading-relaxed">
+                        {teacher.qualification}
                       </p>
+                      
+                      <div className="bg-white bg-opacity-50 rounded-lg p-6 border border-brand-blue">
+                        <p className="text-base text-brand-blue italic leading-relaxed">
+                          "{teacher.teachingPhilosophy}"
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="text-center">
-            {loading ? (
-              <div className="py-16">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-brand-maroon mx-auto"></div>
-                <p className="mt-4 text-brand-blue">Loading teachers...</p>
+                ))}
               </div>
-            ) : (
-              <>
-                <h3 className="text-xl font-semibold text-brand-maroon mb-2">
-                  {error ? 'Sample Teachers' : 'No teachers available'}
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                  {sampleTeachers.map((teacher, index) => (
-                    <div
-                      key={index}
-                      className="bg-brand-silver rounded-lg p-6 border border-brand-blue"
-                    >
-                      <div className="relative w-32 h-32 mx-auto mb-6">
-                        <div className="w-full h-full bg-brand-silver rounded-full flex items-center justify-center">
-                          <GraduationCap className="h-16 w-16 text-muted" />
-                        </div>
-                      </div>
+            </div>
 
-                      <div className="text-center">
-                        <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-2">
-                          {teacher.name}
-                        </h3>
-                        
-                        <div className="flex items-center justify-center gap-2 mb-3">
-                          <BookOpen className="h-4 w-4 text-brand-blue" />
-                          <span className="text-brand-blue font-medium">{teacher.subject}</span>
-                        </div>
-                        
-                        <p className="text-sm text-muted mb-4">
-                          {teacher.qualification}
-                        </p>
-                        
-                        <div className="bg-brand-silver rounded-lg p-4 border border-brand-blue">
-                          <p className="text-sm text-brand-blue italic">
-                            "{teacher.philosophy}"
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+            {/* Navigation Controls - Only show if more than 3 teachers */}
+            {teachers.length > teachersPerPage && (
+              <div className="flex items-center justify-center mt-12 gap-6">
+                <button
+                  onClick={prevPage}
+                  className="flex items-center gap-2 bg-brand-maroon text-brand-silver px-6 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 hover:scale-105"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                  Previous
+                </button>
+
+                {/* Page Indicators */}
+                <div className="flex gap-2">
+                  {Array.from({ length: Math.ceil(teachers.length / teachersPerPage) }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentPage(index)}
+                      className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                        index === currentPage ? 'bg-brand-maroon' : 'bg-brand-blue bg-opacity-30'
+                      }`}
+                    />
                   ))}
                 </div>
-              </>
+
+                <button
+                  onClick={nextPage}
+                  className="flex items-center gap-2 bg-brand-maroon text-brand-silver px-6 py-3 rounded-full hover:bg-opacity-90 transition-all duration-300 hover:scale-105"
+                >
+                  Next
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            )}
+
+            {/* Teacher Count Display */}
+            {teachers.length > teachersPerPage && (
+              <div className="text-center mt-6">
+                <p className="text-brand-blue">
+                  Showing {currentPage * teachersPerPage + 1}-{Math.min((currentPage + 1) * teachersPerPage, teachers.length)} of {teachers.length} teachers
+                </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            {loading ? (
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-brand-maroon mx-auto"></div>
+            ) : (
+              <div>
+                <GraduationCap className="h-16 w-16 text-brand-blue mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-brand-maroon mb-2">No Teachers Available</h3>
+                <p className="text-brand-blue max-w-md mx-auto">
+                  Teacher profiles will appear here once they are added through the Sanity dashboard.
+                </p>
+              </div>
             )}
           </div>
         )}

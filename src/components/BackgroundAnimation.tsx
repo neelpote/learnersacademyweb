@@ -2,17 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-}
-
 export default function BackgroundAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
@@ -34,69 +25,70 @@ export default function BackgroundAnimation() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize particles - fewer on mobile for better performance
-    const particleCount = window.innerWidth < 768 ? 25 : 100;
-    const particles: Particle[] = [];
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3, // Slower movement
-        vy: (Math.random() - 0.3) * 0.3,
-        radius: Math.random() * 2 + 1, // Smaller dots on mobile
-      });
-    }
-    particlesRef.current = particles;
+    let time = 0;
 
     // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle) => {
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-
-        // Draw particle with brand maroon color - more visible
+      
+      time += 0.01;
+      
+      // Create subtle flowing waves that cover the full screen
+      const waveCount = window.innerWidth < 768 ? 3 : 4;
+      
+      for (let i = 0; i < waveCount; i++) {
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        const isMobile = canvas.width < 768;
-        ctx.fillStyle = isMobile ? 'rgba(128, 0, 0, 0.9)' : 'rgba(128, 0, 0, 1.0)';
-        ctx.fill();
-      });
-
-      // Draw connections between nearby particles
-      const connectionDistance = canvas.width < 768 ? 80 : 120; // Shorter on mobile
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < connectionDistance) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            const isMobile = canvas.width < 768;
-            const opacity = isMobile ? 0.5 : 0.7;
-            ctx.strokeStyle = `rgba(128, 0, 0, ${opacity * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = isMobile ? 1.0 : 1.5;
-            ctx.stroke();
+        
+        const amplitude = 25 + i * 8; // Wave height
+        const frequency = 0.002 + i * 0.0008; // Wave frequency
+        const phase = time + i * Math.PI / 2; // Phase offset for each wave
+        const yOffset = canvas.height * (0.1 + i * 0.25); // Start from top, spread across screen
+        
+        // Draw flowing sine wave
+        for (let x = 0; x <= canvas.width; x += 2) {
+          const y = yOffset + Math.sin(x * frequency + phase) * amplitude;
+          
+          if (x === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
           }
         }
+        
+        // Style the wave with brand colors - increased opacity
+        const opacity = window.innerWidth < 768 ? 0.3 : 0.4;
+        // Alternate between subtle maroon and blue for different waves
+        const color = i % 2 === 0 ? 'rgba(128, 0, 0, ' : 'rgba(7, 10, 115, ';
+        ctx.strokeStyle = color + `${opacity - i * 0.06})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+      
+      // Add subtle geometric shapes that float across the full screen
+      const shapeCount = window.innerWidth < 768 ? 4 : 7;
+      
+      for (let i = 0; i < shapeCount; i++) {
+        const x = (canvas.width / (shapeCount + 1)) * (i + 1);
+        const y = (canvas.height / 4) * (1 + (i % 3)) + Math.sin(time * 0.5 + i) * 40;
+        const size = 3 + Math.sin(time + i) * 1.5;
+        
+        // Draw subtle floating rectangles
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(time * 0.15 + i);
+        
+        // Use brand colors for floating shapes - increased opacity
+        const shapeColor = i % 2 === 0 ? 'rgba(128, 0, 0, ' : 'rgba(7, 10, 115, ';
+        ctx.fillStyle = shapeColor + `${0.25 + Math.sin(time + i) * 0.1})`;
+        ctx.fillRect(-size/2, -size/2, size, size);
+        
+        ctx.restore();
       }
 
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    // Start animation immediately
+    // Start animation
     animate();
 
     // Cleanup
@@ -111,7 +103,7 @@ export default function BackgroundAnimation() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-10"
+      className="fixed inset-0 pointer-events-none z-0"
       style={{ background: 'transparent' }}
       aria-hidden="true"
     />

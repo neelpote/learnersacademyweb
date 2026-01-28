@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer"
 import { BookDemoForm } from "@/components/BookDemoForm"
 import { WelcomePopup } from "@/components/WelcomePopup"
 import { ResultsTicker } from "@/components/ResultsTicker"
+import { FloatingBookDemo } from "@/components/FloatingBookDemo"
 import { PricingSection } from "@/components/sections/PricingSection"
 import { TeachersSection } from "@/components/sections/TeachersSection"
 import { SuccessStoriesSection } from "@/components/sections/SuccessStoriesSection"
@@ -65,7 +66,7 @@ export default function Home() {
 
             <p className="text-lg md:text-xl mb-6 max-w-4xl mx-auto font-body text-brand-blue animate-fade-in-up animate-delay-200">
               Join The Learners' Academy and experience personalized learning with expert teachers,
-              proven methodologies, and outstanding results for classes 6-12.
+              proven methodologies, and outstanding results for classes 7-12.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-300">
@@ -165,11 +166,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            <div className="text-center mt-12">
-              <p className="text-lg text-brand-blue font-medium mb-2">Our Specialties:</p>
-              <p className="text-brand-blue">Mathematics, Physics, Chemistry, Biology and English</p>
-            </div>
           </div>
         </section>
 
@@ -237,6 +233,7 @@ export default function Home() {
         isOpen={isDemoFormOpen}
         onClose={() => setIsDemoFormOpen(false)}
       />
+      <FloatingBookDemo onBookDemo={() => setIsDemoFormOpen(true)} />
     </div>
   )
 }

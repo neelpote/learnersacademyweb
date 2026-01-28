@@ -186,11 +186,11 @@ export function AboutSection() {
           {/* Core Values */}
           <div className="mb-12">
             <h3 className="text-2xl font-sans font-bold text-center mb-8 text-brand-maroon">Our Core Values</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {coreValues.map((value, index) => (
-                <div key={index} className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-4">
-                  <h4 className="text-base font-sans font-semibold text-brand-maroon mb-2">{value.title}</h4>
-                  <p className="text-brand-blue text-xs leading-relaxed">{value.description}</p>
+                <div key={index} className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6">
+                  <h4 className="text-xl font-bold text-brand-maroon mb-4 border-b border-brand-maroon pb-2">{value.title}</h4>
+                  <p className="text-brand-blue text-sm leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -199,26 +199,26 @@ export function AboutSection() {
           {/* Goals & Objectives */}
           <div className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-8 mb-20">
             <h3 className="text-3xl font-sans font-bold text-center mb-8 text-brand-maroon">Our Goals & Objectives</h3>
-            <div className="space-y-6 max-w-4xl mx-auto">
+            <div className="space-y-8 max-w-4xl mx-auto">
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Our Vision</h4>
-                <p className="text-brand-blue">To be a leading professional institution that exemplifies career success through enabling knowledge excellence and developing holistic global citizen.</p>
+                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Our Vision</h4>
+                <p className="text-brand-blue text-lg leading-relaxed">To be a leading professional institution that exemplifies career success through enabling knowledge excellence and developing holistic global citizen.</p>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Strategic Objectives</h4>
-                <p className="text-brand-blue">Bring about a thorough reform in the education system by paving a new path of attitude and learning towards education. This was done specially by using innovative methods of teaching.</p>
+                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Strategic Objectives</h4>
+                <p className="text-brand-blue text-lg leading-relaxed">Bring about a thorough reform in the education system by paving a new path of attitude and learning towards education. This was done specially by using innovative methods of teaching.</p>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Focus Areas</h4>
-                <p className="text-brand-blue">Mathematics, Physics, Chemistry, Biology and English. Conceptual as well as real life explanations.</p>
+                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Focus Areas</h4>
+                <p className="text-brand-blue text-lg leading-relaxed">Mathematics, Physics, Chemistry, Biology and English. Conceptual as well as real life explanations.</p>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Your Dream Solution</h4>
-                <p className="text-brand-blue">Student is honed to be a complete global citizen as there is focused guidance on/about health, environment, education, morals, politics, and patriotism.</p>
+                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Your Dream Solution</h4>
+                <p className="text-brand-blue text-lg leading-relaxed">Student is honed to be a complete global citizen as there is focused guidance on/about health, environment, education, morals, politics, and patriotism.</p>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-brand-maroon mb-2">Our Commitments</h4>
-                <p className="text-brand-blue">Highly Qualified Faculty, Positive Learning Process, State of the Art premises, Interactive Learning and Optimal Batch Sizes, Continuous Evaluation</p>
+                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Our Commitments</h4>
+                <p className="text-brand-blue text-lg leading-relaxed">Highly Qualified Faculty, Positive Learning Process, State of the Art premises, Interactive Learning and Optimal Batch Sizes, Continuous Evaluation</p>
               </div>
             </div>
           </div>

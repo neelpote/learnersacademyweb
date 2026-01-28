@@ -44,7 +44,7 @@ export function WelcomePopup({ isOpen, onClose, onBookDemo }: WelcomePopupProps)
           </h2>
 
           <p className="text-lg text-brand-blue mb-6">
-            Transform your academic journey with expert teachers and personalized learning for classes 6-12.
+            Transform your academic journey with expert teachers and personalized learning for classes 7-12.
           </p>
 
           <div className="bg-brand-blue/5 border border-brand-blue rounded-lg p-4 mb-6">

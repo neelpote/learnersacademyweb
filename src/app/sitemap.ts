@@ -2,9 +2,11 @@ import { MetadataRoute } from 'next'
 import { client, queries } from '@/lib/sanity'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://learnersacademy.com'
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://learners-kohl.vercel.app' 
+    : 'http://localhost:3000'
 
-  // Static pages
+  // Static pages with enhanced SEO priorities
   const staticPages = [
     {
       url: baseUrl,
@@ -13,33 +15,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/courses`,
+      url: `${baseUrl}/#courses`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#teachers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/#success-stories`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/teachers`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/success-stories`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/#blog`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 0.6,
+      priority: 0.7,
     },
     {
-      url: `${baseUrl}/resources`,
+      url: `${baseUrl}/#resources`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/#about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
   ]
