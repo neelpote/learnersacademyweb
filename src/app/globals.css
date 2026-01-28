@@ -178,6 +178,22 @@ a {
   box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
 }
 
+/* Mobile-specific button styling */
+@media (max-width: 768px) {
+  .btn-primary,
+  .button-primary {
+    background-color: white;
+    color: var(--button-primary-bg);
+    border: 2px solid var(--button-primary-bg);
+  }
+  
+  .btn-primary:hover,
+  .button-primary:hover {
+    background-color: var(--button-primary-bg);
+    color: white;
+  }
+}
+
 .btn-secondary,
 .button-secondary {
   background-color: transparent;
@@ -468,6 +484,20 @@ a:focus-visible {
 
 .btn-primary:active {
   transform: scale(0.95);
+}
+
+/* Mobile-specific primary button styling */
+@media (max-width: 768px) {
+  .btn-primary {
+    background-color: white;
+    color: var(--heading-color);
+    border: 2px solid var(--heading-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--heading-color);
+    color: white;
+  }
 }
 
 .btn-secondary {

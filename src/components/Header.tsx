@@ -97,10 +97,10 @@ export function Header({ onBookDemo }: HeaderProps) {
 
             {/* Mobile menu button */}
             <div className="md:hidden w-full flex justify-between items-center">
-              <span className="text-white font-medium">Menu</span>
+              <span className="text-brand-silver font-medium">Menu</span>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg text-white hover:text-brand-silver transition-colors"
+                className="p-2 rounded-lg text-brand-silver hover:text-white transition-colors"
               >
                 {isMenuOpen ?
                   <X className="h-6 w-6" /> :
