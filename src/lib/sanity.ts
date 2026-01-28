@@ -6,8 +6,9 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: '2024-01-01',
-  useCdn: false, // Set to false for development
+  useCdn: false, // Set to false for real-time updates
   token: process.env.SANITY_API_TOKEN, // Optional: for authenticated requests
+  perspective: 'published', // Only fetch published documents
 })
 
 const builder = imageUrlBuilder(client)
@@ -31,6 +32,18 @@ export async function rateLimitedFetch(query: string, params?: any) {
     return await client.fetch(query, params)
   } catch (error) {
     console.error('Sanity fetch error:', error)
+    throw error
+  }
+}
+
+// Force fresh data fetch (bypasses any caching)
+export async function fetchFreshData(query: string, params?: any) {
+  try {
+    // Add timestamp to force fresh data
+    const freshQuery = query.includes('|') ? query : `${query} | order(_updatedAt desc)`
+    return await client.fetch(freshQuery, { ...params, _cacheBuster: Date.now() })
+  } catch (error) {
+    console.error('Fresh data fetch error:', error)
     throw error
   }
 }
