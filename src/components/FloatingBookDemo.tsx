@@ -10,12 +10,13 @@ export function FloatingBookDemo({ onBookDemo }: FloatingBookDemoProps) {
   return (
     <button
       onClick={onBookDemo}
-      // CHANGED: text-brand-white -> text-white
+      // Keep text-white here for the icon
       className="fixed bottom-20 left-4 md:hidden z-40 bg-brand-maroon hover:bg-opacity-90 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-maroon focus:ring-opacity-50 flex items-center gap-2"
       aria-label="Book Demo"
     >
       <Calendar className="h-5 w-5" />
-      <span className="font-medium text-sm">Book Demo</span>
+      {/* ADDED: text-white directly to the span to force it */}
+      <span className="font-medium text-sm text-white">Book Demo</span>
     </button>
   )
 }
