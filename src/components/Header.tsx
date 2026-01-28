@@ -112,19 +112,19 @@ export function Header({ onBookDemo }: HeaderProps) {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-6 bg-white border-2 border-brand-blue rounded-lg m-4">
+            <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-silver rounded-lg m-4">
               <div className="flex flex-col gap-4 px-6">
                 {navigation.map((item, index) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-left py-2 text-brand-blue hover:text-brand-maroon transition-colors font-body font-medium"
+                    className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     {item.name}
                   </button>
                 ))}
                 <button
-                  className="bg-brand-maroon text-white px-6 py-2 rounded font-medium hover:bg-opacity-90 transition-colors w-fit mt-2"
+                  className="bg-white text-brand-maroon border-2 border-brand-maroon px-6 py-2 rounded font-medium hover:bg-brand-maroon hover:text-white transition-colors w-fit mt-2"
                   onClick={() => {
                     onBookDemo()
                     setIsMenuOpen(false)

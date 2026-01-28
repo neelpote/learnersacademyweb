@@ -49,6 +49,7 @@ export function ResourceDownloadForm({ isOpen, onClose, resourceTitle, resourceU
         
         // Start download after successful form submission
         setTimeout(() => {
+          console.log('Starting download:', { resourceTitle, resourceUrl })
           const link = document.createElement('a')
           link.href = resourceUrl
           link.download = `${resourceTitle}.pdf`
