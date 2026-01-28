@@ -114,7 +114,9 @@ export function BookDemoForm({ isOpen, onClose }: BookDemoFormProps) {
         setFormData({ studentName: '', phone: '', class: '', subjects: [] })
         updateRateLimit()
       } else {
-        throw new Error('Submission failed')
+        const errorData = await response.text()
+        console.error('Web3Forms error response:', errorData)
+        throw new Error(`Submission failed: ${response.status} - ${errorData}`)
       }
     } catch (error) {
       console.error('Form submission error:', error)

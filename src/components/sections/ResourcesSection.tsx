@@ -45,15 +45,9 @@ export function ResourcesSection() {
     const fetchResources = async () => {
       try {
         const data = await client.fetch(queries.resources)
-        console.log('Raw resources data:', data)
-        console.log('First resource structure:', data[0])
         
         // Filter to only show resources with PDF files
-        const resourcesWithPDFs = data.filter((resource: Resource) => {
-          console.log('Checking resource:', resource.title, 'PDF:', resource.pdfFile)
-          return resource.pdfFile?.asset?.url
-        })
-        console.log('Resources with PDFs:', resourcesWithPDFs)
+        const resourcesWithPDFs = data.filter((resource: Resource) => resource.pdfFile?.asset?.url)
         // Temporarily show all resources to debug
         setResources(data.slice(0, 6)) // Show first 6 resources
       } catch (error) {
