@@ -49,7 +49,7 @@ export default function Home() {
         <Header onBookDemo={() => setIsDemoFormOpen(true)} />
       </div>
 
-      <main className="relative z-20 bg-transparent pt-32">
+      <main className="relative z-20 bg-transparent">
         {/* Hero Section */}
         <section id="home" className="relative min-h-[50vh] flex items-center justify-center pt-12 pb-4">
           <div className="max-w-7xl mx-auto px-6 text-center">
