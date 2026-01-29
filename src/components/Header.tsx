@@ -31,7 +31,7 @@
     ]
 
     const scrollToSection = (sectionId: string) => {
-      const element = document.querySelector(sectionId)
+      const element = document.querySelector(sectionId) as HTMLElement
       if (element) {
         const headerHeight = 140 // Account for header height (logo section + nav bar)
         const elementPosition = element.offsetTop - headerHeight
