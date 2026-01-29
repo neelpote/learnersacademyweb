@@ -50,7 +50,7 @@
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-center items-center py-4">
               <button
-                onClick={() => scrollToSection('#home')}
+                onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center gap-4 group"
               >
                 <div className="relative w-20 h-20 group-hover:opacity-80 transition-opacity duration-300">
@@ -79,49 +79,49 @@
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center gap-12 flex-1 justify-center">
                 <button
-                  onClick={() => scrollToSection('#home')}
+                  onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Home
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#courses')}
+                  onClick={() => document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Courses
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#teachers')}
+                  onClick={() => document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Teachers
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#success-stories')}
+                  onClick={() => document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Success Stories
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#blog')}
+                  onClick={() => document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Blog
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#resources')}
+                  onClick={() => document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Resources
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => scrollToSection('#about')}
+                  onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   About
