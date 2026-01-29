@@ -20,19 +20,6 @@
       return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const scrollToSection = (sectionId: string) => {
-      const element = document.querySelector(sectionId) as HTMLElement
-      if (element) {
-        const headerHeight = 20 // Minimal offset for perfect positioning
-        const elementPosition = element.offsetTop - headerHeight
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        })
-      }
-      setIsMenuOpen(false)
-    }
-
     const navigation = [
       { name: 'Home', href: '#home' },
       { name: 'Courses', href: '#courses' },
@@ -159,43 +146,78 @@
               <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-silver rounded-lg m-4">
                 <div className="flex flex-col gap-4 px-6">
                   <button
-                    onClick={() => scrollToSection('#home')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Home
                   </button>
                   <button
-                    onClick={() => scrollToSection('#courses')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Courses
                   </button>
                   <button
-                    onClick={() => scrollToSection('#teachers')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Teachers
                   </button>
                   <button
-                    onClick={() => scrollToSection('#success-stories')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Success Stories
                   </button>
                   <button
-                    onClick={() => scrollToSection('#blog')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Blog
                   </button>
                   <button
-                    onClick={() => scrollToSection('#resources')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Resources
                   </button>
                   <button
-                    onClick={() => scrollToSection('#about')}
+                    onClick={() => {
+                      setIsMenuOpen(false)
+                      setTimeout(() => {
+                        document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 300)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     About
