@@ -33,7 +33,7 @@
     const scrollToSection = (sectionId: string) => {
       const element = document.querySelector(sectionId) as HTMLElement
       if (element) {
-        const headerHeight = 140 // Account for header height (logo section + nav bar)
+        const headerHeight = 80 // Reduced offset for better positioning
         const elementPosition = element.offsetTop - headerHeight
         window.scrollTo({
           top: elementPosition,
