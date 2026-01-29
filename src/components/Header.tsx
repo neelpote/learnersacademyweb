@@ -30,10 +30,15 @@
       { name: 'About', href: '#about' },
     ]
 
-    const scrollToSection = (href: string) => {
-      const element = document.querySelector(href)
+    const scrollToSection = (sectionId: string) => {
+      const element = document.querySelector(sectionId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        const headerHeight = 140 // Account for header height (logo section + nav bar)
+        const elementPosition = element.offsetTop - headerHeight
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        })
       }
       setIsMenuOpen(false)
     }
@@ -45,7 +50,7 @@
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-center items-center py-4">
               <button
-                onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => scrollToSection('#home')}
                 className="flex items-center gap-4 group"
               >
                 <div className="relative w-20 h-20 group-hover:opacity-80 transition-opacity duration-300">
@@ -74,49 +79,49 @@
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center gap-12 flex-1 justify-center">
                 <button
-                  onClick={() => document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#home')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Home
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#courses')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Courses
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#teachers')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Teachers
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#success-stories')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Success Stories
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#blog')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Blog
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#resources')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   Resources
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-silver group-hover:w-full transition-all duration-300"></span>
                 </button>
                 <button
-                  onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('#about')}
                   className="text-white hover:text-brand-silver relative font-body font-medium group text-lg transition-colors"
                 >
                   About
@@ -154,64 +159,43 @@
               <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-silver rounded-lg m-4">
                 <div className="flex flex-col gap-4 px-6">
                   <button
-                    onClick={() => {
-                      document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#home')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Home
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#courses')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Courses
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#teachers')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Teachers
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#success-stories')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Success Stories
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#blog')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Blog
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#resources')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Resources
                   </button>
                   <button
-                    onClick={() => {
-                      document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => scrollToSection('#about')}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     About
