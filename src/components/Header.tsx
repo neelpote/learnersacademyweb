@@ -23,7 +23,7 @@
     const scrollToSection = (sectionId: string) => {
       const element = document.querySelector(sectionId) as HTMLElement
       if (element) {
-        const headerHeight = 100 // Reduced offset for better positioning
+        const headerHeight = 50 // Reduced offset for better positioning
         const elementPosition = element.offsetTop - headerHeight
         window.scrollTo({
           top: elementPosition,
