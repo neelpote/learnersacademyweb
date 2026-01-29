@@ -80,7 +80,7 @@ export default function Home() {
               <button
                 className="btn-secondary text-lg px-10 py-4 flex items-center gap-2"
                 onClick={() => {
-                  const element = document.querySelector('#courses')
+                  const element = document.querySelector('#pricing')
                   if (element) {
                     element.scrollIntoView({ behavior: 'smooth' })
                   }

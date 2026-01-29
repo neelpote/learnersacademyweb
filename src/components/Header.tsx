@@ -22,7 +22,7 @@ export function Header({ onBookDemo }: HeaderProps) {
 
   const navigation = [
     { name: 'Home', href: '#home' },
-    { name: 'Courses', href: '#courses' },
+    { name: 'Courses', href: '#pricing' },
     { name: 'Teachers', href: '#teachers' },
     { name: 'Success Stories', href: '#success-stories' },
     { name: 'Blog', href: '#blog' },

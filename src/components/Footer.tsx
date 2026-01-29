@@ -43,7 +43,7 @@ export function Footer() {
             <h3 className="font-sans font-semibold text-white mb-4 text-lg">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2">
               <button 
-                onClick={() => document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Courses
