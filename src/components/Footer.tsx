@@ -43,109 +43,37 @@ export function Footer() {
             <h3 className="font-sans font-semibold text-white mb-4 text-lg">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2">
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#pricing')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Courses
               </button>
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#teachers')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Teachers
               </button>
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#success-stories')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Success Stories
               </button>
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#blog')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Blog
               </button>
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#resources')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 Resources
               </button>
               <button 
-                onClick={() => {
-                  const element = document.querySelector('#about')
-                  if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-white hover:text-gray-200 transition-colors text-sm py-1"
               >
                 About

@@ -80,16 +80,9 @@ export default function Home() {
               <button
                 className="btn-secondary text-lg px-10 py-4 flex items-center gap-2"
                 onClick={() => {
-                  const element = document.querySelector('#pricing')
+                  const element = document.querySelector('#courses')
                   if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
+                    element.scrollIntoView({ behavior: 'smooth' })
                   }
                 }}
               >
@@ -101,14 +94,7 @@ export default function Home() {
                 onClick={() => {
                   const element = document.querySelector('#resources')
                   if (element) {
-                    const headerHeight = 120
-                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                    const offsetPosition = elementPosition - headerHeight
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    })
+                    element.scrollIntoView({ behavior: 'smooth' })
                   }
                 }}
               >
