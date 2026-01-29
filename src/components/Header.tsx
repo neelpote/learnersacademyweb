@@ -31,9 +31,9 @@
     ]
 
     return (
-      <header className="relative w-full z-40">
+      <header className="fixed top-0 left-0 right-0 w-full z-40 bg-transparent">
         {/* Top Branding Bar */}
-        <div className="bg-transparent border-b-2 border-brand-blue">
+        <div className="bg-brand-silver/95 backdrop-blur-sm border-b-2 border-brand-blue">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex justify-center items-center py-4">
               <button
