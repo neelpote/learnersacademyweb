@@ -82,7 +82,14 @@ export default function Home() {
                 onClick={() => {
                   const element = document.querySelector('#pricing')
                   if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' })
+                    const headerHeight = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - headerHeight
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    })
                   }
                 }}
               >
@@ -94,7 +101,14 @@ export default function Home() {
                 onClick={() => {
                   const element = document.querySelector('#resources')
                   if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' })
+                    const headerHeight = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - headerHeight
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    })
                   }
                 }}
               >
