@@ -30,19 +30,6 @@
       { name: 'About', href: '#about' },
     ]
 
-    const scrollToSection = (sectionId: string) => {
-      const element = document.querySelector(sectionId) as HTMLElement
-      if (element) {
-        const headerHeight = 80 // Reduced offset for better positioning
-        const elementPosition = element.offsetTop - headerHeight
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        })
-      }
-      setIsMenuOpen(false)
-    }
-
     return (
       <header className="relative w-full z-40">
         {/* Top Branding Bar */}
@@ -159,43 +146,64 @@
               <div className="md:hidden py-6 bg-brand-silver border-2 border-brand-silver rounded-lg m-4">
                 <div className="flex flex-col gap-4 px-6">
                   <button
-                    onClick={() => scrollToSection('#home')}
+                    onClick={() => {
+                      document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Home
                   </button>
                   <button
-                    onClick={() => scrollToSection('#courses')}
+                    onClick={() => {
+                      document.querySelector('#courses')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Courses
                   </button>
                   <button
-                    onClick={() => scrollToSection('#teachers')}
+                    onClick={() => {
+                      document.querySelector('#teachers')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Teachers
                   </button>
                   <button
-                    onClick={() => scrollToSection('#success-stories')}
+                    onClick={() => {
+                      document.querySelector('#success-stories')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Success Stories
                   </button>
                   <button
-                    onClick={() => scrollToSection('#blog')}
+                    onClick={() => {
+                      document.querySelector('#blog')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Blog
                   </button>
                   <button
-                    onClick={() => scrollToSection('#resources')}
+                    onClick={() => {
+                      document.querySelector('#resources')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     Resources
                   </button>
                   <button
-                    onClick={() => scrollToSection('#about')}
+                    onClick={() => {
+                      document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMenuOpen(false)
+                    }}
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     About
