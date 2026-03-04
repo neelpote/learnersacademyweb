@@ -51,7 +51,7 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
       icon: Crown,
       description: "Premium experience with personalized attention",
       features: [
-        "Maximum 5 students per batch",
+        "Maximum 10 students per batch",
         "10hr tutoring per week",
         "Extra coaching for competitive exams",
         "Extra coaching during summer and winter vacations",
