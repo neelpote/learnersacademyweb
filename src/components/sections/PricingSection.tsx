@@ -12,7 +12,7 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
 
   const plans = [
     {
-      name: "Silver",
+      name: "Super 15",
       icon: Award,
       description: "Basic plan for budget-conscious students",
       features: [
@@ -29,7 +29,7 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
       borderColor: "border-gray-300"
     },
     {
-      name: "Gold",
+      name: "Super 10",
       icon: Star,
       description: "Most popular choice for serious students",
       features: [
@@ -47,7 +47,7 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
       popular: true
     },
     {
-      name: "Diamond",
+      name: "Super 10 Plus",
       icon: Crown,
       description: "Premium experience with personalized attention",
       features: [
