@@ -87,7 +87,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center justify-center md:justify-end gap-2 text-white">
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">+91-9876543210</span>
+                <span className="text-sm">+91-86054 68382</span>
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2 text-white">
                 <Mail className="h-4 w-4" />
@@ -96,7 +96,7 @@ export function Footer() {
               <div className="flex items-start justify-center md:justify-end gap-2 text-white">
                 <MapPin className="h-4 w-4 mt-0.5" />
                 <span className="text-sm text-center md:text-right">
-                  123 Education Street, Baner<br />Pune, Maharashtra 411045
+                  302, Tejas Eternity, Balewadi Phata<br />Baner, Pune - 411045
                 </span>
               </div>
             </div>

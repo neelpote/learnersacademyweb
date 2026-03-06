@@ -10,6 +10,7 @@ interface BlogPost {
   slug: { current: string }
   mainImage: any
   excerpt: string
+  body: any[]
   publishedAt: string
 }
 
@@ -22,7 +23,17 @@ export function BlogSection() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const data = await client.fetch(queries.posts)
+        // Fetch posts with body content
+        const data = await client.fetch(`*[_type == "post"] | order(publishedAt desc) {
+          _id,
+          title,
+          slug,
+          mainImage,
+          excerpt,
+          body,
+          publishedAt,
+          author->{name, photo}
+        }`)
         setPosts(data.slice(0, 6)) // Show first 6 posts
         setError(false)
       } catch (error) {
@@ -86,9 +97,32 @@ export function BlogSection() {
 
                     {isExpanded && (
                       <div className="mt-4 pt-4 border-t border-brand-blue">
-                        <p className="text-brand-blue leading-relaxed break-words overflow-wrap-anywhere">
-                          Full blog content will be displayed here when available from Sanity CMS.
-                        </p>
+                        <div className="text-brand-blue leading-relaxed break-words overflow-wrap-anywhere space-y-3">
+                          {post.body && post.body.length > 0 ? (
+                            post.body.map((block: any, index: number) => {
+                              if (block._type === 'block') {
+                                // Convert block content to text
+                                const text = block.children
+                                  ?.map((child: any) => child.text)
+                                  .join('') || ''
+                                
+                                // Handle different block styles
+                                if (block.style === 'h1') {
+                                  return <h4 key={index} className="text-lg font-bold text-brand-maroon mt-4 mb-2">{text}</h4>
+                                } else if (block.style === 'h2') {
+                                  return <h5 key={index} className="text-base font-bold text-brand-maroon mt-3 mb-2">{text}</h5>
+                                } else if (block.style === 'h3') {
+                                  return <h6 key={index} className="text-sm font-bold text-brand-maroon mt-2 mb-1">{text}</h6>
+                                } else {
+                                  return <p key={index} className="mb-2">{text}</p>
+                                }
+                              }
+                              return null
+                            })
+                          ) : (
+                            <p>No content available.</p>
+                          )}
+                        </div>
                       </div>
                     )}
                   </div>
