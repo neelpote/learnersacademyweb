@@ -28,6 +28,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https: blob:",
               "connect-src 'self' https://api.sanity.io https://api.web3forms.com https://*.sanity.io",
+              "frame-src 'self' https://www.google.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self' https://api.web3forms.com",

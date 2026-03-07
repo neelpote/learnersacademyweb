@@ -29,10 +29,10 @@ const baseUrl = process.env.NODE_ENV === 'production'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "The Learners' Academy - Premier Tuition Center in Baner, Pune | Classes 7-12",
+    default: "The Learners' Academy - Premium Tuition Center in Baner, Pune | Classes 7-12",
     template: "%s | The Learners' Academy"
   },
-  description: "Transform your academic journey with The Learners' Academy - Baner, Pune's premier tuition center. Expert teachers, proven results, personalized learning for CBSE, ICSE, State Board classes 7-12. JEE, NEET coaching available.",
+  description: "Transform your academic journey with The Learners' Academy - Baner, Pune's premium tuition center. Expert teachers, proven results, personalized learning for CBSE, ICSE, State Board classes 7-12. JEE, NEET coaching available.",
   keywords: [
     "tuition center Baner", "coaching classes Pune", "tuition Baner Pune", "CBSE tuition Baner", "ICSE coaching Pune", 
     "State Board classes Baner", "JEE coaching Pune", "NEET preparation Baner", "board exam coaching Pune",
@@ -54,20 +54,20 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: baseUrl,
     siteName: "The Learners' Academy",
-    title: "The Learners' Academy - Premier Tuition Center in Baner, Pune",
+    title: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
     description: "Transform your academic journey with expert teachers, proven results, and personalized learning for classes 7-12. CBSE, ICSE, State Board coaching available in Baner, Pune.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "The Learners' Academy - Premier Tuition Center in Baner, Pune",
+        alt: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Learners' Academy - Premier Tuition Center in Baner, Pune",
+    title: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
     description: "Transform your academic journey with expert teachers, proven results, and personalized learning for classes 7-12 in Baner, Pune.",
     images: [`${baseUrl}/og-image.jpg`],
     creator: "@learnersacademy",
@@ -122,7 +122,7 @@ const jsonLd = {
   '@id': `${baseUrl}/#organization`,
   name: "The Learners' Academy",
   alternateName: "Learners Academy Baner Pune",
-  description: "Premier tuition center providing quality education for classes 7-12 with expert teachers and proven results in Baner, Pune",
+  description: "Premium tuition center providing quality education for classes 7-12 with expert teachers and proven results in Baner, Pune",
   url: baseUrl,
   logo: {
     '@type': 'ImageObject',
@@ -131,11 +131,11 @@ const jsonLd = {
     height: 200
   },
   image: `${baseUrl}/og-image.jpg`,
-  telephone: '+91-9876543210',
+  telephone: '+91-86054-68382',
   email: 'info@learnersacademy.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '123 Education Street, Baner',
+    streetAddress: '302, Tejas Eternity, Balewadi Phata, Baner',
     addressLocality: 'Pune',
     addressRegion: 'Maharashtra',
     postalCode: '411045',
@@ -168,7 +168,7 @@ const jsonLd = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: '+91-9876543210',
+      telephone: '+91-86054-68382',
       contactType: 'customer service',
       availableLanguage: ['English', 'Hindi', 'Marathi'],
       areaServed: 'IN'
