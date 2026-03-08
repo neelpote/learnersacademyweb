@@ -29,10 +29,10 @@ const baseUrl = process.env.NODE_ENV === 'production'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "The Learners' Academy - Premium Tuition Center in Baner, Pune | Classes 7-12",
+    default: "Best Tuition Classes in Baner Pune | The Learners' Academy",
     template: "%s | The Learners' Academy"
   },
-  description: "Transform your academic journey with The Learners' Academy - Baner, Pune's premium tuition center. Expert teachers, proven results, personalized learning for CBSE, ICSE, State Board classes 7-12. JEE, NEET coaching available.",
+  description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
   keywords: [
     "tuition center Baner", "coaching classes Pune", "tuition Baner Pune", "CBSE tuition Baner", "ICSE coaching Pune", 
     "State Board classes Baner", "JEE coaching Pune", "NEET preparation Baner", "board exam coaching Pune",
@@ -54,21 +54,21 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: baseUrl,
     siteName: "The Learners' Academy",
-    title: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
-    description: "Transform your academic journey with expert teachers, proven results, and personalized learning for classes 7-12. CBSE, ICSE, State Board coaching available in Baner, Pune.",
+    title: "Best Tuition Classes in Baner Pune | The Learners' Academy",
+    description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
     images: [
       {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
+        alt: "Best Tuition Classes in Baner Pune | The Learners' Academy",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Learners' Academy - Premium Tuition Center in Baner, Pune",
-    description: "Transform your academic journey with expert teachers, proven results, and personalized learning for classes 7-12 in Baner, Pune.",
+    title: "Best Tuition Classes in Baner Pune | The Learners' Academy",
+    description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
     images: [`${baseUrl}/og-image.jpg`],
     creator: "@learnersacademy",
   },
