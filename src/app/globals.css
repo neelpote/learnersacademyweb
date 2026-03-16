@@ -556,6 +556,26 @@ footer p, footer span, footer div {
   color: white !important;
 }
 
+/* Maroon background sections - force white text */
+.bg-brand-maroon h1, .bg-brand-maroon h2, .bg-brand-maroon h3,
+.bg-brand-maroon h4, .bg-brand-maroon h5, .bg-brand-maroon h6 {
+  color: white !important;
+}
+
+.bg-brand-maroon p, .bg-brand-maroon li {
+  color: white !important;
+}
+
+.bg-brand-maroon span, .bg-brand-maroon a {
+  color: white !important;
+}
+
+/* Exceptions: elements with explicit color classes should keep their color */
+.bg-brand-maroon .text-brand-maroon,
+.bg-brand-maroon a.text-brand-maroon {
+  color: var(--heading-color) !important;
+}
+
 footer a {
   color: white !important;
 }
