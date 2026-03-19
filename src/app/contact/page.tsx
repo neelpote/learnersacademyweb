@@ -39,9 +39,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="bg-brand-maroon bg-opacity-10 p-3 rounded-lg">
-                    <Phone className="h-6 w-6 text-brand-maroon" />
-                  </div>
+                  <div className="text-3xl">📞</div>
                   <div>
                     <h3 className="font-semibold text-brand-maroon mb-1">Phone</h3>
                     <a href="tel:+918605468382" className="text-brand-blue hover:text-brand-maroon transition-colors">
@@ -52,9 +50,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="bg-brand-maroon bg-opacity-10 p-3 rounded-lg">
-                    <Mail className="h-6 w-6 text-brand-maroon" />
-                  </div>
+                  <div className="text-3xl">✉️</div>
                   <div>
                     <h3 className="font-semibold text-brand-maroon mb-1">Email</h3>
                     <a href="mailto:info@learnersacademy.com" className="text-brand-blue hover:text-brand-maroon transition-colors">
@@ -65,9 +61,7 @@ export default function ContactPage() {
 
                 {/* Address */}
                 <div className="flex items-start gap-4">
-                  <div className="bg-brand-maroon bg-opacity-10 p-3 rounded-lg">
-                    <MapPin className="h-6 w-6 text-brand-maroon" />
-                  </div>
+                  <div className="text-3xl">📍</div>
                   <div>
                     <h3 className="font-semibold text-brand-maroon mb-1">Address</h3>
                     <p className="text-brand-blue">
@@ -80,9 +74,7 @@ export default function ContactPage() {
 
                 {/* Business Hours */}
                 <div className="flex items-start gap-4">
-                  <div className="bg-brand-maroon bg-opacity-10 p-3 rounded-lg">
-                    <Clock className="h-6 w-6 text-brand-maroon" />
-                  </div>
+                  <div className="text-3xl">🕐</div>
                   <div>
                     <h3 className="font-semibold text-brand-maroon mb-1">Business Hours</h3>
                     <p className="text-brand-blue">

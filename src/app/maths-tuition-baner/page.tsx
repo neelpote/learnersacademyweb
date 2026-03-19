@@ -144,9 +144,7 @@ export default function MathsTuitionBanerPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <GraduationCap className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">🎓</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Experienced Teachers
               </h3>
@@ -156,9 +154,7 @@ export default function MathsTuitionBanerPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <Brain className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">🧠</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Concept Learning
               </h3>
@@ -168,9 +164,7 @@ export default function MathsTuitionBanerPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <Users className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">👥</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Small Batches
               </h3>
@@ -180,9 +174,7 @@ export default function MathsTuitionBanerPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <UserCheck className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Personal Attention
               </h3>
@@ -192,9 +184,7 @@ export default function MathsTuitionBanerPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <ClipboardCheck className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">📝</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Tests & Assessment
               </h3>
@@ -204,9 +194,7 @@ export default function MathsTuitionBanerPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
-              <div className="bg-brand-maroon bg-opacity-10 rounded-lg p-3 w-fit mb-4">
-                <TrendingUp className="h-8 w-8 text-brand-maroon" />
-              </div>
+              <div className="text-4xl mb-4">📈</div>
               <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">
                 Academic Improvement
               </h3>
