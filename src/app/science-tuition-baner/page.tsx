@@ -62,7 +62,16 @@ export default function ScienceTuitionBanerPage() {
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-brand-silver to-white z-30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="rounded-lg overflow-hidden mb-12">
+              <Image
+                src="/polotno.jpeg"
+                alt="Science tuition class at The Learners' Academy Baner Pune"
+                width={1200}
+                height={500}
+                className="rounded-lg w-full max-h-[450px] object-cover"
+              />
+            </div>
+            <div className="text-center">
               <h1 className="text-4xl sm:text-5xl font-sans font-bold text-brand-maroon mb-6">
                 Best Science Tuition Classes in Baner, Pune
               </h1>
@@ -75,25 +84,16 @@ export default function ScienceTuitionBanerPage() {
                   className="bg-brand-maroon px-8 py-3 rounded-lg hover:bg-opacity-90 transition-colors font-medium flex items-center justify-center gap-2"
                   style={{ color: 'white' }}
                 >
-                  <Phone className="h-5 w-5" style={{ color: 'white' }} />
-                  Call: 86054 68382
+                  📞 Call: 86054 68382
                 </a>
                 <a
                   href="/contact"
-                  className="border-2 border-brand-maroon text-brand-maroon px-8 py-3 rounded-lg hover:bg-brand-maroon hover:text-white transition-colors font-medium"
+                  className="border-2 border-brand-maroon px-8 py-3 rounded-lg hover:bg-brand-maroon transition-colors font-medium"
+                  style={{ color: '#800000' }}
                 >
                   Book Free Demo
                 </a>
               </div>
-            </div>
-            <div className="rounded-lg overflow-hidden">
-              <Image
-                src="/science-tuition-baner-classroom.jpg"
-                alt="Science tuition class at The Learners' Academy Baner Pune"
-                width={1200}
-                height={500}
-                className="rounded-lg w-full h-auto"
-              />
             </div>
           </div>
         </section>
@@ -104,13 +104,16 @@ export default function ScienceTuitionBanerPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl font-sans font-bold text-brand-maroon mb-6">
-                  Why Choose Science Tuition at The Learners' Academy?
+                  Science Tuition in Baner
                 </h2>
                 <p className="text-brand-blue mb-6">
-                  Science is a subject that connects theory with the real world. At The Learners' Academy in Baner, we believe that every student can understand and enjoy Science when it is taught with clarity, practical examples, and the right guidance.
+                  Science is a fascinating subject, but many students struggle when concepts become complex. Topics like physics formulas, chemical reactions, and biological processes can feel overwhelming if they are not explained clearly. As a result, students often begin memorizing answers instead of truly understanding the subject.
                 </p>
                 <p className="text-brand-blue mb-6">
-                  Our experienced Science teachers use demonstrations, diagrams, and real-life examples to make complex concepts simple and memorable. Whether your child struggles with Physics formulas, Chemistry reactions, or Biology diagrams, our personalized approach ensures every student gets the support they need to excel.
+                  At The Learners' Academy, we provide structured and concept-focused Science Tuition in Baner that helps students understand how science actually works. Our teachers break down complicated ideas into simple explanations and practical examples that students can easily grasp.
+                </p>
+                <p className="text-brand-blue">
+                  We teach students from Class 7 to Class 10 studying in CBSE, ICSE, and SSC boards, ensuring they build strong scientific fundamentals. With small batch sizes, regular testing, and personalized guidance, our Science Tuition in Baner helps students improve both their academic performance and their confidence in science.
                 </p>
               </div>
               <div className="bg-brand-silver bg-opacity-50 rounded-lg p-6">
@@ -119,7 +122,7 @@ export default function ScienceTuitionBanerPage() {
                   alt="Students learning science concepts at tuition class in Baner"
                   width={600}
                   height={400}
-                  className="rounded-lg w-full h-auto"
+                  className="rounded-lg w-full max-h-[280px] object-cover object-top"
                 />
               </div>
             </div>
@@ -139,32 +142,32 @@ export default function ScienceTuitionBanerPage() {
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">🎓</div>
                 <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Experienced Teachers</h3>
-                <p className="text-brand-blue">Our qualified Science teachers have years of experience teaching Physics, Chemistry, and Biology across CBSE, ICSE, and SSC boards.</p>
+                <p className="text-brand-blue">Our teachers have years of experience teaching physics, chemistry, and biology to middle and secondary school students.</p>
               </div>
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">🔬</div>
-                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Concept Learning</h3>
-                <p className="text-brand-blue">We focus on building strong conceptual foundations using real-life examples and practical demonstrations rather than rote memorisation.</p>
+                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Concept-Based Learning</h3>
+                <p className="text-brand-blue">Students are taught to understand scientific principles rather than memorize textbook answers.</p>
               </div>
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">👥</div>
-                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Small Batches</h3>
-                <p className="text-brand-blue">Limited batch sizes ensure every student receives proper attention, allowing teachers to address individual learning needs effectively.</p>
+                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Small Batch Sizes</h3>
+                <p className="text-brand-blue">Limited students per class allow teachers to focus on each student's learning progress.</p>
               </div>
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">🎯</div>
                 <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Personal Attention</h3>
-                <p className="text-brand-blue">Individual doubt-solving sessions and personalised feedback help students overcome their specific challenges in Science.</p>
+                <p className="text-brand-blue">Teachers regularly track student performance and provide additional support wherever needed.</p>
               </div>
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">📝</div>
-                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Tests & Assessment</h3>
-                <p className="text-brand-blue">Regular chapter-wise tests and practice sessions help students become familiar with exam patterns and improve their performance.</p>
+                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Regular Tests and Practice</h3>
+                <p className="text-brand-blue">Frequent assessments help students stay prepared and identify weak areas early.</p>
               </div>
               <div className="bg-white rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors">
                 <div className="text-4xl mb-4">📈</div>
-                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Academic Improvement</h3>
-                <p className="text-brand-blue">Structured learning leads to significant improvement in marks, confidence, and overall scientific understanding.</p>
+                <h3 className="text-xl font-sans font-semibold text-brand-maroon mb-3">Proven Academic Improvement</h3>
+                <p className="text-brand-blue">Many students who join our Science Tuition in Baner show noticeable improvement in their school results and subject confidence.</p>
               </div>
             </div>
           </div>
@@ -184,10 +187,10 @@ export default function ScienceTuitionBanerPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { class: 'Class 7 Science', emoji: '🧪', desc: 'Foundation concepts in motion, matter, living organisms, and basic chemistry.' },
-                { class: 'Class 8 Science', emoji: '⚗️', desc: 'Intermediate topics including force, friction, cell structure, and chemical reactions.' },
-                { class: 'Class 9 Science', emoji: '🔭', desc: 'Pre-board preparation with atoms, motion laws, tissues, and gravitation.' },
-                { class: 'Class 10 Science', emoji: '🧬', desc: 'Board exam focused coaching with electricity, chemical reactions, heredity, and optics.' },
+                { class: 'Class 7 Science Tuition', emoji: '🧪', desc: 'Students learn the fundamentals of scientific thinking, including basic physics, chemistry, and biology concepts.' },
+                { class: 'Class 8 Science Coaching', emoji: '⚗️', desc: 'At this level, students begin understanding more complex topics such as force, energy, chemical reactions, and life processes.' },
+                { class: 'Class 9 Science Tuition', emoji: '🔭', desc: 'Class 9 introduces advanced scientific concepts. Our program focuses on conceptual clarity and problem-solving skills.' },
+                { class: 'Class 10 Science Board Preparation', emoji: '🧬', desc: 'Board exam preparation requires systematic study and practice. Our Science Tuition in Baner helps students master important chapters and prepare effectively.' },
               ].map((item) => (
                 <div key={item.class} className="bg-brand-silver bg-opacity-80 rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors text-center">
                   <div className="text-4xl mb-4">{item.emoji}</div>
@@ -213,25 +216,25 @@ export default function ScienceTuitionBanerPage() {
 
             <div className="bg-white rounded-lg p-8">
               <Image
-                src="/student-studying-science-diagrams.png"
+                src="/Gemini_Generated_Image_50q7wy50q7wy50q7.png"
                 alt="Structured science teaching method at The Learners' Academy"
                 width={800}
                 height={450}
-                className="rounded-lg w-full h-auto mb-8"
+                className="rounded-lg w-full max-h-[400px] object-cover mb-8"
               />
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-8">
                 {[
-                  { emoji: '💡', label: 'Concept', desc: 'Clear explanation with real-life examples' },
-                  { emoji: '🌍', label: 'Real-life', desc: 'Connecting theory to everyday observations' },
-                  { emoji: '✏️', label: 'Practice', desc: 'Guided problem solving and diagram work' },
-                  { emoji: '❓', label: 'Doubts', desc: 'Individual doubt clearing sessions' },
-                  { emoji: '📋', label: 'Tests', desc: 'Regular assessments to track progress' },
-                  { emoji: '🏆', label: 'Exam Strategy', desc: 'Time management and exam techniques' },
+                  { emoji: '💡', label: 'Concept Explanation', desc: 'Every topic begins with clear explanations so students understand the core scientific idea' },
+                  { emoji: '🌍', label: 'Real-Life Examples', desc: 'Teachers connect concepts to real-world situations, making science more interesting' },
+                  { emoji: '✏️', label: 'Guided Practice', desc: 'Students practice numerical problems and theory questions with teacher support' },
+                  { emoji: '❓', label: 'Doubt Solving', desc: 'Dedicated time is provided for students to ask questions and clarify doubts' },
+                  { emoji: '📋', label: 'Regular Testing', desc: 'Frequent tests ensure students stay on track and build exam readiness' },
+                  { emoji: '🏆', label: 'Exam Strategy', desc: 'Students learn how to write structured answers and manage time effectively' },
                 ].map((step) => (
-                  <div key={step.label} className="text-center">
-                    <div className="text-3xl mb-2">{step.emoji}</div>
-                    <h3 className="font-semibold text-brand-maroon mb-1 text-sm">{step.label}</h3>
-                    <p className="text-brand-blue text-xs">{step.desc}</p>
+                  <div key={step.label} className="text-center p-4">
+                    <div className="text-4xl mb-3">{step.emoji}</div>
+                    <h3 className="font-semibold text-brand-maroon mb-2">{step.label}</h3>
+                    <p className="text-brand-blue text-sm leading-relaxed">{step.desc}</p>
                   </div>
                 ))}
               </div>
@@ -249,12 +252,12 @@ export default function ScienceTuitionBanerPage() {
                 </h2>
                 <ul className="space-y-4">
                   {[
-                    'Students who find Science difficult and want to build strong conceptual foundations',
-                    'Students preparing for Class 10 board examinations in Science',
-                    'Students who want to improve their understanding of Physics, Chemistry, and Biology',
-                    'Students seeking personalized attention and doubt clearing',
-                    'Students from CBSE, ICSE, and SSC boards',
-                    'Students who want to develop analytical thinking and problem-solving skills',
+                    'Find science concepts difficult to understand',
+                    'Want to improve their marks in school exams',
+                    'Need structured guidance and disciplined study habits',
+                    'Want better conceptual understanding of physics, chemistry, and biology',
+                    'Are preparing for Class 10 board exams',
+                    'Prefer small batches with personal attention',
                   ].map((point) => (
                     <li key={point} className="flex items-start gap-3">
                       <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
@@ -269,7 +272,7 @@ export default function ScienceTuitionBanerPage() {
                   alt="Student studying science concepts in tuition class Baner"
                   width={600}
                   height={400}
-                  className="rounded-lg w-full h-auto"
+                  className="rounded-lg w-full max-h-[350px] object-cover"
                 />
               </div>
             </div>
@@ -284,7 +287,7 @@ export default function ScienceTuitionBanerPage() {
                 Results & Benefits
               </h2>
               <p className="text-xl text-brand-blue max-w-3xl mx-auto">
-                See the transformation in your child's scientific understanding and academic performance
+                Students attending our Science Tuition in Baner gain several academic advantages
               </p>
             </div>
 
@@ -294,7 +297,7 @@ export default function ScienceTuitionBanerPage() {
                 alt="Students improving science performance through coaching"
                 width={800}
                 height={450}
-                className="rounded-lg w-full h-auto mb-8"
+                className="rounded-lg w-full max-h-[400px] object-contain mb-8"
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
@@ -339,11 +342,11 @@ export default function ScienceTuitionBanerPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="bg-brand-silver bg-opacity-50 rounded-lg p-6">
                 <Image
-                  src="/science-classroom-baner-pune.webp"
+                  src="/tuition-classroom-baner-pune.jpg"
                   alt="Science coaching classroom at The Learners' Academy Baner Pune"
                   width={600}
                   height={400}
-                  className="rounded-lg w-full h-auto"
+                  className="rounded-lg w-full max-h-[350px] object-cover"
                 />
               </div>
               <div>
@@ -374,7 +377,7 @@ export default function ScienceTuitionBanerPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="bg-white bg-opacity-10 rounded-lg p-6 mb-8">
               <Image
-                src="/students-learning-science-baner.png"
+                src="/Gemini_Generated_Image_xhjmlyxhjmlyxhjm.png"
                 alt="Contact The Learners' Academy for science tuition in Baner"
                 width={800}
                 height={450}
@@ -382,42 +385,40 @@ export default function ScienceTuitionBanerPage() {
               />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-sans font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl font-sans font-bold mb-6" style={{ color: 'white' }}>
               Ready to Transform Your Child's Science Skills?
             </h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 max-w-3xl mx-auto" style={{ color: 'white' }}>
               Join hundreds of students who have improved their Science performance at The Learners' Academy
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
                 href="tel:8605468382"
-                className="bg-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-colors font-medium flex items-center justify-center gap-2"
-                style={{ color: '#800000' }}
+                style={{ backgroundColor: '#800000', color: 'white', padding: '12px 32px', borderRadius: '8px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', border: '2px solid white' }}
               >
-                <Phone className="h-5 w-5" style={{ color: '#800000' }} />
-                Call: 86054 68382
+                📞 Call: 86054 68382
               </a>
               <a
                 href="/contact"
-                className="border-2 border-white px-8 py-3 rounded-lg hover:bg-white transition-colors font-medium"
+                style={{ border: '2px solid white', color: 'white', padding: '12px 32px', borderRadius: '8px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
               >
                 Book Free Demo Class
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ color: 'white' }}>
               <div className="flex items-center justify-center gap-2">
                 <span>📞</span>
-                <span>86054 68382</span>
+                <span style={{ color: 'white' }}>86054 68382</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <span>✉️</span>
-                <span>info@learnersacademy.com</span>
+                <span style={{ color: 'white' }}>info@learnersacademy.com</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <span>📍</span>
-                <span>Baner, Pune</span>
+                <span style={{ color: 'white' }}>Baner, Pune</span>
               </div>
             </div>
           </div>

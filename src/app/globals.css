@@ -576,6 +576,13 @@ footer p, footer span, footer div {
   color: var(--heading-color) !important;
 }
 
+/* White buttons inside maroon sections keep maroon text */
+.bg-brand-maroon a.bg-white,
+.bg-brand-maroon a.bg-white span,
+.bg-brand-maroon a.bg-white svg {
+  color: var(--heading-color) !important;
+}
+
 footer a {
   color: white !important;
 }

@@ -79,7 +79,16 @@ export default function MathsTuitionBanerPage() {
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-brand-silver to-white z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="rounded-lg overflow-hidden mb-12">
+            <Image
+              src="/maths-tuition-baner-classroom.jpeg"
+              alt="Maths tuition class at The Learners' Academy Baner Pune"
+              width={1200}
+              height={500}
+              className="rounded-lg w-full max-h-[450px] object-cover"
+            />
+          </div>
+          <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-sans font-bold text-brand-maroon mb-6">
               Best Maths Tuition Classes in Baner, Pune
             </h1>
@@ -92,12 +101,12 @@ export default function MathsTuitionBanerPage() {
                 className="bg-brand-maroon px-8 py-3 rounded-lg hover:bg-opacity-90 transition-colors font-medium flex items-center justify-center gap-2"
                 style={{ color: 'white' }}
               >
-                <Phone className="h-5 w-5" style={{ color: 'white' }} />
-                Call: 86054 68382
+                📞 Call: 86054 68382
               </a>
               <a 
                 href="/contact"
-                className="border-2 border-brand-maroon text-brand-maroon px-8 py-3 rounded-lg hover:bg-brand-maroon hover:text-white transition-colors font-medium"
+                className="border-2 border-brand-maroon px-8 py-3 rounded-lg hover:bg-brand-maroon transition-colors font-medium"
+                style={{ color: '#800000' }}
               >
                 Book Free Demo
               </a>
