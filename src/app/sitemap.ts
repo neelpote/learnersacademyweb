@@ -44,6 +44,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/class-10-maths-coaching-pune`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/best-tuition-classes-baner`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tutor-in-baner-pune`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
   ]
 
   try {

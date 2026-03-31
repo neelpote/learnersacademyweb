@@ -23,7 +23,7 @@ const inter = Inter({
 });
 
 const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://learners-kohl.vercel.app' 
+  ? 'https://www.thelearnersacademy.in' 
   : 'http://localhost:3000';
 
 export const metadata: Metadata = {
