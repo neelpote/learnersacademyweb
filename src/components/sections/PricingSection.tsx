@@ -81,10 +81,10 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
     <section id="courses" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
+          <h2 className="text-3xl sm:text-4xl text-brand-maroon mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
             Choose Your Learning Plan
           </h2>
-          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
+          <p className="text-lg max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
             Select the perfect plan that matches your learning goals and budget. 
             All plans include expert teachers and proven methodologies.
           </p>
@@ -112,12 +112,12 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4 border-2 ${plan.borderColor}`}>
                   <plan.icon className={`h-8 w-8 ${plan.iconColor}`} />
                 </div>
-                <h3 className="text-2xl font-bold text-brand-maroon mb-2">{plan.name}</h3>
-                <p className="text-brand-blue text-sm mb-4">{plan.description}</p>
+                <h3 className="text-xl mb-2 text-brand-blue" style={{ fontFamily: 'var(--font-sub)', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '1rem' }}>{plan.name}</h3>
+                <p className="text-sm mb-4" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>{plan.description}</p>
               </div>
 
               <div className="mb-8 flex-grow">
-                <h4 className="font-semibold text-brand-maroon mb-3">What's Included:</h4>
+                <h4 className="font-semibold text-brand-blue mb-3">What's Included:</h4>
                 <ul className="space-y-3">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
@@ -128,16 +128,12 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
                 </ul>
               </div>
 
-              <button
-                className="w-full btn-primary text-center mt-auto"
-                onClick={() => {
-                  if (onBookDemo) {
-                    onBookDemo()
-                  }
-                }}
+              <a
+                href="/contact"
+                className="w-full btn-primary text-center mt-auto block"
               >
-                Choose {plan.name} Plan
-              </button>
+                Enquire About {plan.name}
+              </a>
             </div>
           ))}
         </div>
@@ -195,7 +191,7 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
               </div>
 
               <div className="mb-8 flex-grow">
-                <h4 className="font-semibold text-brand-maroon mb-3">What's Included:</h4>
+                <h4 className="font-semibold text-brand-blue mb-3">What's Included:</h4>
                 <ul className="space-y-3">
                   {plans[currentPlan].features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
@@ -206,16 +202,12 @@ export function PricingSection({ onBookDemo }: PricingSectionProps) {
                 </ul>
               </div>
 
-              <button
-                className="w-full btn-primary text-center mt-auto"
-                onClick={() => {
-                  if (onBookDemo) {
-                    onBookDemo()
-                  }
-                }}
+              <a
+                href="/contact"
+                className="w-full btn-primary text-center mt-auto block"
               >
-                Choose {plans[currentPlan].name} Plan
-              </button>
+                Enquire About {plans[currentPlan].name}
+              </a>
             </div>
           </div>
         </div>

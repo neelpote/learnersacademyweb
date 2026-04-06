@@ -72,10 +72,10 @@ export default function ScienceTuitionBanerPage() {
               />
             </div>
             <div className="text-center">
-              <h1 className="text-4xl sm:text-5xl font-sans font-bold text-brand-maroon mb-6">
+              <h1 className="text-4xl sm:text-5xl text-brand-maroon mb-6" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700 }}>
                 Best Science Tuition Classes in Baner, Pune
               </h1>
-              <p className="text-xl text-brand-blue max-w-4xl mx-auto mb-8">
+              <p className="text-xl max-w-4xl mx-auto mb-8" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
                 Expert Science coaching for Class 7-10 with concept-based learning, practical demonstrations, small batch sizes, and proven results. Join The Learners' Academy for comprehensive Science tuition in Baner.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -457,6 +457,35 @@ export default function ScienceTuitionBanerPage() {
               })
             }}
           />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thelearnersacademy.in" },
+              { "@type": "ListItem", "position": 2, "name": "Science Tuition Baner", "item": "https://www.thelearnersacademy.in/science-tuition-baner" }
+            ]
+          })}} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Science Tuition in Baner, Pune",
+            "description": "Expert Science coaching for Class 7-10 covering Physics, Chemistry and Biology for CBSE, ICSE and SSC students in Baner, Pune.",
+            "url": "https://www.thelearnersacademy.in/science-tuition-baner",
+            "provider": {
+              "@type": "Organization",
+              "name": "The Learners' Academy",
+              "url": "https://www.thelearnersacademy.in",
+              "address": { "@type": "PostalAddress", "addressLocality": "Baner", "addressRegion": "Pune", "addressCountry": "IN" }
+            },
+            "educationalLevel": "Class 7 to Class 10",
+            "teaches": ["Physics", "Chemistry", "Biology", "Science"],
+            "inLanguage": "en-IN",
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "onsite",
+              "location": { "@type": "Place", "name": "The Learners' Academy", "address": "302, Tejas Eternity, Balewadi Phata, Baner, Pune 411045" }
+            }
+          })}} />
         </section>
 
       </main>

@@ -10,14 +10,14 @@ export function FloatingBookDemo({ onBookDemo }: FloatingBookDemoProps) {
   return (
     <button
       onClick={onBookDemo}
-      className="fixed bottom-20 left-4 md:hidden z-40 bg-brand-maroon hover:bg-opacity-90 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-maroon focus:ring-opacity-50 flex items-center gap-2"
-      aria-label="Book Demo"
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-brand-maroon text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none"
+      style={{ boxShadow: '0 4px 20px rgba(128, 0, 0, 0.35)' }}
+      aria-label="Book Free Demo"
     >
-      <Calendar className="h-5 w-5" />
-      
-      {/* CHANGED: Added '!' to force the white color over your global CSS */}
-      <span className="font-medium text-sm !text-white">Book Demo</span>
-      
+      <Calendar className="h-5 w-5" style={{ color: 'white' }} />
+      <span className="font-medium text-sm" style={{ color: 'white', fontFamily: 'var(--font-sub)' }}>
+        Book Free Demo
+      </span>
     </button>
   )
 }

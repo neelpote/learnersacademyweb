@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { Outfit, Space_Grotesk, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Lato } from "next/font/google";
 import "./globals.css";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+// Serif font for headings — elegant and authoritative
+const playfair = Playfair_Display({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  display: "swap",
-});
-
+// Clean sans-serif for body — highly readable
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600"],
+});
+
+// Light sans-serif for subheadings and labels
+const lato = Lato({
+  variable: "--font-sub",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "700"],
 });
 
 const baseUrl = process.env.NODE_ENV === 'production' 
@@ -118,19 +124,19 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'EducationalOrganization',
+  '@type': ['EducationalOrganization', 'LocalBusiness'],
   '@id': `${baseUrl}/#organization`,
   name: "The Learners' Academy",
   alternateName: "Learners Academy Baner Pune",
-  description: "Premium tuition center providing quality education for classes 7-12 with expert teachers and proven results in Baner, Pune",
+  description: "Premium tuition center providing quality education for classes 7-10 with expert teachers and proven results in Baner, Pune",
   url: baseUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${baseUrl}/logo.png`,
+    url: `${baseUrl}/academy Logo - Background Removed.png`,
     width: 200,
     height: 200
   },
-  image: `${baseUrl}/og-image.jpg`,
+  image: `${baseUrl}/maths-tuition-baner-classroom.jpeg`,
   telephone: '+91-86054-68382',
   email: 'info@learnersacademy.com',
   address: {
@@ -146,91 +152,82 @@ const jsonLd = {
     latitude: '18.5679',
     longitude: '73.7781'
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '21:00'
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday', 'Sunday'],
+      opens: '08:00',
+      closes: '18:00'
+    }
+  ],
+  priceRange: '₹₹',
+  currenciesAccepted: 'INR',
+  paymentAccepted: ['Cash', 'UPI', 'Bank Transfer'],
   areaServed: [
-    {
-      '@type': 'City',
-      name: 'Pune',
-      '@id': 'https://en.wikipedia.org/wiki/Pune'
-    },
-    {
-      '@type': 'Place',
-      name: 'Baner',
-      containedInPlace: {
-        '@type': 'City',
-        name: 'Pune'
-      }
-    },
-    {
-      '@type': 'State',
-      name: 'Maharashtra'
-    }
+    { '@type': 'Place', name: 'Baner, Pune' },
+    { '@type': 'Place', name: 'Aundh, Pune' },
+    { '@type': 'Place', name: 'Pashan, Pune' },
+    { '@type': 'Place', name: 'Balewadi, Pune' },
   ],
-  contactPoint: [
-    {
-      '@type': 'ContactPoint',
-      telephone: '+91-86054-68382',
-      contactType: 'customer service',
-      availableLanguage: ['English', 'Hindi', 'Marathi'],
-      areaServed: 'IN'
-    }
-  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+91-86054-68382',
+    contactType: 'customer service',
+    availableLanguage: ['English', 'Hindi', 'Marathi'],
+    areaServed: 'IN'
+  },
   sameAs: [
     'https://facebook.com/learnersacademy',
     'https://instagram.com/learnersacademy',
-    'https://youtube.com/learnersacademy'
   ],
-  foundingDate: '2014',
-  numberOfEmployees: {
-    '@type': 'QuantitativeValue',
-    value: 15
-  },
-  priceRange: '₹₹',
-  paymentAccepted: ['Cash', 'Credit Card', 'UPI', 'Bank Transfer'],
-  currenciesAccepted: 'INR',
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Educational Services',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'CBSE Coaching Classes 7-12',
-          description: 'Comprehensive CBSE board preparation in Baner, Pune'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'ICSE Coaching Classes 7-12',
-          description: 'Expert ICSE board coaching in Baner, Pune'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'JEE Preparation',
-          description: 'Joint Entrance Examination coaching in Pune'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'NEET Preparation',
-          description: 'Medical entrance exam preparation in Baner, Pune'
-        }
-      }
-    ]
-  },
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.8',
     reviewCount: '150',
     bestRating: '5',
     worstRating: '1'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Tuition & Coaching Programs',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Course',
+          name: 'Maths Tuition in Baner',
+          description: 'Expert Mathematics coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
+          url: `${baseUrl}/maths-tuition-baner`,
+          provider: { '@type': 'Organization', name: "The Learners' Academy" }
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Course',
+          name: 'Science Tuition in Baner',
+          description: 'Expert Science coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
+          url: `${baseUrl}/science-tuition-baner`,
+          provider: { '@type': 'Organization', name: "The Learners' Academy" }
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Course',
+          name: 'Class 10 Maths Coaching Pune',
+          description: 'Specialized Class 10 Mathematics board exam preparation in Baner, Pune',
+          url: `${baseUrl}/class-10-maths-coaching-pune`,
+          provider: { '@type': 'Organization', name: "The Learners' Academy" }
+        }
+      }
+    ]
   }
 };
 
@@ -277,7 +274,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${outfit.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${lato.variable} antialiased`}
       >
         <BackgroundAnimation />
         {children}

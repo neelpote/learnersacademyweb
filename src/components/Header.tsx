@@ -116,16 +116,6 @@
                 </button>
               </div>
 
-              {/* Book Demo Button - Desktop */}
-              <div className="hidden md:block flex-shrink-0">
-                <button
-                  onClick={onBookDemo}
-                  className="bg-white text-brand-maroon px-4 py-2 rounded font-medium hover:bg-brand-silver transition-colors text-sm"
-                >
-                  Book Demo
-                </button>
-              </div>
-
               {/* Mobile menu button */}
               <div className="md:hidden w-full flex justify-between items-center">
                 <span className="text-brand-silver font-medium">Menu</span>
@@ -133,10 +123,7 @@
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="p-2 rounded-lg text-brand-silver hover:text-white transition-colors"
                 >
-                  {isMenuOpen ?
-                    <X className="h-6 w-6" /> :
-                    <Menu className="h-6 w-6" />
-                  }
+                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </button>
               </div>
             </div>
@@ -221,15 +208,6 @@
                     className="text-left py-2 text-brand-maroon hover:text-brand-blue transition-colors font-body font-medium"
                   >
                     About
-                  </button>
-                  <button
-                    className="bg-white text-brand-maroon border-2 border-brand-maroon px-6 py-2 rounded font-medium hover:bg-brand-maroon hover:text-white transition-colors w-fit mt-2"
-                    onClick={() => {
-                      onBookDemo()
-                      setIsMenuOpen(false)
-                    }}
-                  >
-                    Book a Demo
                   </button>
                 </div>
               </div>

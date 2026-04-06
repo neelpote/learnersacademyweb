@@ -59,20 +59,19 @@ export function TeachersSection() {
     <section id="teachers" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
+          <p className="text-xs uppercase tracking-widest text-brand-maroon mb-2" style={{ fontFamily: 'var(--font-sub)' }}>Our Faculty</p>
+          <h2 className="text-3xl sm:text-4xl text-brand-maroon mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
             Meet Our Expert Teachers
           </h2>
-          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
-            Our highly qualified and experienced faculty members are dedicated to nurturing 
-            academic excellence and helping every student reach their full potential.
+          <p className="text-lg max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
+            Highly qualified faculty dedicated to nurturing academic excellence in every student.
           </p>
         </div>
 
         {!loading && teachers.length > 0 ? (
           <div className="relative">
-            {/* Teachers Grid - Always centered regardless of number */}
             <div className="flex justify-center">
-              <div className={`grid gap-8 ${
+              <div className={`grid gap-6 ${
                 currentTeachers.length === 1 ? 'grid-cols-1 max-w-sm' :
                 currentTeachers.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-2xl' :
                 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl'
@@ -80,41 +79,47 @@ export function TeachersSection() {
                 {currentTeachers.map((teacher, index) => (
                   <div
                     key={teacher._id}
-                    className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-xl p-8 border border-brand-blue hover:border-brand-maroon transition-all duration-300 hover:shadow-lg"
+                    className="group relative overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-2"
+                    style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.07)' }}
                   >
-                    <div className="relative w-40 h-40 mx-auto mb-6">
-                      {teacher.photo ? (
-                        <Image
-                          src={urlFor(teacher.photo).width(250).height(250).url()}
-                          alt={`${teacher.name} - ${teacher.subject} Teacher at The Learners' Academy`}
-                          fill
-                          className="rounded-full object-cover border-4 border-brand-blue"
-                          sizes="(max-width: 768px) 160px, 160px"
-                          priority={index < 3}
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-brand-blue bg-opacity-20 rounded-full flex items-center justify-center border-4 border-brand-blue">
-                          <GraduationCap className="h-20 w-20 text-brand-blue" />
-                        </div>
-                      )}
-                    </div>
+                    {/* Top color bar */}
+                    <div className="h-2 bg-brand-maroon w-full" />
 
-                    <div className="text-center">
-                      <h3 className="text-2xl font-sans font-bold text-brand-maroon mb-3">
-                        {teacher.name}
-                      </h3>
-                      
-                      <div className="flex items-center justify-center gap-2 mb-4">
-                        <BookOpen className="h-5 w-5 text-brand-blue" />
-                        <span className="text-brand-blue font-semibold text-lg">{teacher.subject}</span>
+                    <div className="p-8">
+                      {/* Photo + name side by side */}
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="relative w-20 h-20 flex-shrink-0">
+                          {teacher.photo ? (
+                            <Image
+                              src={urlFor(teacher.photo).width(160).height(160).url()}
+                              alt={`${teacher.name}`}
+                              fill
+                              className="rounded-full object-cover"
+                              sizes="80px"
+                              priority={index < 3}
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-brand-blue bg-opacity-10 rounded-full flex items-center justify-center">
+                              <GraduationCap className="h-10 w-10 text-brand-blue" />
+                            </div>
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-xl text-brand-maroon" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
+                            {teacher.name}
+                          </h3>
+                          <p className="text-xs uppercase tracking-wider text-brand-blue mt-1" style={{ fontFamily: 'var(--font-sub)' }}>
+                            {teacher.subject}
+                          </p>
+                          <p className="text-xs mt-1" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)', fontWeight: 300 }}>
+                            {teacher.qualification}
+                          </p>
+                        </div>
                       </div>
-                      
-                      <p className="text-base text-brand-blue mb-6 leading-relaxed">
-                        {teacher.qualification}
-                      </p>
-                      
-                      <div className="bg-white bg-opacity-50 rounded-lg p-6 border border-brand-blue">
-                        <p className="text-base text-brand-blue italic leading-relaxed">
+
+                      {/* Philosophy — no box, just a left border accent */}
+                      <div className="border-l-2 border-brand-maroon pl-4">
+                        <p className="text-sm italic leading-relaxed" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)', fontWeight: 300 }}>
                           "{teacher.teachingPhilosophy}"
                         </p>
                       </div>

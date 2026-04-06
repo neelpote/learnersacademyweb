@@ -87,13 +87,13 @@ export function AboutSection() {
             onClick={() => setIsExpanded(!isExpanded)}
             className="group w-full max-w-3xl mx-auto bg-transparent rounded-lg p-8 hover:bg-white hover:bg-opacity-10 transition-all duration-300"
           >
-            <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
+            <h2 className="text-3xl sm:text-4xl text-brand-maroon mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
               About The Learners' Academy
             </h2>
-            <p className="text-xl text-brand-maroon mb-4 italic font-medium">
+            <p className="text-xl text-brand-maroon mb-4 font-medium" style={{ fontFamily: 'var(--font-heading)', fontStyle: 'italic', fontWeight: 400 }}>
               "Learn it the Learners' way!"
             </p>
-            <p className="text-base text-brand-blue mb-6 max-w-xl mx-auto">
+            <p className="text-base mb-6 max-w-xl mx-auto" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
               Discover our mission, vision, and what makes us unique in education. 
               Founded in 2014, we've been transforming students' lives through innovative teaching methods.
             </p>
@@ -189,8 +189,8 @@ export function AboutSection() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {coreValues.map((value, index) => (
                 <div key={index} className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6">
-                  <h4 className="text-xl font-bold text-brand-maroon mb-4 border-b border-brand-maroon pb-2">{value.title}</h4>
-                  <p className="text-brand-blue text-sm leading-relaxed">{value.description}</p>
+                  <h4 className="text-xl font-bold text-brand-blue mb-4 border-b border-brand-blue pb-2">{value.title}</h4>
+                  <p style={{ color: '#4A4A4A' }} className="text-sm leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -201,23 +201,23 @@ export function AboutSection() {
             <h3 className="text-3xl font-sans font-bold text-center mb-8 text-brand-maroon">Our Goals & Objectives</h3>
             <div className="space-y-8 max-w-4xl mx-auto">
               <div>
-                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Our Vision</h4>
+                <h4 className="text-2xl font-bold text-brand-blue mb-4 border-b-2 border-brand-blue pb-2">Our Vision</h4>
                 <p className="text-brand-blue text-lg leading-relaxed">To be a leading professional institution that exemplifies career success through enabling knowledge excellence and developing holistic global citizen.</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Strategic Objectives</h4>
+                <h4 className="text-2xl font-bold text-brand-blue mb-4 border-b-2 border-brand-blue pb-2">Strategic Objectives</h4>
                 <p className="text-brand-blue text-lg leading-relaxed">Bring about a thorough reform in the education system by paving a new path of attitude and learning towards education. This was done specially by using innovative methods of teaching.</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Focus Areas</h4>
+                <h4 className="text-2xl font-bold text-brand-blue mb-4 border-b-2 border-brand-blue pb-2">Focus Areas</h4>
                 <p className="text-brand-blue text-lg leading-relaxed">Mathematics, Physics, Chemistry, Biology and English. Conceptual as well as real life explanations.</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Your Dream Solution</h4>
+                <h4 className="text-2xl font-bold text-brand-blue mb-4 border-b-2 border-brand-blue pb-2">Your Dream Solution</h4>
                 <p className="text-brand-blue text-lg leading-relaxed">Student is honed to be a complete global citizen as there is focused guidance on/about health, environment, education, morals, politics, and patriotism.</p>
               </div>
               <div>
-                <h4 className="text-2xl font-bold text-brand-maroon mb-4 border-b-2 border-brand-maroon pb-2">Our Commitments</h4>
+                <h4 className="text-2xl font-bold text-brand-blue mb-4 border-b-2 border-brand-blue pb-2">Our Commitments</h4>
                 <p className="text-brand-blue text-lg leading-relaxed">Highly Qualified Faculty, Positive Learning Process, State of the Art premises, Interactive Learning and Optimal Batch Sizes, Continuous Evaluation</p>
               </div>
             </div>
@@ -230,26 +230,6 @@ export function AboutSection() {
               <p className="text-brand-blue leading-relaxed text-center max-w-4xl mx-auto italic">
                 A Learner is a person who always keeps on learning. He/She never thinks that the knowledge that he/she has is enough. He/She never gives up, no matter how difficult the subject is. He/She strives to beat himself/herself, every single time. Calling oneself 'A Learner' always keeps one humble, ready to change, ready to accept other points of views, flexible and open to all the ideas.
               </p>
-            </div>
-          </div>
-
-          {/* Why Choose Us */}
-          <div className="mb-20">
-            <h3 className="text-3xl font-sans font-bold text-center mb-12 text-brand-maroon">Why Choose Us</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <div key={index} className="feature-card">
-                  <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-lg mb-4 mx-auto">
-                    <feature.icon className="h-8 w-8 text-brand-silver" />
-                  </div>
-                  <h4 className="text-lg font-sans font-semibold text-brand-maroon mb-3 text-center">{feature.title}</h4>
-                  <p className="text-brand-blue text-center">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <p className="text-lg text-brand-blue font-medium">Our Specialties:</p>
-              <p className="text-brand-blue">Specializes in Mathematics, Physics, Chemistry, Biology and English</p>
             </div>
           </div>
 

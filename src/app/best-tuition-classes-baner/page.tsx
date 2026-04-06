@@ -306,6 +306,8 @@ export default function BestTuitionClassesBanerPage() {
             </div>
           </div>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) }) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thelearnersacademy.in" }, { "@type": "ListItem", "position": 2, "name": "Best Tuition Classes Baner", "item": "https://www.thelearnersacademy.in/best-tuition-classes-baner" }] }) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Course", "name": "Best Tuition Classes in Baner", "description": "Expert coaching for Class 7-10 CBSE, ICSE and SSC students with small batches and personalized attention in Baner, Pune.", "url": "https://www.thelearnersacademy.in/best-tuition-classes-baner", "provider": { "@type": "Organization", "name": "The Learners' Academy", "url": "https://www.thelearnersacademy.in" }, "educationalLevel": "Class 7 to Class 10", "teaches": ["Mathematics", "Science", "Physics", "Chemistry", "Biology"], "inLanguage": "en-IN", "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "onsite", "location": { "@type": "Place", "name": "The Learners' Academy", "address": "302, Tejas Eternity, Balewadi Phata, Baner, Pune 411045" } } }) }} />
         </section>
 
       </main>

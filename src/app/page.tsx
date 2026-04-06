@@ -55,35 +55,26 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div className="inline-flex items-center gap-2 bg-brand-silver rounded-lg px-6 py-3 mb-4 animate-fade-in">
               <Sparkles className="h-5 w-5 text-brand-maroon" />
-              <span className="text-base font-medium text-brand-blue font-body">Transform Your Future Today</span>
+              <span className="text-base font-medium text-brand-blue" style={{ fontFamily: 'var(--font-sub)', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.8rem' }}>Transform Your Future Today</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up animate-delay-100">
-              <span className="font-heading text-brand-maroon">Unlock Your</span>
+            <h1 className="text-4xl md:text-6xl mb-4 animate-fade-in-up animate-delay-100" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, lineHeight: 1.15 }}>
+              <span className="text-brand-maroon">Unlock Your</span>
               <br />
-              <span className="text-brand-maroon font-heading">Academic Potential</span>
+              <span className="text-brand-blue" style={{ fontWeight: 400, fontStyle: 'italic' }}>Academic Potential</span>
             </h1>
 
-            <p className="text-lg md:text-xl mb-6 max-w-4xl mx-auto font-body text-brand-blue animate-fade-in-up animate-delay-200">
+            <p className="text-lg md:text-xl mb-6 max-w-4xl mx-auto animate-fade-in-up animate-delay-200" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A', lineHeight: 1.8 }}>
               Join The Learners' Academy and experience personalized learning with expert teachers,
               proven methodologies, and outstanding results for classes 7-12.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animate-delay-300">
               <button
-                onClick={() => setIsDemoFormOpen(true)}
-                className="btn-primary text-lg px-10 py-4 flex items-center gap-2"
-              >
-                <Sparkles className="h-5 w-5" />
-                Start Your Journey
-              </button>
-              <button
                 className="btn-secondary text-lg px-10 py-4 flex items-center gap-2"
                 onClick={() => {
                   const element = document.querySelector('#courses')
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
                 Explore Courses
@@ -93,9 +84,7 @@ export default function Home() {
                 className="btn-secondary text-lg px-10 py-4 flex items-center gap-2"
                 onClick={() => {
                   const element = document.querySelector('#resources')
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' })
-                  }
+                  if (element) element.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
                 <Download className="h-5 w-5" />
@@ -109,10 +98,10 @@ export default function Home() {
         <section className="py-20 bg-transparent relative z-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
+              <h2 className="text-3xl sm:text-4xl text-brand-maroon mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
                 Why Choose The Learners' Academy?
               </h2>
-              <p className="text-xl text-brand-blue max-w-3xl mx-auto">
+              <p className="text-lg max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
                 Discover what makes us unique in education with our proven teaching methods and personalized approach.
               </p>
             </div>
@@ -122,10 +111,10 @@ export default function Home() {
                 <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
                   <Heart className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                <h3 className="text-lg font-semibold text-brand-blue mb-3 text-center" style={{ fontFamily: 'var(--font-sub)' }}>
                   Positive Learning Process
                 </h3>
-                <p className="text-brand-blue text-center">
+                <p className="text-center text-sm font-light" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)' }}>
                   Facilitating and nurturing the positive learning process for each child with innovative teaching methods.
                 </p>
               </div>
@@ -134,10 +123,10 @@ export default function Home() {
                 <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
                   <Users className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                <h3 className="text-lg font-semibold text-brand-blue mb-3 text-center" style={{ fontFamily: 'var(--font-sub)' }}>
                   Optimal Batch Size
                 </h3>
-                <p className="text-brand-blue text-center">
+                <p className="text-center text-sm font-light" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)' }}>
                   Small classes ensuring individual attention for every student with personalized guidance.
                 </p>
               </div>
@@ -146,10 +135,10 @@ export default function Home() {
                 <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
                   <Lightbulb className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                <h3 className="text-lg font-semibold text-brand-blue mb-3 text-center" style={{ fontFamily: 'var(--font-sub)' }}>
                   Innovative Teaching
                 </h3>
-                <p className="text-brand-blue text-center">
+                <p className="text-center text-sm font-light" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)' }}>
                   Tried and tested teaching techniques with innovative aids and modern learning approaches.
                 </p>
               </div>
@@ -158,10 +147,10 @@ export default function Home() {
                 <div className="flex items-center justify-center w-16 h-16 bg-brand-blue rounded-full mb-6 mx-auto">
                   <Trophy className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-sans font-bold text-brand-maroon mb-4 text-center">
+                <h3 className="text-lg font-semibold text-brand-blue mb-3 text-center" style={{ fontFamily: 'var(--font-sub)' }}>
                   Proven Results
                 </h3>
-                <p className="text-brand-blue text-center">
+                <p className="text-center text-sm font-light" style={{ color: '#4A4A4A', fontFamily: 'var(--font-body)' }}>
                   Consistent top rankings and excellent board results with 95% success rate across all programs.
                 </p>
               </div>
@@ -205,18 +194,11 @@ export default function Home() {
           <div className="section-container text-center">
             <h2 className="text-display mb-6 text-brand-maroon">
               Ready to Start Your
-              <span className="text-brand-maroon"> Success Story?</span>
+              <span className="text-brand-blue"> Success Story?</span>
             </h2>
             <p className="text-subtitle mb-10 max-w-3xl mx-auto text-brand-blue">
               Join hundreds of students who have achieved their academic goals with our proven teaching methods and personalized approach.
             </p>
-            <button
-              onClick={() => setIsDemoFormOpen(true)}
-              className="btn-primary text-lg px-10 py-4 flex items-center gap-2 mx-auto"
-            >
-              <Trophy className="h-5 w-5" />
-              Book Your Free Demo Now
-            </button>
           </div>
         </section>
       </main>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Button } from '../ui/Button'
 import { ResourceDownloadForm } from '../ResourceDownloadForm'
 import { client, queries } from '@/lib/sanity'
 import { Download, FileText, BookOpen, Target, GraduationCap } from 'lucide-react'
@@ -87,60 +86,48 @@ export function ResourcesSection() {
   return (
     <section id="resources" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold text-brand-maroon mb-4">
-            Free Resources
+        <div className="text-center mb-12">
+          <p className="text-xs uppercase tracking-widest text-brand-maroon mb-2" style={{ fontFamily: 'var(--font-sub)' }}>Free Downloads</p>
+          <h2 className="text-3xl sm:text-4xl text-brand-maroon mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
+            Study Resources
           </h2>
-          <p className="text-xl text-brand-blue max-w-3xl mx-auto">
-            Download our comprehensive collection of study materials, practice papers, 
-            and exam guides to enhance your learning experience and boost your performance.
+          <p className="text-lg max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#4A4A4A' }}>
+            Practice papers, study guides, and exam tips — all free.
           </p>
         </div>
 
         {resources.length > 0 ? (
-          <div className="overflow-x-auto pb-4">
-            <div className="flex gap-6 min-w-max">
-              {resources.map((resource) => {
-                const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
-                const colorClass = categoryColors[resource.category as keyof typeof categoryColors] || 'bg-brand-blue text-brand-silver'
-                
-                return (
-                  <div
-                    key={resource._id}
-                    className="bg-brand-silver bg-opacity-80 backdrop-blur-sm rounded-lg p-6 border border-brand-blue hover:border-brand-maroon transition-colors w-80 flex-shrink-0"
-                  >
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className={`rounded-lg p-2 ${colorClass} flex-shrink-0`}>
-                        <IconComponent className="h-5 w-5" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-sans font-semibold text-brand-maroon mb-2">
-                          {resource.title}
-                        </h3>
-                        <p className="text-brand-blue text-sm mb-4">
-                          {resource.description}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-brand-blue">
-                        <FileText className="h-4 w-4" />
-                        <span>PDF Format</span>
-                      </div>
-                      
-                      <Button
-                        size="sm"
-                        onClick={() => handleDownloadClick(resource)}
-                        className="flex items-center gap-2"
-                      >
-                        <Download className="h-4 w-4" />
-                        Download
-                      </Button>
-                    </div>
+          <div className="space-y-3 max-w-3xl mx-auto">
+            {resources.map((resource, index) => {
+              const IconComponent = categoryIcons[resource.category as keyof typeof categoryIcons] || FileText
+              const label = resource.category?.replace(/-/g, ' ') || 'Resource'
+              return (
+                <div
+                  key={resource._id}
+                  className="group flex items-center gap-5 p-5 bg-white rounded-xl border-l-4 border-l-brand-maroon border border-gray-100 hover:shadow-md transition-all duration-300 cursor-pointer"
+                  onClick={() => handleDownloadClick(resource)}
+                >
+                  <span className="text-2xl font-bold text-gray-100 w-8 flex-shrink-0 select-none" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="w-9 h-9 rounded-lg bg-brand-maroon bg-opacity-10 flex items-center justify-center flex-shrink-0">
+                    <IconComponent className="h-4 w-4 text-brand-maroon" />
                   </div>
-                )
-              })}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs uppercase tracking-wider text-brand-maroon mb-0.5" style={{ fontFamily: 'var(--font-sub)' }}>{label}</p>
+                    <h3 className="text-sm font-semibold text-brand-blue truncate" style={{ fontFamily: 'var(--font-sub)' }}>{resource.title}</h3>
+                  </div>
+                  <div className="flex items-center gap-1 text-brand-maroon opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                    <Download className="h-4 w-4" />
+                    <span className="text-xs font-medium" style={{ fontFamily: 'var(--font-sub)' }}>Get PDF</span>
+                  </div>
+                </div>
+              )
+            })}
+            <div className="text-center pt-4">
+              <a href="/resources" className="text-sm text-brand-maroon font-medium hover:underline" style={{ fontFamily: 'var(--font-sub)' }}>
+                View all resources →
+              </a>
             </div>
           </div>
         ) : (

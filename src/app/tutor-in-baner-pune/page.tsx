@@ -257,6 +257,8 @@ export default function TutorInBanerPunePage() {
             </div>
           </div>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) }) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thelearnersacademy.in" }, { "@type": "ListItem", "position": 2, "name": "Tutor in Baner Pune", "item": "https://www.thelearnersacademy.in/tutor-in-baner-pune" }] }) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Course", "name": "Tutor in Baner Pune", "description": "Expert tutoring for Class 7-10 CBSE, ICSE and SSC students with personalized attention and concept-based learning in Baner, Pune.", "url": "https://www.thelearnersacademy.in/tutor-in-baner-pune", "provider": { "@type": "Organization", "name": "The Learners' Academy", "url": "https://www.thelearnersacademy.in" }, "educationalLevel": "Class 7 to Class 10", "teaches": ["Mathematics", "Science", "Physics", "Chemistry", "Biology"], "inLanguage": "en-IN", "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "onsite", "location": { "@type": "Place", "name": "The Learners' Academy", "address": "302, Tejas Eternity, Balewadi Phata, Baner, Pune 411045" } } }) }} />
         </section>
 
       </main>
