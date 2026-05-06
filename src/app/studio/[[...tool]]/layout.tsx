@@ -10,6 +10,13 @@ export default function StudioLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <style>{`
+          * { color: white !important; }
+          input, textarea, select { color: white !important; background: transparent; }
+          [data-ui] { color: white !important; }
+        `}</style>
+      </head>
       <body style={{ margin: 0 }}>{children}</body>
     </html>
   )

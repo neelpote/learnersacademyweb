@@ -43,7 +43,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+/* Only apply our brand styles to the main app, not Sanity Studio */
+body.app-root {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
@@ -53,44 +54,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* TYPOGRAPHY HIERARCHY */
-h1, h2, h3, h4, h5, h6 {
+/* TYPOGRAPHY HIERARCHY - scoped to app-root to avoid bleeding into Sanity Studio */
+.app-root h1, .app-root h2, .app-root h3, .app-root h4, .app-root h5, .app-root h6 {
   font-family: var(--font-heading), Georgia, serif;
   color: var(--foreground);
   font-weight: 600;
   line-height: 1.2;
 }
 
-h1 {
+.app-root h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   letter-spacing: -0.02em;
   font-weight: 700;
 }
 
-h2 {
+.app-root h2 {
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   letter-spacing: -0.01em;
   font-weight: 600;
 }
 
-h3 {
+.app-root h3 {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 500;
 }
 
-h4 {
+.app-root h4 {
   font-size: clamp(1rem, 1.8vw, 1.3rem);
   font-weight: 500;
 }
 
-p, li {
+.app-root p, .app-root li {
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.7;
 }
 
-span, a {
+.app-root span, .app-root a {
   color: var(--foreground);
   font-family: inherit;
 }
@@ -561,56 +562,55 @@ a:focus-visible {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(128, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
 }
-/* Footer Text Override - Ensure all text is white but allow SVG icons to be visible */
-footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+/* Footer Text Override - scoped to app-root */
+.app-root footer h1, .app-root footer h2, .app-root footer h3,
+.app-root footer h4, .app-root footer h5, .app-root footer h6 {
   color: white !important;
 }
 
-footer p, footer span, footer div {
+.app-root footer p, .app-root footer span, .app-root footer div {
   color: white !important;
 }
 
 /* Maroon background sections - force white text */
-.bg-brand-maroon h1, .bg-brand-maroon h2, .bg-brand-maroon h3,
-.bg-brand-maroon h4, .bg-brand-maroon h5, .bg-brand-maroon h6 {
+.app-root .bg-brand-maroon h1, .app-root .bg-brand-maroon h2, .app-root .bg-brand-maroon h3,
+.app-root .bg-brand-maroon h4, .app-root .bg-brand-maroon h5, .app-root .bg-brand-maroon h6 {
   color: white !important;
 }
 
-.bg-brand-maroon p, .bg-brand-maroon li {
+.app-root .bg-brand-maroon p, .app-root .bg-brand-maroon li {
   color: white !important;
 }
 
-.bg-brand-maroon span, .bg-brand-maroon a {
+.app-root .bg-brand-maroon span, .app-root .bg-brand-maroon a {
   color: white !important;
 }
 
-/* Exceptions: elements with explicit color classes should keep their color */
-.bg-brand-maroon .text-brand-maroon,
-.bg-brand-maroon a.text-brand-maroon {
+.app-root .bg-brand-maroon .text-brand-maroon,
+.app-root .bg-brand-maroon a.text-brand-maroon {
   color: var(--heading-color) !important;
 }
 
-/* White buttons inside maroon sections keep maroon text */
-.bg-brand-maroon a.bg-white,
-.bg-brand-maroon a.bg-white span,
-.bg-brand-maroon a.bg-white svg {
+.app-root .bg-brand-maroon a.bg-white,
+.app-root .bg-brand-maroon a.bg-white span,
+.app-root .bg-brand-maroon a.bg-white svg {
   color: var(--heading-color) !important;
 }
 
-footer a {
+.app-root footer a {
   color: white !important;
 }
 
-footer a:hover {
-  color: #e5e7eb !important; /* light gray on hover */
+.app-root footer a:hover {
+  color: #e5e7eb !important;
 }
 
-footer button {
+.app-root footer button {
   color: white !important;
 }
 
-footer button:hover {
-  color: #e5e7eb !important; /* light gray on hover */
+.app-root footer button:hover {
+  color: #e5e7eb !important;
 }
 /* Performance Optimizations */
 * {

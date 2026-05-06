@@ -62,28 +62,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
   ]
 
   try {
-    // Dynamic course pages
-    const courses = await client.fetch(`*[_type == "course"] { slug, _updatedAt }`)
-    const coursePages = courses.map((course: any) => ({
-      url: `${baseUrl}/courses/${course.slug.current}`,
-      lastModified: new Date(course._updatedAt),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-
-    // Dynamic blog pages
+    // Dynamic blog pages only — no course detail pages exist
     const posts = await client.fetch(`*[_type == "post"] { slug, _updatedAt }`)
     const blogPages = posts.map((post: any) => ({
       url: `${baseUrl}/blog/${post.slug.current}`,
       lastModified: new Date(post._updatedAt),
       changeFrequency: 'monthly' as const,
-      priority: 0.5,
+      priority: 0.7,
     }))
 
-    return [...staticPages, ...coursePages, ...blogPages]
+    return [...staticPages, ...blogPages]
   } catch (error) {
     console.error('Error generating sitemap:', error)
     return staticPages

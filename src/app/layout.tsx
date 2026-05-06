@@ -3,6 +3,7 @@ import { Playfair_Display, Inter, Lato } from "next/font/google";
 import "./globals.css";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 // Serif font for headings — elegant and authoritative
 const playfair = Playfair_Display({
@@ -116,9 +117,8 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    yahoo: 'your-yahoo-verification-code',
+    // Add your actual verification codes here when you have them
+    // google: 'your-actual-google-verification-code',
   },
 };
 
@@ -246,9 +246,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <link rel="canonical" href={baseUrl} />
-        <meta name="google-site-verification" content="your-google-verification-code" />
-        <meta name="msvalidate.01" content="your-bing-verification-code" />
-        <meta name="p:domain_verify" content="your-pinterest-verification-code" />
         
         {/* Google Analytics */}
         {GA_ID && (
@@ -274,11 +271,12 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${playfair.variable} ${inter.variable} ${lato.variable} antialiased`}
+        className={`app-root ${playfair.variable} ${inter.variable} ${lato.variable} antialiased`}
       >
         <BackgroundAnimation />
         {children}
         <ScrollToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );
