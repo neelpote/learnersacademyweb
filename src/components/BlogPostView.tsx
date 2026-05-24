@@ -24,22 +24,9 @@ interface Post {
 
 const portableTextComponents = {
   block: {
-    normal: ({ children }: any) => {
-      // Auto-detect plain URLs typed in text and make them clickable
-      const processChildren = (child: any): any => {
-        if (typeof child !== 'string') return child
-        const urlRegex = /(https?:\/\/[^\s]+)/g
-        const parts = child.split(urlRegex)
-        if (parts.length === 1) return child
-        return parts.map((part, i) =>
-          urlRegex.test(part)
-            ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#800000', textDecoration: 'underline', fontWeight: 500 }}>{part}</a>
-            : part
-        )
-      }
-      const processed = Array.isArray(children) ? children.map(processChildren) : processChildren(children)
-      return <p className="mb-5" style={{ fontFamily: 'var(--font-body)', fontWeight: 400, color: '#2d2d2d', lineHeight: 1.9, fontSize: '1.1rem' }}>{processed}</p>
-    },
+    normal: ({ children }: any) => (
+      <p className="mb-5" style={{ fontFamily: 'var(--font-body)', fontWeight: 400, color: '#2d2d2d', lineHeight: 1.9, fontSize: '1.1rem' }}>{children}</p>
+    ),
     h1: ({ children }: any) => (
       <h2 className="text-3xl text-brand-maroon mt-10 mb-4" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700 }}>{children}</h2>
     ),
