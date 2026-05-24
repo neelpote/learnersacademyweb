@@ -91,12 +91,12 @@ export function Header({ onBookDemo }: HeaderProps) {
           <div className="flex justify-between items-center h-16">
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-10 flex-1 justify-center">
+            <div className="hidden md:flex items-center gap-12 flex-1 justify-center">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNav(item)}
-                  className="text-white hover:text-brand-silver relative font-medium group text-base transition-colors"
+                  className="text-white hover:text-brand-silver relative font-medium group text-lg transition-colors"
                   style={{ fontFamily: 'var(--font-sub)' }}
                 >
                   {item.name}
