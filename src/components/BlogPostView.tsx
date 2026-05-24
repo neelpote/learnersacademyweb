@@ -66,12 +66,15 @@ const portableTextComponents = {
     number: ({ children }: any) => <li style={{ fontFamily: 'var(--font-body)', fontWeight: 400, color: '#2d2d2d', fontSize: '1.05rem', lineHeight: 1.8 }}>{children}</li>,
   },
   types: {
-    image: ({ value }: any) => (
-      <div className="my-8 rounded-xl overflow-hidden" style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-        <Image src={urlFor(value).width(900).url()} alt={value.alt || ''} width={900} height={500} className="w-full h-auto" />
-        {value.caption && <p className="text-center text-sm py-2 px-4" style={{ color: '#4A4A4A', fontFamily: 'var(--font-sub)', fontStyle: 'italic' }}>{value.caption}</p>}
-      </div>
-    ),
+    image: ({ value }: any) => {
+      if (!value?.asset?._ref && !value?.asset?._id) return null
+      return (
+        <div className="my-8 rounded-xl overflow-hidden" style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
+          <Image src={urlFor(value).width(900).url()} alt={value.alt || ''} width={900} height={500} className="w-full h-auto" />
+          {value.caption && <p className="text-center text-sm py-2 px-4" style={{ color: '#4A4A4A', fontFamily: 'var(--font-sub)', fontStyle: 'italic' }}>{value.caption}</p>}
+        </div>
+      )
+    },
   },
 }
 

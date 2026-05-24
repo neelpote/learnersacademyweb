@@ -38,7 +38,14 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
   const post = await client.fetch(
     `*[_type == "post" && slug.current == $slug][0]{
-      _id, title, slug, mainImage, excerpt, body, publishedAt,
+      _id, title, slug, mainImage, excerpt, publishedAt,
+      body[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      },
       author->{name, photo, qualification}
     }`,
     { slug }
