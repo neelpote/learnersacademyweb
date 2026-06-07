@@ -1,23 +1,33 @@
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://learners-kohl.vercel.app/sitemap.xml
-
-# Block access to admin areas
 Disallow: /studio/
 Disallow: /api/
 Disallow: /_next/
-Disallow: /admin/
 
-# Allow important pages
+# Allow AI crawlers explicitly
+User-agent: GPTBot
 Allow: /
-Allow: /courses
-Allow: /teachers
-Allow: /success-stories
-Allow: /blog
-Allow: /resources
-Allow: /about
 
-# Crawl delay (optional)
-Crawl-delay: 1
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.thelearnersacademy.in/sitemap.xml

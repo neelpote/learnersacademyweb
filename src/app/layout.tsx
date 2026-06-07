@@ -122,114 +122,139 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': ['EducationalOrganization', 'LocalBusiness'],
-  '@id': `${baseUrl}/#organization`,
-  name: "The Learners' Academy",
-  alternateName: "Learners Academy Baner Pune",
-  description: "Premium tuition center providing quality education for classes 7-10 with expert teachers and proven results in Baner, Pune",
-  url: baseUrl,
-  logo: {
-    '@type': 'ImageObject',
-    url: `${baseUrl}/academy Logo - Background Removed.png`,
-    width: 200,
-    height: 200
-  },
-  image: `${baseUrl}/maths-tuition-baner-classroom.jpeg`,
-  telephone: '+91-86054-68382',
-  email: 'info@learnersacademy.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '302, Tejas Eternity, Balewadi Phata, Baner',
-    addressLocality: 'Pune',
-    addressRegion: 'Maharashtra',
-    postalCode: '411045',
-    addressCountry: 'IN'
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '18.5679',
-    longitude: '73.7781'
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '21:00'
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['EducationalOrganization', 'LocalBusiness'],
+    '@id': `${baseUrl}/#organization`,
+    name: "The Learners' Academy",
+    alternateName: "Learners Academy Baner Pune",
+    description: "Premium tuition center providing quality education for classes 7-10 with expert teachers and proven results in Baner, Pune",
+    url: baseUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/academy Logo - Background Removed.png`,
+      width: 200,
+      height: 200
     },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday'],
-      opens: '08:00',
-      closes: '18:00'
-    }
-  ],
-  priceRange: '₹₹',
-  currenciesAccepted: 'INR',
-  paymentAccepted: ['Cash', 'UPI', 'Bank Transfer'],
-  areaServed: [
-    { '@type': 'Place', name: 'Baner, Pune' },
-    { '@type': 'Place', name: 'Aundh, Pune' },
-    { '@type': 'Place', name: 'Pashan, Pune' },
-    { '@type': 'Place', name: 'Balewadi, Pune' },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
+    image: `${baseUrl}/maths-tuition-baner-classroom.jpeg`,
     telephone: '+91-86054-68382',
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi', 'Marathi'],
-    areaServed: 'IN'
-  },
-  sameAs: [
-    'https://facebook.com/learnersacademy',
-    'https://instagram.com/learnersacademy',
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '150',
-    bestRating: '5',
-    worstRating: '1'
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Tuition & Coaching Programs',
-    itemListElement: [
+    email: 'info@learnersacademy.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '302, Tejas Eternity, Balewadi Phata, Baner',
+      addressLocality: 'Pune',
+      addressRegion: 'Maharashtra',
+      postalCode: '411045',
+      addressCountry: 'IN'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '18.5679',
+      longitude: '73.7781'
+    },
+    openingHoursSpecification: [
       {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'Maths Tuition in Baner',
-          description: 'Expert Mathematics coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
-          url: `${baseUrl}/maths-tuition-baner`,
-          provider: { '@type': 'Organization', name: "The Learners' Academy" }
-        }
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '07:00',
+        closes: '21:00'
       },
       {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'Science Tuition in Baner',
-          description: 'Expert Science coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
-          url: `${baseUrl}/science-tuition-baner`,
-          provider: { '@type': 'Organization', name: "The Learners' Academy" }
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Course',
-          name: 'Class 10 Maths Coaching Pune',
-          description: 'Specialized Class 10 Mathematics board exam preparation in Baner, Pune',
-          url: `${baseUrl}/class-10-maths-coaching-pune`,
-          provider: { '@type': 'Organization', name: "The Learners' Academy" }
-        }
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday', 'Sunday'],
+        opens: '08:00',
+        closes: '18:00'
       }
-    ]
+    ],
+    priceRange: '₹₹',
+    currenciesAccepted: 'INR',
+    paymentAccepted: ['Cash', 'UPI', 'Bank Transfer'],
+    areaServed: [
+      { '@type': 'Place', name: 'Baner, Pune' },
+      { '@type': 'Place', name: 'Aundh, Pune' },
+      { '@type': 'Place', name: 'Pashan, Pune' },
+      { '@type': 'Place', name: 'Balewadi, Pune' },
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-86054-68382',
+      contactType: 'customer service',
+      availableLanguage: ['English', 'Hindi', 'Marathi'],
+      areaServed: 'IN'
+    },
+    sameAs: [
+      'https://facebook.com/learnersacademy',
+      'https://instagram.com/learnersacademy',
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Tuition & Coaching Programs',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Course',
+            name: 'Maths Tuition in Baner',
+            description: 'Expert Mathematics coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
+            url: `${baseUrl}/maths-tuition-baner`,
+            provider: { '@type': 'Organization', name: "The Learners' Academy" }
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Course',
+            name: 'Science Tuition in Baner',
+            description: 'Expert Science coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
+            url: `${baseUrl}/science-tuition-baner`,
+            provider: { '@type': 'Organization', name: "The Learners' Academy" }
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Course',
+            name: 'Class 10 Maths Coaching Pune',
+            description: 'Specialized Class 10 Mathematics board exam preparation in Baner, Pune',
+            url: `${baseUrl}/class-10-maths-coaching-pune`,
+            provider: { '@type': 'Organization', name: "The Learners' Academy" }
+          }
+        }
+      ]
+    }
+  },
+  // Speakable schema — marks content suitable for AI/voice assistants to read
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${baseUrl}/#webpage`,
+    url: baseUrl,
+    name: "Best Tuition Classes in Baner Pune | The Learners' Academy",
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'h2', '.speakable']
+    }
+  },
+  // SiteLinksSearchBox — enables search box in Google results
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${baseUrl}/#website`,
+    url: baseUrl,
+    name: "The Learners' Academy",
+    description: "Best tuition classes in Baner, Pune for Class 7-10 Maths and Science",
+    inLanguage: 'en-IN',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/blog?q={search_term_string}`
+      },
+      'query-input': 'required name=search_term_string'
+    }
   }
-};
+];
 
 export default function RootLayout({
   children,
@@ -241,10 +266,13 @@ export default function RootLayout({
   return (
     <html lang="en-IN">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {jsonLd.map((schema, i) => (
+          <script
+            key={i}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
         <link rel="canonical" href={baseUrl} />
         
         {/* Google Analytics */}
