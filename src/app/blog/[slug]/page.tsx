@@ -4,14 +4,20 @@ import { BlogPostView } from '@/components/BlogPostView'
 
 // Revalidate every 60 seconds — new posts work without full rebuild
 export const revalidate = 60
+// Allow slugs not returned by generateStaticParams to be rendered on demand
+export const dynamicParams = true
 
 interface Props {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const posts = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`)
-  return posts.map((post: any) => ({ slug: post.slug }))
+  const posts = await client.fetch(
+    `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
+  )
+  return posts
+    .filter((post: any) => typeof post.slug === 'string' && post.slug.length > 0)
+    .map((post: any) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
