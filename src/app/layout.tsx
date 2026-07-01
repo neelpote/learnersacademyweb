@@ -125,14 +125,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#800000' },
-    { media: '(prefers-color-scheme: dark)', color: '#800000' }
-  ],
-  colorScheme: 'light',
-};
-
 const jsonLd = [
   {
     '@context': 'https://schema.org',
