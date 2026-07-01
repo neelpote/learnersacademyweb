@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter, Lato } from "next/font/google";
 import "./globals.css";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
@@ -32,6 +32,14 @@ const lato = Lato({
 const baseUrl = process.env.NODE_ENV === 'production' 
   ? 'https://www.thelearnersacademy.in' 
   : 'http://localhost:3000';
+
+export const viewport: Viewport = {
+  colorScheme: 'light',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#800000' },
+    { media: '(prefers-color-scheme: dark)', color: '#800000' },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -98,11 +106,6 @@ export const metadata: Metadata = {
   category: 'education',
   classification: 'Education, Tuition, Coaching',
   referrer: 'origin-when-cross-origin',
-  colorScheme: 'light',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#800000' },
-    { media: '(prefers-color-scheme: dark)', color: '#800000' }
-  ],
   manifest: '/manifest.json',
   icons: {
     icon: [
@@ -120,6 +123,14 @@ export const metadata: Metadata = {
     // Add your actual verification codes here when you have them
     // google: 'your-actual-google-verification-code',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#800000' },
+    { media: '(prefers-color-scheme: dark)', color: '#800000' }
+  ],
+  colorScheme: 'light',
 };
 
 const jsonLd = [
