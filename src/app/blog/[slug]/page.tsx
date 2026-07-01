@@ -2,9 +2,8 @@ import { client, urlFor } from '@/lib/sanity'
 import { Metadata } from 'next'
 import { BlogPostView } from '@/components/BlogPostView'
 
-// Allow new posts to work without rebuilding
-export const dynamic = 'force-dynamic'
-export const revalidate = 60 // revalidate every 60 seconds
+// Revalidate every 60 seconds — new posts work without full rebuild
+export const revalidate = 60
 
 interface Props {
   params: Promise<{ slug: string }>
