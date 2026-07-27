@@ -1,33 +1,36 @@
+# Public pages are available to search engines and AI search/retrieval crawlers.
 User-agent: *
 Allow: /
 Disallow: /studio/
 Disallow: /api/
-Disallow: /_next/
 
-# Allow AI crawlers explicitly
+# OpenAI search, user retrieval, and model crawler
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
 User-agent: GPTBot
 Allow: /
+Disallow: /studio/
+Disallow: /api/
 
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
+# Anthropic search, user retrieval, and model crawler
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: ClaudeBot
 Allow: /
+Disallow: /studio/
+Disallow: /api/
 
-User-agent: Anthropic-AI
+# Perplexity search and user retrieval
+User-agent: PerplexityBot
+User-agent: Perplexity-User
 Allow: /
+Disallow: /studio/
+Disallow: /api/
 
-User-agent: Bingbot
+# Gemini training and grounding control token
+User-agent: Google-Extended
 Allow: /
+Disallow: /studio/
+Disallow: /api/
 
-User-agent: Applebot
-Allow: /
-
-# Sitemap
 Sitemap: https://www.thelearnersacademy.in/sitemap.xml
