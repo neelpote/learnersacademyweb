@@ -2,9 +2,40 @@ import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 import { sanityRateLimiter } from './rateLimit'
 
+const DEFAULT_SANITY_PROJECT_ID = 'nxtrkki6'
+const DEFAULT_SANITY_DATASET = 'production'
+
+function resolveSanityConfig() {
+  const configuredProjectId =
+    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim()
+  const configuredDataset = process.env.NEXT_PUBLIC_SANITY_DATASET?.trim()
+
+  const projectId = configuredProjectId || DEFAULT_SANITY_PROJECT_ID
+  const dataset =
+    !configuredDataset ||
+    configuredDataset === projectId ||
+    configuredDataset === DEFAULT_SANITY_PROJECT_ID
+      ? DEFAULT_SANITY_DATASET
+      : configuredDataset
+
+  if (
+    configuredDataset &&
+    configuredDataset !== dataset &&
+    process.env.NODE_ENV !== 'test'
+  ) {
+    console.warn(
+      `[sanity] Ignoring invalid dataset "${configuredDataset}" and using "${dataset}".`,
+    )
+  }
+
+  return { projectId, dataset }
+}
+
+const { projectId, dataset } = resolveSanityConfig()
+
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId,
+  dataset,
   apiVersion: '2024-01-01',
   useCdn: false, // Set to false for real-time updates
   token: process.env.SANITY_API_TOKEN, // Optional: for authenticated requests
