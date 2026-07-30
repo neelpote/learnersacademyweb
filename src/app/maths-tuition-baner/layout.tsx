@@ -1,20 +1,18 @@
-import { Metadata } from 'next'
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: 'Best Maths Tuition Classes in Baner Pune | The Learners\' Academy',
-  description: 'Expert Maths tuition in Baner for Class 7-10. CBSE, ICSE, SSC coaching with concept-based learning, small batches & proven results. Call 86054 68382',
-  keywords: 'maths tuition baner, mathematics coaching pune, class 10 maths tuition, CBSE maths classes baner, best maths teacher baner pune',
-  openGraph: {
-    title: 'Best Maths Tuition Classes in Baner Pune | The Learners\' Academy',
-    description: 'Expert Maths tuition in Baner for Class 7-10. CBSE, ICSE, SSC coaching with concept-based learning, small batches & proven results.',
-    url: 'https://www.thelearnersacademy.in/maths-tuition-baner',
-  },
-}
+export const metadata = createPageMetadata({
+  title: "Maths Tuition Classes in Baner Pune",
+  description:
+    "Maths tuition in Baner for Classes 7–10 across CBSE, ICSE, and SSC. Concept-based teaching, small batches, guided problem solving, and board exam preparation.",
+  path: "/maths-tuition-baner",
+  image: "/maths-coaching-classroom-baner-pune.png",
+  imageAlt: "Maths tuition class at The Learners' Academy in Baner",
+});
 
 export default function MathsTuitionBanerLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return children
+  return children;
 }

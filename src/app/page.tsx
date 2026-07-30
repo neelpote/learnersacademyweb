@@ -13,6 +13,8 @@ import { SuccessStoriesSection } from "@/components/sections/SuccessStoriesSecti
 import { BlogSection } from "@/components/sections/BlogSection"
 import { ResourcesSection } from "@/components/sections/ResourcesSection"
 import { AboutSection } from "@/components/sections/AboutSection"
+import { JsonLd } from "@/components/JsonLd"
+import { homepageSchema } from "@/lib/schema"
 
 import {
   Users,
@@ -44,6 +46,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <JsonLd data={homepageSchema()} />
       <div className="relative z-10 bg-transparent">
         <ResultsTicker />
         <Header onBookDemo={() => setIsDemoFormOpen(true)} />

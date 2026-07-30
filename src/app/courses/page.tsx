@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react'
 import { Check, Star, Crown, Award, ChevronLeft, ChevronRight, Bookmark } from 'lucide-react'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 
 export default function CoursesPage() {
   const [currentPlan, setCurrentPlan] = useState(1) // 0: Super 15, 1: Super 10, 2: Super 10 Plus
@@ -68,7 +70,9 @@ export default function CoursesPage() {
   }
 
   return (
-    <main className="min-h-screen pt-32 pb-20">
+    <>
+    <Header />
+    <main className="min-h-screen pt-20 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -218,5 +222,7 @@ export default function CoursesPage() {
         </div>
       </div>
     </main>
+    <Footer />
+    </>
   )
 }

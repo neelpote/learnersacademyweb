@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, Lato } from "next/font/google";
+import { Inter, Lato, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
+import { JsonLd } from "@/components/JsonLd";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { sitewideSchema } from "@/lib/schema";
+import { absoluteUrl, siteConfig, SITE_URL } from "@/lib/site";
 
-// Serif font for headings — elegant and authoritative
 const playfair = Playfair_Display({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -13,7 +15,6 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-// Clean sans-serif for body — highly readable
 const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
@@ -21,7 +22,6 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-// Light sans-serif for subheadings and labels
 const lato = Lato({
   variable: "--font-sub",
   subsets: ["latin"],
@@ -29,261 +29,108 @@ const lato = Lato({
   weight: ["300", "400", "700"],
 });
 
-const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://www.thelearnersacademy.in' 
-  : 'http://localhost:3000';
-
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#800000' },
-    { media: '(prefers-color-scheme: dark)', color: '#800000' },
-  ],
+  colorScheme: "light",
+  themeColor: "#800000",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(SITE_URL),
+  applicationName: siteConfig.name,
   title: {
     default: "Best Tuition Classes in Baner Pune | The Learners' Academy",
-    template: "%s | The Learners' Academy"
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
-  keywords: [
-    "tuition center Baner", "coaching classes Pune", "tuition Baner Pune", "CBSE tuition Baner", "ICSE coaching Pune", 
-    "State Board classes Baner", "JEE coaching Pune", "NEET preparation Baner", "board exam coaching Pune",
-    "mathematics tuition Baner", "physics coaching Pune", "chemistry classes Baner", "biology tuition Pune",
-    "English coaching Baner", "academic excellence Pune", "personalized learning Baner", "expert teachers Pune",
-    "classes 7-12 Baner", "Pune education", "Baner tuition center", "Learners Academy Pune", "tuition near Baner",
-    "coaching classes near me Pune", "best tuition center Baner", "Maharashtra board coaching"
-  ],
-  authors: [{ name: "The Learners' Academy", url: baseUrl }],
-  creator: "The Learners' Academy",
-  publisher: "The Learners' Academy",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  description:
+    "Expert tuition classes in Baner, Pune for Classes 7–12. Small batches, concept-based Maths and Science coaching, board exam preparation, and personal guidance.",
+  authors: [{ name: siteConfig.name, url: SITE_URL }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "education",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-IN": "/",
+    },
   },
   openGraph: {
     type: "website",
-    locale: "en_IN",
-    url: baseUrl,
-    siteName: "The Learners' Academy",
+    locale: siteConfig.locale,
+    url: SITE_URL,
+    siteName: siteConfig.name,
     title: "Best Tuition Classes in Baner Pune | The Learners' Academy",
-    description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
+    description:
+      "Expert tuition for Classes 7–12 in Baner, Pune, with small batches, concept-based learning, and board exam preparation.",
     images: [
       {
-        url: `${baseUrl}/og-image.jpg`,
+        url: siteConfig.socialImage,
         width: 1200,
         height: 630,
-        alt: "Best Tuition Classes in Baner Pune | The Learners' Academy",
-      }
+        alt: "Students learning Mathematics at The Learners' Academy in Baner, Pune",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Best Tuition Classes in Baner Pune | The Learners' Academy",
-    description: "The Learners' Academy is a premium tuition centre in Baner, Pune offering expert coaching for Class 7–12 with a focus on strong concepts and board exam success.",
-    images: [`${baseUrl}/og-image.jpg`],
-    creator: "@learnersacademy",
+    description:
+      "Expert tuition for Classes 7–12 in Baner, Pune, with small batches and concept-based learning.",
+    images: [siteConfig.socialImage],
   },
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
       noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: baseUrl,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  category: 'education',
-  classification: 'Education, Tuition, Coaching',
-  referrer: 'origin-when-cross-origin',
-  manifest: '/manifest.json',
-  icons: {
-    icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#800000' },
-    ],
-  },
-  verification: {
-    // Add your actual verification codes here when you have them
-    // google: 'your-actual-google-verification-code',
+  manifest: "/manifest.json",
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  other: {
+    "geo.region": "IN-MH",
+    "geo.placename": "Baner, Pune",
+    "geo.position": `${siteConfig.geo.latitude};${siteConfig.geo.longitude}`,
+    ICBM: `${siteConfig.geo.latitude}, ${siteConfig.geo.longitude}`,
   },
 };
-
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': ['EducationalOrganization', 'LocalBusiness'],
-    '@id': `${baseUrl}/#organization`,
-    name: "The Learners' Academy",
-    alternateName: "Learners Academy Baner Pune",
-    description: "Premium tuition center providing quality education for classes 7-10 with expert teachers and proven results in Baner, Pune",
-    url: baseUrl,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${baseUrl}/academy Logo - Background Removed.png`,
-      width: 200,
-      height: 200
-    },
-    image: `${baseUrl}/maths-tuition-baner-classroom.jpeg`,
-    telephone: '+91-86054-68382',
-    email: 'info@learnersacademy.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '302, Tejas Eternity, Balewadi Phata, Baner',
-      addressLocality: 'Pune',
-      addressRegion: 'Maharashtra',
-      postalCode: '411045',
-      addressCountry: 'IN'
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '18.5679',
-      longitude: '73.7781'
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '07:00',
-        closes: '21:00'
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Saturday', 'Sunday'],
-        opens: '08:00',
-        closes: '18:00'
-      }
-    ],
-    priceRange: '₹₹',
-    currenciesAccepted: 'INR',
-    paymentAccepted: ['Cash', 'UPI', 'Bank Transfer'],
-    areaServed: [
-      { '@type': 'Place', name: 'Baner, Pune' },
-      { '@type': 'Place', name: 'Aundh, Pune' },
-      { '@type': 'Place', name: 'Pashan, Pune' },
-      { '@type': 'Place', name: 'Balewadi, Pune' },
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+91-86054-68382',
-      contactType: 'customer service',
-      availableLanguage: ['English', 'Hindi', 'Marathi'],
-      areaServed: 'IN'
-    },
-    sameAs: [
-      'https://facebook.com/learnersacademy',
-      'https://instagram.com/learnersacademy',
-    ],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Tuition & Coaching Programs',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Course',
-            name: 'Maths Tuition in Baner',
-            description: 'Expert Mathematics coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
-            url: `${baseUrl}/maths-tuition-baner`,
-            provider: { '@type': 'Organization', name: "The Learners' Academy" }
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Course',
-            name: 'Science Tuition in Baner',
-            description: 'Expert Science coaching for Class 7-10 CBSE, ICSE and SSC students in Baner, Pune',
-            url: `${baseUrl}/science-tuition-baner`,
-            provider: { '@type': 'Organization', name: "The Learners' Academy" }
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Course',
-            name: 'Class 10 Maths Coaching Pune',
-            description: 'Specialized Class 10 Mathematics board exam preparation in Baner, Pune',
-            url: `${baseUrl}/class-10-maths-coaching-pune`,
-            provider: { '@type': 'Organization', name: "The Learners' Academy" }
-          }
-        }
-      ]
-    }
-  },
-  // Speakable schema — marks content suitable for AI/voice assistants to read
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': `${baseUrl}/#webpage`,
-    url: baseUrl,
-    name: "Best Tuition Classes in Baner Pune | The Learners' Academy",
-    speakable: {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['h1', 'h2', '.speakable']
-    }
-  },
-  // SiteLinksSearchBox — enables search box in Google results
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${baseUrl}/#website`,
-    url: baseUrl,
-    name: "The Learners' Academy",
-    description: "Best tuition classes in Baner, Pune for Class 7-10 Maths and Science",
-    inLanguage: 'en-IN',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/blog?q={search_term_string}`
-      },
-      'query-input': 'required name=search_term_string'
-    }
-  }
-];
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en-IN">
+    <html
+      lang={siteConfig.language}
+      className={`${playfair.variable} ${inter.variable} ${lato.variable}`}
+    >
       <head>
-        {jsonLd.map((schema, i) => (
-          <script
-            key={i}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        ))}
-        <link rel="canonical" href={baseUrl} />
-        
-        {/* Google Analytics */}
-        {GA_ID && (
+        <JsonLd data={sitewideSchema()} />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href={absoluteUrl("/llms.txt")}
+          title={`${siteConfig.name} AI-readable site guide`}
+        />
+        {gaId && (
           <>
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             />
             <script
               dangerouslySetInnerHTML={{
@@ -291,9 +138,9 @@ export default function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${GA_ID}', {
+                  gtag('config', '${gaId}', {
                     page_location: window.location.href,
-                    page_title: document.title,
+                    page_title: document.title
                   });
                 `,
               }}
@@ -301,9 +148,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body
-        className={`app-root ${playfair.variable} ${inter.variable} ${lato.variable} antialiased`}
-      >
+      <body className="app-root antialiased">
         <BackgroundAnimation />
         {children}
         <ScrollToTop />

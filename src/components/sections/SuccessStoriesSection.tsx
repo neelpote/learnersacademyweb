@@ -46,7 +46,7 @@ export function SuccessStoriesSection() {
         )
         setIsVisible(true)
       }, 200)
-    }, 5000) // Change every 5 seconds
+    }, 8000) // Change every 8 seconds
 
     return () => clearInterval(interval)
   }, [successStories.length])

@@ -1,20 +1,20 @@
-import { Metadata } from 'next'
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { createPageMetadata } from '@/lib/metadata'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 
-export const metadata: Metadata = {
-  title: 'Contact Us | The Learners\' Academy - Baner, Pune',
-  description: 'Get in touch with The Learners\' Academy in Baner, Pune. Contact us for class 7-12 coaching, board exam preparation, and academic guidance. Call +91-86054 68382',
-  keywords: 'contact learners academy, baner coaching classes, pune tuition contact, class 7-12 coaching baner, board exam coaching pune',
-  openGraph: {
-    title: 'Contact Us | The Learners\' Academy',
-    description: 'Get in touch with The Learners\' Academy in Baner, Pune for expert coaching for classes 7-12',
-    url: 'https://www.thelearnersacademy.in/contact',
-  },
-}
+export const metadata = createPageMetadata({
+  title: 'Contact The Learners’ Academy in Baner',
+  description:
+    'Contact The Learners’ Academy in Baner, Pune for Classes 7–12 tuition, Maths and Science coaching, board exam preparation, current batches, and a free demo.',
+  path: '/contact',
+  imageAlt: 'Contact The Learners’ Academy in Baner, Pune',
+})
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen pt-32 pb-20">
+    <>
+    <Header />
+    <main className="min-h-screen pt-20 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -211,49 +211,9 @@ export default function ContactPage() {
             </form>
           </div>
         </div>
-
-        {/* Schema.org structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'EducationalOrganization',
-              name: "The Learners' Academy",
-              description: 'Expert coaching for classes 7-12, board exam preparation in Baner, Pune',
-              url: 'https://www.thelearnersacademy.in',
-              telephone: '+91-86054-68382',
-              email: 'info@learnersacademy.com',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '302, Tejas Eternity, Balewadi Phata',
-                addressLocality: 'Baner',
-                addressRegion: 'Maharashtra',
-                postalCode: '411045',
-                addressCountry: 'IN',
-              },
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: '18.56482296782019',
-                longitude: '73.7802709756218',
-              },
-              openingHoursSpecification: [
-                {
-                  '@type': 'OpeningHoursSpecification',
-                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                  opens: '08:00',
-                  closes: '20:00',
-                },
-              ],
-              sameAs: [
-                'https://www.facebook.com/learnersacademy',
-                'https://www.instagram.com/learnersacademy',
-                'https://www.youtube.com/learnersacademy',
-              ],
-            }),
-          }}
-        />
       </div>
     </main>
+    <Footer />
+    </>
   )
 }

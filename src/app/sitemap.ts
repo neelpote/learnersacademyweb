@@ -1,83 +1,87 @@
 import { MetadataRoute } from 'next'
 import { client } from '@/lib/sanity'
+import { absoluteUrl, SITE_URL } from '@/lib/site'
+
+interface SitemapPost {
+  slug: string
+  updatedAt: string
+  imageUrl?: string
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://www.thelearnersacademy.in' 
-    : 'http://localhost:3000'
-
-  // Static pages with enhanced SEO priorities
   const staticPages = [
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
+      url: SITE_URL,
+      changeFrequency: 'weekly' as const,
       priority: 1,
+      images: [absoluteUrl('/maths-coaching-classroom-baner-pune.png')],
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      url: absoluteUrl('/contact'),
       changeFrequency: 'monthly' as const,
-      priority: 0.9,
+      priority: 0.7,
     },
     {
-      url: `${baseUrl}/courses`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/resources`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      url: absoluteUrl('/courses'),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/maths-tuition-baner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
+      url: absoluteUrl('/resources'),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
     },
     {
-      url: `${baseUrl}/science-tuition-baner`,
-      lastModified: new Date(),
+      url: absoluteUrl('/maths-tuition-baner'),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+      images: [absoluteUrl('/maths-tuition-baner-classroom.jpeg')],
     },
     {
-      url: `${baseUrl}/class-10-maths-coaching-pune`,
-      lastModified: new Date(),
+      url: absoluteUrl('/science-tuition-baner'),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+      images: [absoluteUrl('/science-classroom-baner-pune.webp')],
     },
     {
-      url: `${baseUrl}/best-tuition-classes-baner`,
-      lastModified: new Date(),
+      url: absoluteUrl('/class-10-maths-coaching-pune'),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+      images: [absoluteUrl('/class10-maths-coaching-baner-classroom.png')],
     },
     {
-      url: `${baseUrl}/tutor-in-baner-pune`,
-      lastModified: new Date(),
+      url: absoluteUrl('/best-tuition-classes-baner'),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+      images: [absoluteUrl('/best-tuition-classes-baner-classroom.png')],
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      url: absoluteUrl('/tutor-in-baner-pune'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+      images: [absoluteUrl('/tutor-in-baner-pune-classroom.png')],
+    },
+    {
+      url: absoluteUrl('/blog'),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
   ]
 
   try {
-    // Dynamic blog pages only — no course detail pages exist
-    const posts = await client.fetch(`*[_type == "post"] { slug, _updatedAt }`)
-    const blogPages = posts.map((post: any) => ({
-      url: `${baseUrl}/blog/${post.slug.current}`,
-      lastModified: new Date(post._updatedAt),
+    const posts = await client.fetch<SitemapPost[]>(
+      `*[_type == "post" && defined(slug.current)] {
+        "slug": slug.current,
+        "updatedAt": _updatedAt,
+        "imageUrl": mainImage.asset->url
+      }`,
+    )
+    const blogPages = posts.map((post) => ({
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: new Date(post.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+      ...(post.imageUrl ? { images: [post.imageUrl] } : {}),
     }))
 
     return [...staticPages, ...blogPages]
